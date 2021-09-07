@@ -1,39 +1,69 @@
-# Example app with [chakra-ui](https://github.com/chakra-ui/chakra-ui) and Typescript
+## Sushi Redesign <> Privi| Codingsh | OitoWork | 
 
-This example features how to use [chakra-ui](https://github.com/chakra-ui/chakra-ui) as the component library within a Next.js app with typescript.
 
-Next.js and chakra-ui have built-in TypeScript declarations, so we'll get autocompletion for their modules straight away.
 
-We are connecting the Next.js `_app.js` with `chakra-ui`'s Provider and theme so the pages can have app-wide dark/light mode. We are also creating some components which shows the usage of `chakra-ui`'s style props.
 
-## Preview
+## Core Requirements:
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+Polygon version
+Connect web3 wallet (Metamask)
+Show user MATIC balance and connected wallet address
+- Swap feature (at default settings)
+- Standard token list as on Sushiswap (Polygon)
+- Widget to add custom token feature by name or contract address as pair
+- Display ...
+- balance of origin (A) and target (B) on connected wallet
+- Corresponding amount of target (B) token for swap
+- Exchange rate 1 (B) = xx (A)
+- Corresponding $ value for outcome
+Include max. function for origin (A) token
+Switch view between token A->B to B->A
+Add/remove liquidity:
+- Standard token lists
+- Widget to add custom token by name or contract address
+- Show active Sushiswap LP pairs and balance
+Include farm tool
+- Display Pair, TVL, Rewards rate and APR
+- Add staking and unstaking functionality including current balances and max function
+Bonus requirements:
+- Add Binance Smart Chain and Ethereum chain support and relevant token lists
+- Allow extra swap transaction settings (custom slippage tolerance, execution time)
+- Display top pools list
+- Connect other web3 wallets
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-chakra-ui-typescript)
+### General requirements:
+- Use a provided Privi UI for frontend and visual elements
+- You cannot use any copyrighted elements of the provider design (Uniswap…) including name and mark. You should also make sure the visual elements are distinct and that users cannot confuse this frontend with the official interface.
 
-## Deploy your own
+### Considerations:
+- All web3 actions should be done through local providers such as MetaMask.
+- Hosting is going to take place an Arweave in collaboration with the team 
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-chakra-ui-typescript&project-name=with-chakra-ui-typescript&repository-name=with-chakra-ui-typescript)
+### Documentation:
 
-## How to use
+**Code should be well documented inline, and any deployment/setup steps should have separate documentation.**
 
-### Using `create-next-app`
+- Any variables (contracts, tokens, endpoints, etc) should be well labelled and pulled in from a specific variables file so that they can be easily referenced if they ever need to be documented.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
-```bash
-npx create-next-app --example with-chakra-ui-typescript with-chakra-ui-typescript-app
-# or
-yarn create next-app --example with-chakra-ui-typescript with-chakra-ui-typescript-app
-```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Tools
 
-## Notes
+- React 
+- Chakra UI 
+- Nextjs
+- Mobx
+- Typescript
 
-Chakra has supported Gradients and RTL in `v1.1`. To utilize RTL, [add RTL direction and swap](https://chakra-ui.com/docs/features/rtl-support).
 
-If you don't have multi-direction app, you should make `<Html lang="ar" dir="rtl">` inside `_document.ts`.
+## Check Deploy IPFS
+
+https://ipfs.fleek.co/ipfs/QmWHnGG9YsNAm8qGhsPbEU1354w3GPtKQHNXvbCuih1kPz/
+
+## Check deploy normal domain 
+
+https://sushiswap.oito.digital 
+
+---
+https://oito.work
