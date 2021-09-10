@@ -17,20 +17,21 @@ export const SwapCard = (props: FlexProps) => {
   const { colorMode } = useColorMode();
 
   const bgColor = { light: "gray.50", dark: "gray.900" };
-
+  const bgCard = { light: "#EFF0F3", dark: "#e2e2e2" };
   const color = { light: "black", dark: "white" };
-  //background: #f3f4f7;
 
   return (
     <Flex
       w="100%"
       alignItems="center"
       justifyContent="space-between"
-      bg={bgColor[colorMode]}
+      bg={bgCard[colorMode]}
       color={color[colorMode]}
+      roundedLeft={20}
+      roundedRight={20}
       {...props}
     >
-      <Box p="4" bg="#ccc" w="100%" h={300}>
+      <Box p="4" w="100%" h={300}>
         <Text color="#818184" fontWeight={500}>
           Swap From
         </Text>
@@ -47,6 +48,7 @@ export const SwapCard = (props: FlexProps) => {
             fontWeight={500}
             variant="unstyled"
             border="none"
+            color="#000"
           />
         </Flex>
         <InputGroup size="lg" mb={34}>
@@ -68,12 +70,17 @@ export const SwapCard = (props: FlexProps) => {
       </Box>
       <Spacer />
       {/* part 2 */}
-      <Box p="4" bg="#ccc" w="100%" h={300}>
+      <Box p="4" w="100%" h={300}>
         <Text color="#818184" fontWeight={500}>
           Swap To
         </Text>
-        <Flex align="center" gridGap={11} mt={2} mb={26}>
-          <Button bg={bgColor[colorMode]} color="red" fontWeight={500}>
+        <Flex align="center" gridGap={11} mt={2} mb={17}>
+          <Button
+            bg={bgColor[colorMode]}
+            size="md"
+            color="red"
+            fontWeight={500}
+          >
             Select Token
           </Button>
         </Flex>
@@ -91,7 +98,7 @@ export const SwapCard = (props: FlexProps) => {
           </InputRightElement>
         </InputGroup>
         <Flex justify="end">
-          <Button bg={color[colorMode]} colorScheme="white" size="md">
+          <Button bg={color[colorMode]} colorScheme="white" size="lg">
             Connect Wallet To Swap
           </Button>
         </Flex>
