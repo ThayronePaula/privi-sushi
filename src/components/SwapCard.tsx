@@ -19,6 +19,8 @@ export const SwapCard = (props: FlexProps) => {
   const bgColor = { light: "gray.50", dark: "gray.900" };
 
   const color = { light: "black", dark: "white" };
+  //background: #f3f4f7;
+
   return (
     <Flex
       w="100%"
@@ -88,7 +90,11 @@ export const SwapCard = (props: FlexProps) => {
             <Text fontWeight={500}>ETH</Text>
           </InputRightElement>
         </InputGroup>
-        <Button colorScheme="blue">Button</Button>
+        <Flex justify="end">
+          <Button bg={color[colorMode]} colorScheme="white" size="md">
+            Connect Wallet To Swap
+          </Button>
+        </Flex>
       </Box>
     </Flex>
   );
