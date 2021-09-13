@@ -32,7 +32,7 @@ export const SwapCard = (props: FlexProps) => {
       {...props}
     >
       <Box p="4" w="100%" h={300}>
-        <Text color="#818184" fontWeight={500}>
+        <Text color="#818184" fontWeight={500} textAlign="left">
           Swap From
         </Text>
         <Flex align="center" gridGap={11} mt={2} mb={26}>
@@ -64,14 +64,14 @@ export const SwapCard = (props: FlexProps) => {
             <Text fontWeight={500}>ETH</Text>
           </InputRightElement>
         </InputGroup>
-        <Text color="#818184" mb={39}>
+        <Text color="#818184" mb={39} textAlign="left">
           Exchange Rate:
         </Text>
       </Box>
       <Spacer />
       {/* part 2 */}
       <Box p="4" w="100%" h={300}>
-        <Text color="#818184" fontWeight={500}>
+        <Text color="#818184" fontWeight={500} textAlign="left">
           Swap To
         </Text>
         <Flex align="center" gridGap={11} mt={2} mb={17}>
