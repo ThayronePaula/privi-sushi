@@ -1,6 +1,5 @@
 import { Flex, Heading } from "@chakra-ui/react";
-import { SwapCard } from "./SwapCard";
-
+import { SwapNavigate } from "../components/SwapNavigate";
 export const Hero = ({ title }: { title: string }) => (
   <Flex
     justifyContent="center"
@@ -11,7 +10,7 @@ export const Hero = ({ title }: { title: string }) => (
     flexDirection="column"
   >
     <Heading fontSize="6vw">{title}</Heading>
-    <SwapCard />
+    <SwapNavigate />
   </Flex>
 );
 

@@ -15,13 +15,14 @@ import { Main } from "../components/Main";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import { CTA } from "../components/CTA";
 import { Footer } from "../components/Footer";
-import { SwapCard } from "../components/SwapCard";
+
 
 const Index = () => (
   <Container height="100vh">
     <NavBar />
     <Hero />
-    <Main></Main>
+    <Main>
+    </Main>
     <DarkModeSwitch />
     <Footer>
       <Text>build ❤️ Brazil</Text>
