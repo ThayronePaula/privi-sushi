@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   Flex,
   Spacer,
@@ -12,6 +13,9 @@ import {
   useColorMode,
   FlexProps,
 } from "@chakra-ui/react";
+import { useMoralis } from "react-moralis";
+import { useEtherscan } from "../shared/hooks";
+import { convertWeiToEth } from "../shared/helpers";
 
 export const SwapCard = (props: FlexProps) => {
   const { colorMode } = useColorMode();
@@ -20,6 +24,17 @@ export const SwapCard = (props: FlexProps) => {
   const bgCard = { light: "#EFF0F3", dark: "#e2e2e2" };
   const color = { light: "black", dark: "white" };
 
+  const { authenticate, isAuthenticated, logout, user } = useMoralis();
+
+  const primaryEthAddress = useMemo(
+    () => isAuthenticated && user.get("accounts")[0],
+    [isAuthenticated, user]
+  );
+
+  const { walletBalance, isLoading } = useEtherscan(primaryEthAddress || null);
+
+  const convertedWalletBalance =
+    walletBalance && convertWeiToEth(walletBalance);
   return (
     <Flex
       w="100%"
@@ -98,9 +113,25 @@ export const SwapCard = (props: FlexProps) => {
           </InputRightElement>
         </InputGroup>
         <Flex justify="end">
-          <Button bg={color[colorMode]} colorScheme="white" size="lg">
-            Connect Wallet To Swap
-          </Button>
+          {!isAuthenticated ? (
+            <Button
+              bg={color[colorMode]}
+              colorScheme="white"
+              size="lg"
+              onClick={() => authenticate()}
+            >
+              Connect Wallet To Swap
+            </Button>
+          ) : (
+            <Button
+              bg={color[colorMode]}
+              colorScheme="white"
+              size="lg"
+              onClick={() => logout()}
+            >
+              Select Tokens
+            </Button>
+          )}
         </Flex>
       </Box>
     </Flex>
