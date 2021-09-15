@@ -4,7 +4,6 @@ import {
   Spacer,
   Box,
   Text,
-  Select,
   Avatar,
   InputGroup,
   Input,
@@ -13,10 +12,10 @@ import {
   useColorMode,
   FlexProps,
 } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useMoralis } from "react-moralis";
 import { useEtherscan } from "../shared/hooks";
 import { convertWeiToEth } from "../shared/helpers";
-
 export const SwapCard = (props: FlexProps) => {
   const { colorMode } = useColorMode();
 
@@ -50,21 +49,23 @@ export const SwapCard = (props: FlexProps) => {
         <Text color="#818184" fontWeight={500} textAlign="left">
           Swap From
         </Text>
-        <Flex align="center" gridGap={11} mt={2} mb={26}>
+        <Flex align="center" mt={2} mb={25}>
           <Avatar
             name="Dan Abrahmov"
             src="https://thispersondoesnotexist.com/image"
             size="sm"
           />
-          <Select
-            w={110}
-            placeholder="Ethereum"
-            size="md"
-            fontWeight={500}
-            variant="unstyled"
-            border="none"
+          <Button
+            rightIcon={<ChevronDownIcon w={6} h={6} />}
             color="#000"
-          />
+            fontWeight={500}
+            iconSpacing="0.5rem"
+            _hover={{ bg: "none" }}
+            _focus={{ bg: "none" }}
+            _active={{ bg: "none" }}
+          >
+            Ethereum
+          </Button>
         </Flex>
         <InputGroup size="lg" mb={34}>
           <Input
@@ -89,7 +90,7 @@ export const SwapCard = (props: FlexProps) => {
         <Text color="#818184" fontWeight={500} textAlign="left">
           Swap To
         </Text>
-        <Flex align="center" gridGap={11} mt={2} mb={17}>
+        <Flex align="center" gridGap={11} mt={2} mb={6}>
           <Button
             bg={bgColor[colorMode]}
             size="md"
