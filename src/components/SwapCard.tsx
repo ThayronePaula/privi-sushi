@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import {
   Flex,
   Spacer,
@@ -7,22 +7,25 @@ import {
   Avatar,
   InputGroup,
   Input,
+  Modal,
   InputRightElement,
   Button,
   useColorMode,
   FlexProps,
+  ModalOverlay,
+  ModalContent,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useMoralis } from "react-moralis";
 import { useEtherscan } from "../shared/hooks";
 import { convertWeiToEth } from "../shared/helpers";
+import ModalSwap from "../components/ModalSwap";
 export const SwapCard = (props: FlexProps) => {
   const { colorMode } = useColorMode();
-
   const bgColor = { light: "gray.50", dark: "gray.900" };
   const bgCard = { light: "#EFF0F3", dark: "#e2e2e2" };
   const color = { light: "black", dark: "white" };
-
   const { authenticate, isAuthenticated, logout, user } = useMoralis();
 
   const primaryEthAddress = useMemo(
@@ -34,6 +37,7 @@ export const SwapCard = (props: FlexProps) => {
 
   const convertedWalletBalance =
     walletBalance && convertWeiToEth(walletBalance);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Flex
       w="100%"
@@ -91,14 +95,24 @@ export const SwapCard = (props: FlexProps) => {
           Swap To
         </Text>
         <Flex align="center" gridGap={11} mt={2} mb={6}>
+          {/* here */}
           <Button
             bg={bgColor[colorMode]}
             size="md"
             color="red"
             fontWeight={500}
+            onClick={onOpen}
           >
             Select Token
           </Button>
+
+          <Modal isOpen={isOpen} onClose={onClose} size="xl">
+            <ModalOverlay />
+            <ModalContent>
+              <ModalSwap onClosed={onClose} />
+            </ModalContent>
+          </Modal>
+          {/* here */}
         </Flex>
         <InputGroup size="lg" mb={34}>
           <Input

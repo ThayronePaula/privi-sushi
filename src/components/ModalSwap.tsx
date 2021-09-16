@@ -8,19 +8,23 @@ import {
   InputGroup,
   InputLeftElement,
   Button,
-  Avatar
-} from '@chakra-ui/react'
-import { AiOutlineCloseCircle } from 'react-icons/ai'
-import { SearchIcon } from '@chakra-ui/icons'
-import { Center, Divider, List, ListItem, Stack } from '@chakra-ui/layout'
+  Avatar,
+  ModalOverlay,
+  ModalContent,
+} from "@chakra-ui/react";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { SearchIcon } from "@chakra-ui/icons";
+import { Center, Divider, List, ListItem, Stack } from "@chakra-ui/layout";
 
-const Modal = () => {
+interface ModalSwapProps {
+  onClosed: () => void;
+}
+
+const ModalSwap = ({ onClosed }: ModalSwapProps) => {
   return (
     <Flex
       flexDirection="column"
       p="32px 24px 24px 24px"
-      w="531px"
-      height="auto"
       justify="center"
       align="center"
       borderRadius="1.5rem"
@@ -30,7 +34,15 @@ const Modal = () => {
           Select Token
         </Heading>
         <Spacer />
-        <AiOutlineCloseCircle />
+
+        <Button
+          colorScheme="white"
+          size="xs"
+          onClick={onClosed}
+          _focus={{ bg: "none" }}
+        >
+          <AiOutlineCloseCircle size="1.5rem" color="#212121" />
+        </Button>
       </Flex>
 
       <Box alignItems="center" width="100%" paddingTop="24px">
@@ -147,7 +159,7 @@ const Modal = () => {
           </Text>
         </ListItem>
         <Center h="20px" justifyContent="end">
-          <Divider w="84.5%" style={{ border: '1px solid #1C1D21 60%' }} />
+          <Divider w="84.5%" style={{ border: "1px solid #1C1D21 60%" }} />
         </Center>
 
         <ListItem
@@ -178,7 +190,7 @@ const Modal = () => {
           </Text>
         </ListItem>
         <Center h="20px" justifyContent="end">
-          <Divider w="84.5%" style={{ border: '1px solid #1C1D21 60%' }} />
+          <Divider w="84.5%" style={{ border: "1px solid #1C1D21 60%" }} />
         </Center>
 
         <ListItem
@@ -209,10 +221,10 @@ const Modal = () => {
           </Text>
         </ListItem>
         <Center h="20px" justifyContent="end">
-          <Divider w="84.5%" style={{ border: '1px solid #1C1D21 60%' }} />
+          <Divider w="84.5%" style={{ border: "1px solid #1C1D21 60%" }} />
         </Center>
       </List>
     </Flex>
-  )
-}
-export default Modal
+  );
+};
+export default ModalSwap;
