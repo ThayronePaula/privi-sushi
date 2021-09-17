@@ -18,7 +18,7 @@ import { useMoralis } from "react-moralis";
 import { useEtherscan } from "../shared/hooks";
 import { convertWeiToEth } from "../shared/helpers";
 import ModalTemplate from "../components/modal/ModalTemplate";
-import ModalSelect from "../components/modal/ModalSelect";
+import ModalManageToken from "../components/modal/ModalManageToken";
 
 export const SwapCard = (props: FlexProps) => {
   const { colorMode } = useColorMode();
@@ -105,8 +105,8 @@ export const SwapCard = (props: FlexProps) => {
           >
             Select Token
           </Button>
-          <ModalTemplate title="Select Token" isOpen={isOpen} onClose={onClose}>
-            <ModalSelect />
+          <ModalTemplate title="Manage Token" isOpen={isOpen} onClose={onClose}>
+            <ModalManageToken />
           </ModalTemplate>
           {/* here */}
         </Flex>

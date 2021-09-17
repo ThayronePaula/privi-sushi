@@ -1,5 +1,4 @@
 import {
-  Flex,
   Tabs,
   TabList,
   TabPanels,
