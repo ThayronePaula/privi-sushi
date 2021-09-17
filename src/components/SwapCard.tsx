@@ -7,20 +7,19 @@ import {
   Avatar,
   InputGroup,
   Input,
-  Modal,
   InputRightElement,
   Button,
   useColorMode,
   FlexProps,
-  ModalOverlay,
-  ModalContent,
   useDisclosure,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useMoralis } from "react-moralis";
 import { useEtherscan } from "../shared/hooks";
 import { convertWeiToEth } from "../shared/helpers";
-import ModalSwap from "../components/ModalSwap";
+import ModalTemplate from "../components/modal/ModalTemplate";
+import ModalSelect from "../components/modal/ModalSelect";
+
 export const SwapCard = (props: FlexProps) => {
   const { colorMode } = useColorMode();
   const bgColor = { light: "gray.50", dark: "gray.900" };
@@ -38,6 +37,7 @@ export const SwapCard = (props: FlexProps) => {
   const convertedWalletBalance =
     walletBalance && convertWeiToEth(walletBalance);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Flex
       w="100%"
@@ -105,13 +105,9 @@ export const SwapCard = (props: FlexProps) => {
           >
             Select Token
           </Button>
-
-          <Modal isOpen={isOpen} onClose={onClose} size="xl">
-            <ModalOverlay />
-            <ModalContent>
-              <ModalSwap onClosed={onClose} />
-            </ModalContent>
-          </Modal>
+          <ModalTemplate title="Select Token" isOpen={isOpen} onClose={onClose}>
+            <ModalSelect />
+          </ModalTemplate>
           {/* here */}
         </Flex>
         <InputGroup size="lg" mb={34}>
