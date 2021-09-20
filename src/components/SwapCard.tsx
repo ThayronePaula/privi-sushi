@@ -43,17 +43,22 @@ export const SwapCard = (props: FlexProps) => {
       w="100%"
       alignItems="center"
       justifyContent="space-between"
+      gridGap={4}
       bg={bgCard[colorMode]}
       color={color[colorMode]}
       roundedLeft={20}
       roundedRight={20}
+      pt={40.01}
+      pl={40.01}
+      pr={41}
+      pb={30.01}
       {...props}
     >
-      <Box p="4" w="100%" h={300}>
-        <Text color="#818184" fontWeight={500} textAlign="left">
+      <Box w="100%">
+        <Text color="#818184" fontWeight={500} textAlign="left" fontSize={16}>
           Swap From
         </Text>
-        <Flex align="center" mt={2} mb={25}>
+        <Flex align="center" mt={2} mb={26}>
           <Avatar
             name="Dan Abrahmov"
             src="https://thispersondoesnotexist.com/image"
@@ -84,21 +89,19 @@ export const SwapCard = (props: FlexProps) => {
             <Text fontWeight={500}>ETH</Text>
           </InputRightElement>
         </InputGroup>
-        <Text color="#818184" mb={39} textAlign="left">
+        <Text color="#818184" mb={29.5} textAlign="left">
           Exchange Rate:
         </Text>
       </Box>
-      <Spacer />
-      {/* part 2 */}
-      <Box p="4" w="100%" h={300}>
+      <Box w="100%" h={233}>
         <Text color="#818184" fontWeight={500} textAlign="left">
           Swap To
         </Text>
-        <Flex align="center" gridGap={11} mt={2} mb={6}>
-          {/* here */}
+        <Flex align="center" mt={2} mb={6}>
           <Button
             bg={bgColor[colorMode]}
-            size="md"
+            size="none"
+            p={3}
             color="red"
             fontWeight={500}
             onClick={onOpen}
@@ -108,7 +111,6 @@ export const SwapCard = (props: FlexProps) => {
           <ModalTemplate title="Select Token" isOpen={isOpen} onClose={onClose}>
             <ModalSelect />
           </ModalTemplate>
-          {/* here */}
         </Flex>
         <InputGroup size="lg" mb={34}>
           <Input
@@ -128,7 +130,7 @@ export const SwapCard = (props: FlexProps) => {
             <Button
               bg={color[colorMode]}
               colorScheme="white"
-              size="lg"
+              size="md"
               onClick={() => authenticate()}
             >
               Connect Wallet To Swap
@@ -137,7 +139,7 @@ export const SwapCard = (props: FlexProps) => {
             <Button
               bg={color[colorMode]}
               colorScheme="white"
-              size="lg"
+              size="md"
               onClick={() => logout()}
             >
               Select Tokens
