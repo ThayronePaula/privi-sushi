@@ -17,6 +17,7 @@ import {
   Button,
   Switch,
   VStack,
+  HStack,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { CgSync, CgShapeRhombus } from "react-icons/cg";
@@ -105,13 +106,16 @@ const ModalSelect = () => {
             style={{ scrollbarWidth: "none" }}
           >
             <SimpleGrid minChildWidth="233px" spacing="16px">
-              <Box bg="tomato" height="160px" p={16.5}>
-                <VStack align="stretch">
+              <Box bgGradient="linear(to-br, #672FAC, #AA6CB7, #CFA0C4, #E9DAD6,)" height="160px" borderRadius="16px" p={16.5}>
+                <Flex justify="space-between">
                   <Avatar src="https://thispersondoesnotexist.com/image" />
                   <Switch colorScheme="red" size="lg" />
-                  <Text>Gemini Tokens</Text>
-                  <Text>123 tokens</Text>
-                </VStack>
+                </Flex>
+                <Flex marginTop="45px"
+    marginRight="110px" direction="column">
+                 <Text color="#ffffff">Gemini Tokens</Text>
+                  <Text color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
+                </Flex>
               </Box>
               <Box bg="tomato" height="160px"></Box>
               <Box bg="tomato" height="160px"></Box>
@@ -120,9 +124,7 @@ const ModalSelect = () => {
               <Box bg="tomato" height="160px"></Box>
             </SimpleGrid>
           </TabPanel>
-          <TabPanel p="0">
-            {/* Here your component */}
-          </TabPanel>
+          <TabPanel p="0">{/* Here your component */}</TabPanel>
         </TabPanels>
       </Tabs>
     </Flex>
