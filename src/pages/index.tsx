@@ -23,12 +23,14 @@ const Index = () => (
 
       <Flex
         height="100vh"
+        direction={["column", "column", "column", "row"]}
         align="center"
-        direction={["column", "column","column", "row"]}
+        px="5%"
+        gridGap={85}
       >
-        <VStack w="50%" p={10} spacing={10} alignItems="flex-start">
+        <VStack w="50%" spacing={8} alignItems="flex-start">
           <Heading as="h1" size="lg" fontSize="64px" fontWeight="600">
-            Sushi swap
+            Sushiswap
           </Heading>
           <Text fontSize="20px" fontWeight="400" color="rgba(0,0,0,0.6)">
             Be a DeFi Chef with Sushi. Swap, earn, stack yields, lend, borrow,
@@ -39,7 +41,7 @@ const Index = () => (
             orientation="horizontal"
             border="0.6px solid rgba(0, 0, 0, 0.2)"
           />
-          <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+          <Grid templateColumns="repeat(4, 4fr)" gap={6}>
             <Box
               d="flex"
               flexDirection="column"
@@ -86,7 +88,7 @@ const Index = () => (
               gridGap={4}
             >
               <Text fontSize="24px" fontWeight="600" color="#E60B8B">
-                1,863
+                1.863
               </Text>
               <Text fontSize="14px" color="rgba(0,0,0,0.6)">
                 Total Pairs

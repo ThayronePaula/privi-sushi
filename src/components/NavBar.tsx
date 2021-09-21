@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react'
 import {
   Box,
   Flex,
@@ -16,27 +16,27 @@ import {
   PopoverContent,
   useColorModeValue,
   useDisclosure,
-  Divider,
-} from "@chakra-ui/react";
+  Divider
+} from '@chakra-ui/react'
 
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
-import { useMoralis } from "react-moralis";
+  ChevronRightIcon
+} from '@chakra-ui/icons'
+import { useMoralis } from 'react-moralis'
 
 export default function NavBar() {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle } = useDisclosure()
 
-  const buttonDisconnectBgColor = useColorModeValue("white", "black");
-  const { authenticate, isAuthenticated, logout, user } = useMoralis();
+  const buttonDisconnectBgColor = useColorModeValue('white', 'black')
+  const { authenticate, isAuthenticated, logout, user } = useMoralis()
 
   const primaryEthAddress = useMemo(
-    () => isAuthenticated && user.get("accounts")[0],
+    () => isAuthenticated && user.get('accounts')[0],
     [isAuthenticated, user]
-  );
+  )
 
   return (
     <>
@@ -45,26 +45,26 @@ export default function NavBar() {
         alignItems="center"
         justifyContent="space-between"
         w="100%"
-        px='5%'
-        mt="26px"
+        px="5%"
+        mt="16px"
       >
         <Text fontFamily="Roboto" fontSize="22px" fontWeight="600">
           Sushiswap
         </Text>
         <Flex
-          bg={useColorModeValue("transparent", "transparent")}
-          color={useColorModeValue("gray.600", "white")}
-          minH={"60px"}
+          bg={useColorModeValue('transparent', 'transparent')}
+          color={useColorModeValue('gray.600', 'white')}
+          minH={'60px'}
           py={{ base: 2 }}
           px={{ base: 4 }}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.900")}
-          align={"center"}
+          borderStyle={'solid'}
+          borderColor={useColorModeValue('gray.200', 'gray.900')}
+          align={'center'}
         >
           <Flex
-            flex={{ base: 1, md: "auto" }}
+            flex={{ base: 1, md: 'auto' }}
             ml={{ base: -2 }}
-            display={{ base: "flex", md: "none" }}
+            display={{ base: 'flex', md: 'none' }}
           >
             <IconButton
               onClick={onToggle}
@@ -75,12 +75,12 @@ export default function NavBar() {
                   <HamburgerIcon w={5} h={5} />
                 )
               }
-              variant={"ghost"}
-              aria-label={"Toggle Navigation"}
+              variant={'ghost'}
+              aria-label={'Toggle Navigation'}
             />
           </Flex>
-          <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-            <Flex display={{ base: "none", md: "flex" }} ml={12}>
+          <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+            <Flex display={{ base: 'none', md: 'flex' }} ml={12}>
               <DesktopNav />
             </Flex>
           </Flex>
@@ -109,7 +109,7 @@ export default function NavBar() {
           </Tooltip>
         ) : (
           <Button
-            bg={"#1C1D21"}
+            bg={'#1C1D21'}
             colorScheme="white"
             onClick={() => authenticate()}
             borderRadius="12px"
@@ -117,7 +117,7 @@ export default function NavBar() {
             fontFamily="Roboto"
             px={25}
             py={3}
-            h={"auto"}
+            h={'auto'}
           >
             Connect My Wallet
           </Button>
@@ -131,59 +131,59 @@ export default function NavBar() {
         orientation="horizontal"
         border="1px solid black"
         w="90%"
-        mt="16px"
+        mt="5px"
       />
     </>
-  );
+  )
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
-  const buttonDisconnectBgColor = useColorModeValue("white", "black");
-  const { isAuthenticated, user } = useMoralis();
+  const linkColor = useColorModeValue('gray.600', 'gray.200')
+  const linkHoverColor = useColorModeValue('gray.800', 'white')
+  const popoverContentBgColor = useColorModeValue('white', 'gray.800')
+  const buttonDisconnectBgColor = useColorModeValue('white', 'black')
+  const { isAuthenticated, user } = useMoralis()
 
   const primaryEthAddress = useMemo(
-    () => isAuthenticated && user.get("accounts")[0],
+    () => isAuthenticated && user.get('accounts')[0],
     [isAuthenticated, user]
-  );
+  )
 
-  const [activeLine, setActiveLine] = useState<number>(0);
+  const [activeLine, setActiveLine] = useState<number>(0)
   const lineIcon = {
     content: '""',
-    display: "block",
-    position: "absolute",
-    top: "240%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "16px",
-    height: "2px",
-    background: "#1C1D21",
-  };
+    display: 'block',
+    position: 'absolute',
+    top: '200%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '16px',
+    height: '2px',
+    background: '#1C1D21'
+  }
   function handleIndexClick(index: number) {
-    setActiveLine(index);
+    setActiveLine(index)
   }
   return (
-    <Stack direction={"row"} >
+    <Stack direction={'row'} gridGap={29}>
       {NAV_ITEMS.map((navItem, index) => (
         <Box
           key={navItem.label}
-          style={{ position: "relative" }}
+          style={{ position: 'relative' }}
           onClick={() => handleIndexClick(index)}
         >
-          <Popover trigger={"hover"} placement={"bottom-start"}>
+          <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Link
                 p={2}
-                href={navItem.href ?? "#"}
-                fontSize={"14px"}
+                href={navItem.href ?? '#'}
+                fontSize={'14px'}
                 fontWeight={500}
                 fontFamily="Roboto"
                 color={linkColor}
                 _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
+                  textDecoration: 'none',
+                  color: linkHoverColor
                 }}
                 _after={index === activeLine && { ...lineIcon }}
               >
@@ -194,14 +194,14 @@ const DesktopNav = () => {
             {navItem.children && (
               <PopoverContent
                 border={0}
-                boxShadow={"xl"}
+                boxShadow={'xl'}
                 bg={popoverContentBgColor}
                 p={4}
-                rounded={"xl"}
-                minW={"sm"}
+                rounded={'xl'}
+                minW={'sm'}
               >
                 <Stack>
-                  {navItem.children.map((child) => (
+                  {navItem.children.map(child => (
                     <DesktopSubNav key={child.label} {...child} />
                   ))}
                 </Stack>
@@ -211,103 +211,103 @@ const DesktopNav = () => {
         </Box>
       ))}
     </Stack>
-  );
-};
+  )
+}
 
 const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   return (
     <Link
       href={href}
-      role={"group"}
-      display={"block"}
+      role={'group'}
+      display={'block'}
       p={2}
-      rounded={"md"}
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+      rounded={'md'}
+      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
     >
-      <Stack direction={"row"} align={"center"}>
+      <Stack direction={'row'} align={'center'}>
         <Box>
           <Text
-            transition={"all .3s ease"}
-            _groupHover={{ color: "pink.400" }}
+            transition={'all .3s ease'}
+            _groupHover={{ color: 'pink.400' }}
             fontWeight={500}
           >
             {label}
           </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
+          <Text fontSize={'sm'}>{subLabel}</Text>
         </Box>
         <Flex
-          transition={"all .3s ease"}
-          transform={"translateX(-10px)"}
+          transition={'all .3s ease'}
+          transform={'translateX(-10px)'}
           opacity={0}
-          _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-          justify={"flex-end"}
-          align={"center"}
+          _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
+          justify={'flex-end'}
+          align={'center'}
           flex={1}
         >
-          <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Link>
-  );
-};
+  )
+}
 
 const MobileNav = () => {
   return (
     <Stack
-      bg={useColorModeValue("white", "gray.800")}
+      bg={useColorModeValue('white', 'gray.800')}
       p={4}
-      display={{ md: "none" }}
+      display={{ md: 'none' }}
     >
-      {NAV_ITEMS.map((navItem) => (
+      {NAV_ITEMS.map(navItem => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
     </Stack>
-  );
-};
+  )
+}
 
 const MobileNavItem = ({ label, children, href }: NavItem) => {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle } = useDisclosure()
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
         as={Link}
-        href={href ?? "#"}
-        justify={"space-between"}
-        align={"center"}
+        href={href ?? '#'}
+        justify={'space-between'}
+        align={'center'}
         _hover={{
-          textDecoration: "none",
+          textDecoration: 'none'
         }}
       >
         <Text
           fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
+          color={useColorModeValue('gray.600', 'gray.200')}
         >
           {label}
         </Text>
         {children && (
           <Icon
             as={ChevronDownIcon}
-            transition={"all .25s ease-in-out"}
-            transform={isOpen ? "rotate(180deg)" : ""}
+            transition={'all .25s ease-in-out'}
+            transform={isOpen ? 'rotate(180deg)' : ''}
             w={6}
             h={6}
           />
         )}
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
+      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
           mt={2}
           pl={4}
           borderLeft={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
+          borderStyle={'solid'}
+          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          align={'start'}
         >
           {children &&
-            children.map((child) => (
+            children.map(child => (
               <Link key={child.label} py={2} href={child.href}>
                 {child.label}
               </Link>
@@ -315,31 +315,31 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         </Stack>
       </Collapse>
     </Stack>
-  );
-};
+  )
+}
 
 interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
+  label: string
+  subLabel?: string
+  children?: Array<NavItem>
+  href?: string
 }
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "Swap",
+    label: 'Swap'
   },
   {
-    label: "Pool",
+    label: 'Pool'
   },
   {
-    label: "Migrate",
-    href: "#",
+    label: 'Migrate',
+    href: '#'
   },
   {
-    label: "Farming",
+    label: 'Farming'
   },
   {
-    label: "Lending",
-  },
-];
+    label: 'Lending'
+  }
+]
