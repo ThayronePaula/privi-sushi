@@ -94,7 +94,6 @@ const Index = () => (
           <SwapNavigate />
         </VStack>
       </Flex>
-      <DarkModeSwitch />
     </Container>
   </MoralisProvider>
 );
