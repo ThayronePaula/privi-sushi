@@ -1,10 +1,11 @@
-import NavBar from '../components/NavBar'
-import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { MoralisProvider } from 'react-moralis'
-import { MORALIS_APP_ID, MORALIS_SERVER_URL } from '../shared/constants'
+import NavBar from "../components/NavBar";
+import { Hero } from "../components/Hero";
+import { Container } from "../components/Container";
+import { Main } from "../components/Main";
+import { DarkModeSwitch } from "../components/DarkModeSwitch";
+import { SwapNavigate } from "../components/SwapNavigate";
+import { MoralisProvider } from "react-moralis";
+import { MORALIS_APP_ID, MORALIS_SERVER_URL } from "../shared/constants";
 import {
   Flex,
   Heading,
@@ -12,16 +13,16 @@ import {
   VStack,
   Divider,
   Box,
-  Grid
-} from '@chakra-ui/react'
+  Grid,
+} from "@chakra-ui/react";
 
 const Index = () => (
   <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
     <Container height="100vh">
       <NavBar />
 
-      <Flex h="100vh">
-        <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start">
+      <Flex height="100vh" align='center'>
+        <VStack w='50%' p={10} spacing={10} alignItems="flex-start">
           <Heading as="h1" size="lg" fontSize="64px" fontWeight="600">
             Sushi swap
           </Heading>
@@ -89,14 +90,13 @@ const Index = () => (
             </Box>
           </Grid>
         </VStack>
-        <VStack>{/* componente aqui */}</VStack>
+        <VStack w='50%'>
+          <SwapNavigate />
+        </VStack>
       </Flex>
-
-      <Hero />
-      <Main></Main>
       <DarkModeSwitch />
     </Container>
   </MoralisProvider>
-)
+);
 
-export default Index
+export default Index;
