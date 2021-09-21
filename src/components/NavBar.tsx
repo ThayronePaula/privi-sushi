@@ -48,7 +48,7 @@ export default function NavBar() {
         px='5%'
         mt="26px"
       >
-        <Text fontSize="22px" fontWeight="600">
+        <Text fontFamily="Roboto" fontSize="22px" fontWeight="600">
           Sushiswap
         </Text>
         <Flex
@@ -114,6 +114,7 @@ export default function NavBar() {
             onClick={() => authenticate()}
             borderRadius="12px"
             fontSize="14px"
+            fontFamily="Roboto"
             px={25}
             py={3}
             h={"auto"}
@@ -178,6 +179,7 @@ const DesktopNav = () => {
                 href={navItem.href ?? "#"}
                 fontSize={"14px"}
                 fontWeight={500}
+                fontFamily="Roboto"
                 color={linkColor}
                 _hover={{
                   textDecoration: "none",
