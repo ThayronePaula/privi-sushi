@@ -48,10 +48,10 @@ export const SwapCard = (props: FlexProps) => {
       color={color[colorMode]}
       roundedLeft={20}
       roundedRight={20}
-      pt={40.01}
-      pl={40.01}
-      pr={41}
-      pb={30.01}
+      pt={18}
+      pl={23}
+      pr={23}
+      pb={13}
       {...props}
     >
       <Box w="100%">
@@ -61,7 +61,7 @@ export const SwapCard = (props: FlexProps) => {
         <Flex align="center" mt={2} mb={26}>
           <Avatar
             name="Dan Abrahmov"
-            src="https://thispersondoesnotexist.com/image"
+            src="https://imgr.search.brave.com/l5nYpwJMmizUsxXq9usckNMVfER6zWgW1MF6_2ZGyM0/fit/1000/1000/ce/1/aHR0cHM6Ly9jbGlw/Z3JvdW5kLmNvbS9p/bWFnZXMvZXRoZXIt/bG9nby04LmpwZw"
             size="sm"
           />
           <Button

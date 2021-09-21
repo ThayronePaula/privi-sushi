@@ -76,7 +76,7 @@ export const SwapNavigate = (props: FlexProps) => {
             Liquidity
           </Tab>
         </TabList>
-        <TabPanels >
+        <TabPanels>
           <TabPanel p={0}>
             <SwapCard />
           </TabPanel>
