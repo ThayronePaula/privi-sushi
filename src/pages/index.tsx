@@ -21,8 +21,12 @@ const Index = () => (
     <Container height="100vh">
       <NavBar />
 
-      <Flex height="100vh" align='center'>
-        <VStack w='50%' p={10} spacing={10} alignItems="flex-start">
+      <Flex
+        height="100vh"
+        align="center"
+        direction={["column", "column","column", "row"]}
+      >
+        <VStack w="50%" p={10} spacing={10} alignItems="flex-start">
           <Heading as="h1" size="lg" fontSize="64px" fontWeight="600">
             Sushi swap
           </Heading>
@@ -90,7 +94,7 @@ const Index = () => (
             </Box>
           </Grid>
         </VStack>
-        <VStack w='50%'>
+        <VStack w="50%">
           <SwapNavigate />
         </VStack>
       </Flex>
