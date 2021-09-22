@@ -77,7 +77,7 @@ export const SwapCard = (props: FlexProps) => {
             Ethereum
           </Button>
         </Flex>
-        <InputGroup size="lg" mb={34}>
+        <InputGroup size="lg"  mb={33}>
           <Input
             pr="4.5rem"
             type="text"
