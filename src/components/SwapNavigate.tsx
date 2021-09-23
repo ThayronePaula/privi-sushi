@@ -1,34 +1,22 @@
-import {
-  Box,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  useColorMode,
-  FlexProps,
-} from "@chakra-ui/react";
-import { CgSync, CgShapeRhombus, CgShapeCircle } from "react-icons/cg";
-import { SwapCard } from "./SwapCard";
-import BackgroundCard from "../assets/backgroundCard.png";
+import { Box, Tabs, TabList, Tab, FlexProps } from '@chakra-ui/react'
+import { CgSync, CgShapeRhombus, CgShapeCircle } from 'react-icons/cg'
+import { SwapCard } from './SwapCard'
+import BackgroundCard from '../assets/backgroundCard.png'
 export const SwapNavigate = (props: FlexProps) => {
-  const { colorMode } = useColorMode();
-
-  const bgColor = { light: "gray.50", dark: "gray.900" };
-  const bgCard = { light: "#EFF0F3", dark: "#e2e2e2" };
-  const color = { light: "black", dark: "white" };
   const lineIcon = {
     content: '""',
-    display: "block",
-    position: "absolute",
-    top: "50%",
-    transform: "translate(0, -50%)",
-    width: "1px",
-    height: "24px",
-    background: "#1C1D21",
-  };
+    display: 'block',
+    position: 'absolute',
+    top: '50%',
+    transform: 'translate(0, -50%)',
+    width: '1px',
+    height: '24px',
+    background: '#1C1D21'
+  }
   return (
     <Box
+      h="auto"
+      w="697px"
       bgImage={`url(${BackgroundCard.src})`}
       bgPosition="center"
       bgRepeat="no-repeat"
@@ -58,34 +46,43 @@ export const SwapNavigate = (props: FlexProps) => {
           bg="#fff"
           color="#000"
         >
-          <Tab _focus={{ boxShadow: 0 }} _selected={{ color: "#E60B8B" }}>
+          <Tab
+            fontWeight={600}
+            fontSize={14}
+            _focus={{ boxShadow: 0 }}
+            _selected={{ color: '#E60B8B' }}
+            gridGap={11}
+          >
             <CgSync /> Swap
           </Tab>
 
           <Tab
+            fontWeight={600}
+            fontSize={14}
             _focus={{ boxShadow: 0 }}
-            _selected={{ color: "#E60B8B" }}
-            style={{ position: "relative" }}
+            _selected={{ color: '#E60B8B' }}
+            style={{ position: 'relative' }}
             _before={{ ...lineIcon, left: 0 }}
             _after={{ ...lineIcon, right: 0 }}
+            gridGap={11}
           >
             <CgShapeRhombus /> Limit
           </Tab>
-          <Tab _focus={{ boxShadow: 0 }} _selected={{ color: "#e60b8b" }}>
+          <Tab
+            fontWeight={600}
+            fontSize={14}
+            _focus={{ boxShadow: 0 }}
+            _selected={{ color: '#e60b8b' }}
+            gridGap={11}
+          >
             <CgShapeCircle />
             Liquidity
           </Tab>
         </TabList>
-        <TabPanels>
-          <TabPanel p={0}>
-            <SwapCard />
-          </TabPanel>
-          <TabPanel p={0}>2</TabPanel>
-          <TabPanel p={0}>
-            <SwapCard />
-          </TabPanel>
-        </TabPanels>
+        <Box>
+          <SwapCard />
+        </Box>
       </Tabs>
     </Box>
-  );
-};
+  )
+}
