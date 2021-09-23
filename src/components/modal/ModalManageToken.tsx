@@ -27,9 +27,10 @@ const ModalSelect = () => {
 
   const bgColor = { light: "gray.50", dark: "gray.900" };
   const [value, setValue] = React.useState("t");
-  const handleChange = (event) => setValue(event.target.value);
-  // const [over, setOver] = React.useState(false);
-  return (
+  const handleChange = (event) => setValue(event.target.value); 
+   const [isToggled, setIsToggled] = React.useState(false);
+
+    return (
     <Flex
       flexDirection="column"
       justify="center"
@@ -106,18 +107,28 @@ const ModalSelect = () => {
             style={{ scrollbarWidth: "none" }}
           >
             <SimpleGrid minChildWidth="233px" spacing="16px">
-              <Box bgGradient="linear(to-br, #672FAC, #AA6CB7, #CFA0C4, #E9DAD6,)" height="160px" borderRadius="16px" p={16.5}>
+              <Box  bgGradient={isToggled?"linear(to-br, #672FAC, #AA6CB7, #CFA0C4, #E9DAD6,)":""} height="160px" borderRadius="16px" p={16.5}>
                 <Flex justify="space-between">
                   <Avatar src="https://thispersondoesnotexist.com/image" />
-                  <Switch colorScheme="red" size="lg" />
+                  <Switch onChange={()=>setIsToggled(!isToggled)}colorScheme="rgba(255,255,255,0.1)" size="lg" />
                 </Flex>
                 <Flex marginTop="45px"
     marginRight="110px" direction="column">
-                 <Text color="#ffffff">Gemini Tokens</Text>
-                  <Text color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
+                 <Text display="flex"color="#ffffff">Gemini Tokens</Text>
+                  <Text direction="row"color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
                 </Flex>
               </Box>
-              <Box bg="tomato" height="160px"></Box>
+              <Box bgGradient="linear(to-br, #672FAC, #AA6CB7, #CFA0C4, #E9DAD6,)" height="160px" borderRadius="16px" p={16.5}>
+              <Flex justify="space-between">
+                  <Avatar src="https://thispersondoesnotexist.com/image" />
+                  <Switch colorScheme="rgba(255,255,255,0.1)" size="lg" />
+                </Flex>
+                <Flex marginTop="45px"
+    marginRight="110px" direction="column">
+                 <Text display="flex"color="#ffffff">Gemini Tokens</Text>
+                  <Text direction="row"color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
+                </Flex>
+              </Box>
               <Box bg="tomato" height="160px"></Box>
               <Box bg="tomato" height="160px"></Box>
               <Box bg="tomato" height="160px"></Box>
