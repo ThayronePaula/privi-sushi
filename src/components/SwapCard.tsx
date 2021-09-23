@@ -41,7 +41,7 @@ export const SwapCard = (props: FlexProps) => {
       alignItems="center"
       justifyContent="center"
       gridGap={30}
-      bg={bgColor[colorMode]} //ajustar
+      bg="rgba(255, 255, 255, 0.7)"
       color={color[colorMode]}
       roundedLeft={20}
       roundedRight={20}
@@ -51,7 +51,7 @@ export const SwapCard = (props: FlexProps) => {
       pb={18}
       {...props}
     >
-      <VStack alignItems="flex-start" bg="#" w="50%" h="35vh">
+      <VStack alignItems="flex-start" w="50%" h="35vh">
         <Text color="#818184" fontWeight={500} textAlign="left" fontSize={16}>
           Swap From
         </Text>
@@ -63,6 +63,8 @@ export const SwapCard = (props: FlexProps) => {
             size="sm"
           />
           <Button
+            bg="none"
+            fontSize={20}
             mb={4}
             rightIcon={<ChevronDownIcon w={6} h={6} />}
             color="#000"
@@ -94,17 +96,21 @@ export const SwapCard = (props: FlexProps) => {
         </Text>
       </VStack>
 
-      <VStack alignItems="flex-start" bg="#" w="50%" h="35vh">
+      <VStack alignItems="flex-start" w="50%" h="35vh">
         <Text color="#818184" fontWeight={500} textAlign="left">
           Swap To
         </Text>
         <Flex align="center">
           <Button
-            w="130px"
+            bg="#fff"
+            w="116px"
+            py="6px"
+            px="16px"
             borderRadius="10px"
             mb={4}
             color="#EB3CA2"
             fontWeight={500}
+            fontSize={14}
             iconSpacing="0.5rem"
             _hover={{ bg: 'none' }}
             _focus={{ bg: 'none' }}
@@ -130,8 +136,7 @@ export const SwapCard = (props: FlexProps) => {
             <Text fontWeight={500}>USDT</Text>
           </InputRightElement>
         </InputGroup>
-
-        <Flex justifyContent="flex-end">
+        <Flex justify="flex-end" w="100%">
           {!isAuthenticated ? (
             <Button
               p={6}

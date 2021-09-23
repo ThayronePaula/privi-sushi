@@ -47,6 +47,8 @@ export const SwapNavigate = (props: FlexProps) => {
           color="#000"
         >
           <Tab
+            fontWeight={600}
+            fontSize={14}
             _focus={{ boxShadow: 0 }}
             _selected={{ color: '#E60B8B' }}
             gridGap={11}
@@ -55,6 +57,8 @@ export const SwapNavigate = (props: FlexProps) => {
           </Tab>
 
           <Tab
+            fontWeight={600}
+            fontSize={14}
             _focus={{ boxShadow: 0 }}
             _selected={{ color: '#E60B8B' }}
             style={{ position: 'relative' }}
@@ -65,6 +69,8 @@ export const SwapNavigate = (props: FlexProps) => {
             <CgShapeRhombus /> Limit
           </Tab>
           <Tab
+            fontWeight={600}
+            fontSize={14}
             _focus={{ boxShadow: 0 }}
             _selected={{ color: '#e60b8b' }}
             gridGap={11}
