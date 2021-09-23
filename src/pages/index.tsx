@@ -1,11 +1,10 @@
-import NavBar from "../components/NavBar";
-import { Hero } from "../components/Hero";
-import { Container } from "../components/Container";
-import { Main } from "../components/Main";
-import { DarkModeSwitch } from "../components/DarkModeSwitch";
-import { SwapNavigate } from "../components/SwapNavigate";
-import { MoralisProvider } from "react-moralis";
-import { MORALIS_APP_ID, MORALIS_SERVER_URL } from "../shared/constants";
+import NavBar from '../components/NavBar'
+
+import { Container } from '../components/Container'
+
+import { SwapNavigate } from '../components/SwapNavigate'
+import { MoralisProvider } from 'react-moralis'
+import { MORALIS_APP_ID, MORALIS_SERVER_URL } from '../shared/constants'
 import {
   Flex,
   Heading,
@@ -13,8 +12,8 @@ import {
   VStack,
   Divider,
   Box,
-  Grid,
-} from "@chakra-ui/react";
+  Grid
+} from '@chakra-ui/react'
 
 const Index = () => (
   <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
@@ -23,12 +22,12 @@ const Index = () => (
 
       <Flex
         height="100vh"
-        direction={["column", "column", "column", "row"]}
+        direction={['column', 'column', 'column', 'row']}
         align="center"
         px="5%"
-        gridGap={85}
+        gridGap={50}
       >
-        <VStack w="50%" spacing={8} alignItems="flex-start">
+        <VStack w="40%" spacing={8} alignItems="flex-start">
           <Heading as="h1" size="lg" fontSize="64px" fontWeight="600">
             Sushiswap
           </Heading>
@@ -46,7 +45,7 @@ const Index = () => (
               d="flex"
               flexDirection="column"
               alignItems="center"
-              gridGap={4}
+              gridGap={2}
             >
               <Text fontSize="24px" fontWeight="600" color="#E60B8B">
                 $11.91
@@ -59,7 +58,7 @@ const Index = () => (
               d="flex"
               flexDirection="column"
               alignItems="center"
-              gridGap={4}
+              gridGap={2}
             >
               <Text fontSize="24px" fontWeight="600" color="#E60B8B">
                 $4.44b
@@ -72,7 +71,7 @@ const Index = () => (
               d="flex"
               flexDirection="column"
               alignItems="center"
-              gridGap={4}
+              gridGap={2}
             >
               <Text fontSize="24px" fontWeight="600" color="#E60B8B">
                 $104.8b
@@ -85,7 +84,7 @@ const Index = () => (
               d="flex"
               flexDirection="column"
               alignItems="center"
-              gridGap={4}
+              gridGap={2}
             >
               <Text fontSize="24px" fontWeight="600" color="#E60B8B">
                 1.863
@@ -96,12 +95,12 @@ const Index = () => (
             </Box>
           </Grid>
         </VStack>
-        <VStack w="50%">
+        <VStack w="60%">
           <SwapNavigate />
         </VStack>
       </Flex>
     </Container>
   </MoralisProvider>
-);
+)
 
-export default Index;
+export default Index
