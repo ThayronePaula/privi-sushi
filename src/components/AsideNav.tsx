@@ -1,11 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import {
   IconButton,
   Box,
   CloseButton,
   Flex,
   HStack,
-  VStack,
   useColorModeValue,
   Link,
   Drawer,
@@ -16,13 +15,10 @@ import {
   FlexProps,
   Menu,
   MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Grid,
-  GridItem,
+  Heading,
 } from "@chakra-ui/react";
-import { FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
+import { AiFillPlayCircle } from "react-icons/ai";
 import { ReactText } from "react";
 
 import { SubNav } from "../components/SubNav";
@@ -39,22 +35,21 @@ export default function AsideNav({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box w="100%" bg={useColorModeValue("gray.100", "gray.900")}>
-      <Grid templateRows="1fr" templateColumns="repeat(4, 1fr)">
-        <GridItem rowSpan={1} colSpan={4} bg="tomato" h={108}>
-          <MobileNav onOpen={onOpen} />
-        </GridItem>
-        <GridItem rowSpan={3} colSpan={1} bg="#000">
-          <SidebarContent
-            onClose={() => onClose}
-            display={{ base: "none", md: "block" }}
-          />
-        </GridItem>
-        <GridItem rowSpan={3} colSpan={3} bg="#000">
-          <Box ml={{ base: 0, md: 0 }} p="4">
-            {children}
-          </Box>
-        </GridItem>
-      </Grid>
+      <MobileNav onOpen={onOpen} />
+
+      <SidebarContent
+        onClose={() => onClose}
+        display={{ base: "none", md: "block" }}
+      />
+
+      <Box
+        bg="#fff"
+        borderRight="1px"
+        borderRightColor={"#00000033"}
+        ml={{ base: 0, md: 60 }}
+      >
+        {children}
+      </Box>
 
       <Drawer
         autoFocus={false}
@@ -72,20 +67,33 @@ export default function AsideNav({ children }: { children: ReactNode }) {
     </Box>
   );
 }
-
-interface SidebarProps {
+interface SidebarProps extends BoxProps {
   onClose: () => void;
 }
+const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const [scrollSidebar, setScrollSidebar] = React.useState(0);
 
-const SidebarContent = ({ onClose }: SidebarProps) => {
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY > 190) {
+      setScrollSidebar(-191);
+    } else {
+      setScrollSidebar(-window.scrollY + 0.0001);
+    }
+  };
+
   return (
-    <Flex
-      transition="3s ease"
-      direction="column"
-      bg={"#fff"}
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+    <Box
+      pos="fixed"
+      mt={{ base: 0, md: scrollSidebar }}
+      h="full"
+      bg="#fff"
       w={{ base: "full", md: 60 }}
+      {...rest}
     >
       <Flex
         h="20"
@@ -96,10 +104,15 @@ const SidebarContent = ({ onClose }: SidebarProps) => {
       >
         <CloseButton onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name}>{link.name}</NavItem>
-      ))}
-    </Flex>
+      <Flex direction="column" justify="space-between">
+        <Box>
+          {LinkItems.map((link) => (
+            <NavItem key={link.name}>{link.name}</NavItem>
+          ))}
+        </Box>
+        <CardWorks />
+      </Flex>
+    </Box>
   );
 };
 
@@ -137,11 +150,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     <Flex
       ml={{ base: 0, md: 0 }}
       px={{ base: 4, md: 4 }}
-      height="20"
+      height="108"
       alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      bg={"#FFFFFF"}
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
@@ -167,14 +178,40 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     </Flex>
   );
 };
+const CardWorks = () => {
+  return (
+    <Box
+      maxW={"216px"}
+      w={"full"}
+      bg={"#FAFAFA"}
+      roundedLeft={16}
+      roundedRight={16}
+      p={"16.0px 20px 16px 16px"}
+    >
+      <Heading as="h3" fontSize={"14px"} fontFamily={"body"} fontWeight={600}>
+        Lindsey James
+      </Heading>
+      <Text color={"rgba(28, 29, 33,0.6)"} m={"4px 0 16px 0"}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ctus leo, at
+        volutpat, integer euismod nisi vel.
+      </Text>
 
-// <Grid
-// h="200px"
-// templateRows="repeat(2, 1fr)"
-// templateColumns="repeat(4, 1fr)"
-// gap={1}
-// >
-// <GridItem rowSpan={1} colSpan={4} bg="tomato" />
-// <GridItem colSpan={1} bg="papayawhip" />
-// <GridItem rowSpan={1} colSpan={3} bg="papayawhip" />
-// </Grid>
+      <Link href="https://chakra-ui.com" isExternal _hover={{}} _focus={{}}>
+        <AiFillPlayCircle
+          color="#EB3CA2"
+          size={24}
+          style={{ display: "inline" }}
+        />
+        <Text
+          as="span"
+          ml="6px"
+          fontSize="xs"
+          fontWeight={500}
+          color={"#1C1D21"}
+        >
+          Learn more
+        </Text>
+      </Link>
+    </Box>
+  );
+};
