@@ -1,8 +1,6 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react'
 import {
   Flex,
-  Spacer,
-  Box,
   Text,
   Avatar,
   InputGroup,
@@ -12,99 +10,111 @@ import {
   useColorMode,
   FlexProps,
   useDisclosure,
-} from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { useMoralis } from "react-moralis";
-import { useEtherscan } from "../shared/hooks";
-import { convertWeiToEth } from "../shared/helpers";
-import ModalTemplate from "../components/modal/ModalTemplate";
-import ModalSelect from "../components/modal/ModalSelect";
+  VStack
+} from '@chakra-ui/react'
+import { ChevronDownIcon } from '@chakra-ui/icons'
+import { useMoralis } from 'react-moralis'
+import { useEtherscan } from '../shared/hooks'
+import { convertWeiToEth } from '../shared/helpers'
+import ModalTemplate from '../components/modal/ModalTemplate'
+import ModalSelect from '../components/modal/ModalSelect'
 
 export const SwapCard = (props: FlexProps) => {
-  const { colorMode } = useColorMode();
-  const bgColor = { light: "gray.50", dark: "gray.900" };
-  const bgCard = { light: "#EFF0F3", dark: "#e2e2e2" };
-  const color = { light: "black", dark: "white" };
-  const { authenticate, isAuthenticated, logout, user } = useMoralis();
+  const { colorMode } = useColorMode()
+  const bgColor = { light: 'gray.50', dark: 'gray.900' }
+  const bgCard = { light: '#EFF0F3', dark: '#e2e2e2' }
+  const color = { light: 'black', dark: 'white' }
+  const { authenticate, isAuthenticated, logout, user } = useMoralis()
 
   const primaryEthAddress = useMemo(
-    () => isAuthenticated && user.get("accounts")[0],
+    () => isAuthenticated && user.get('accounts')[0],
     [isAuthenticated, user]
-  );
+  )
 
-  const { walletBalance, isLoading } = useEtherscan(primaryEthAddress || null);
+  const { walletBalance, isLoading } = useEtherscan(primaryEthAddress || null)
 
-  const convertedWalletBalance =
-    walletBalance && convertWeiToEth(walletBalance);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const convertedWalletBalance = walletBalance && convertWeiToEth(walletBalance)
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <Flex
-      w="100%"
       alignItems="center"
-      justifyContent="space-between"
-      gridGap={4}
-      bg={bgCard[colorMode]}
+      justifyContent="center"
+      gridGap={30}
+      bg="rgba(255, 255, 255, 0.7)"
       color={color[colorMode]}
       roundedLeft={20}
       roundedRight={20}
       pt={18}
-      pl={23}
-      pr={23}
-      pb={10}
+      pl={35}
+      pr={35}
+      pb={18}
       {...props}
     >
-      <Box p="30px" w="100%">
+      <VStack alignItems="flex-start" w="50%" h="35vh">
         <Text color="#818184" fontWeight={500} textAlign="left" fontSize={16}>
           Swap From
         </Text>
-        <Flex  align="center" mt={2} mb={26}>
+        <Flex align="center">
           <Avatar
+            mb={4}
             name="Dan Abrahmov"
             src="https://imgr.search.brave.com/l5nYpwJMmizUsxXq9usckNMVfER6zWgW1MF6_2ZGyM0/fit/1000/1000/ce/1/aHR0cHM6Ly9jbGlw/Z3JvdW5kLmNvbS9p/bWFnZXMvZXRoZXIt/bG9nby04LmpwZw"
             size="sm"
           />
-          <Button 
-            rightIcon={<ChevronDownIcon  w={6} h={6} />}
+          <Button
+            bg="none"
+            fontSize={20}
+            mb={4}
+            rightIcon={<ChevronDownIcon w={6} h={6} />}
             color="#000"
             fontWeight={500}
             iconSpacing="0.5rem"
-            _hover={{ bg: "none" }}
-            _focus={{ bg: "none" }}
-            _active={{ bg: "none" }}
-            fontSize="20px"
+            _hover={{ bg: 'none' }}
+            _focus={{ bg: 'none' }}
+            _active={{ bg: 'none' }}
           >
             Ethereum
           </Button>
         </Flex>
-        <InputGroup size="lg"  mb={33}>
+        <InputGroup size="lg">
           <Input
+            mb={34}
             pr="4.5rem"
             type="text"
             placeholder="0,0"
             bg={bgColor[colorMode]}
             _placeholder={{ color: color[colorMode] }}
-            _focus={{ border: "none", outline: "none" }}
+            _focus={{ border: 'none', outline: 'none' }}
           />
           <InputRightElement width="4.5rem">
             <Text fontWeight={500}>ETH</Text>
           </InputRightElement>
         </InputGroup>
-        <Text color="#818184" mb={29.5} textAlign="left">
+        <Text color="#818184" textAlign="left">
           Exchange Rate:
         </Text>
-      </Box>
-      <Box marginBottom="6px" paddingRight="30px" w="100%" h={233}>
+      </VStack>
+
+      <VStack alignItems="flex-start" w="50%" h="35vh">
         <Text color="#818184" fontWeight={500} textAlign="left">
           Swap To
         </Text>
-        <Flex align="center" mt={2} mb={6}>
+        <Flex align="center">
           <Button
-           bg={bgColor[colorMode]}
-            size="none"
-            p={3}
+            bg="#fff"
+            w="116px"
+            py="6px"
+            px="16px"
+            borderRadius="10px"
+            mb={4}
             color="#EB3CA2"
             fontWeight={500}
+            fontSize={14}
+            iconSpacing="0.5rem"
+            _hover={{ bg: 'none' }}
+            _focus={{ bg: 'none' }}
+            _active={{ bg: 'none' }}
             onClick={onOpen}
           >
             Select Token
@@ -113,22 +123,24 @@ export const SwapCard = (props: FlexProps) => {
             <ModalSelect />
           </ModalTemplate>
         </Flex>
-        <InputGroup size="lg" mb={34}>
+        <InputGroup size="lg">
           <Input
-            pr="4.5rem"
+            mb={34}
             type="text"
             placeholder="0,0"
             bg={bgColor[colorMode]}
             _placeholder={{ color: color[colorMode] }}
-            _focus={{ border: "none", outline: "none" }}
+            _focus={{ border: 'none', outline: 'none' }}
           />
           <InputRightElement width="4.5rem">
-            <Text fontWeight={500}>ETH</Text>
+            <Text fontWeight={500}>USDT</Text>
           </InputRightElement>
         </InputGroup>
-        <Flex justify="end">
+        <Flex justify="flex-end" w="100%">
           {!isAuthenticated ? (
             <Button
+              p={6}
+              borderRadius="10px"
               bg={color[colorMode]}
               colorScheme="white"
               size="md"
@@ -147,7 +159,7 @@ export const SwapCard = (props: FlexProps) => {
             </Button>
           )}
         </Flex>
-      </Box>
+      </VStack>
     </Flex>
-  );
-};
+  )
+}
