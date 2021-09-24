@@ -1,21 +1,12 @@
 import React, { useMemo } from "react";
 import {
   Flex,
-  Spacer,
   Box,
   Text,
   Avatar,
-  InputGroup,
-  Input,
-  InputRightElement,
-  Button,
-  useColorMode,
-  FlexProps,
-  useDisclosure,
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
@@ -25,7 +16,6 @@ import {
 export const TableFarm = () => {
   const [isLargerThan1280] = useMediaQuery("(max-width: 1000px)");
 
-  console.log(isLargerThan1280);
   return (
     <Table variant="unstyled">
       <Thead>
