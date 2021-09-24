@@ -118,7 +118,7 @@ const ModalSelect = () => {
                   <Text direction="row"color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
                 </Flex>
               </Box>
-              <Box bgGradient="linear(to-br, #672FAC, #AA6CB7, #CFA0C4, #E9DAD6,)" height="160px" borderRadius="16px" p={16.5}>
+              <Box bg="#FFFFFF" height="160px" borderRadius="16px" p={16.5}>
               <Flex justify="space-between">
                   <Avatar src="https://thispersondoesnotexist.com/image" />
                   <Switch colorScheme="rgba(255,255,255,0.1)" size="lg" />
@@ -129,10 +129,50 @@ const ModalSelect = () => {
                   <Text direction="row"color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
                 </Flex>
               </Box>
-              <Box bg="tomato" height="160px"></Box>
-              <Box bg="tomato" height="160px"></Box>
-              <Box bg="tomato" height="160px"></Box>
-              <Box bg="tomato" height="160px"></Box>
+              <Box bg="#FFFFFF" height="160px" borderRadius="16px" p={16.5}>
+              <Flex justify="space-between">
+                  <Avatar src="https://thispersondoesnotexist.com/image" />
+                  <Switch colorScheme="rgba(255,255,255,0.1)" size="lg" />
+                </Flex>
+                <Flex marginTop="45px"
+    marginRight="110px" direction="column">
+                 <Text display="flex"color="#ffffff">Gemini Tokens</Text>
+                  <Text direction="row"color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
+                </Flex>
+              </Box>
+              <Box  bgGradient={isToggled?"linear(to-br, #672FAC, #AA6CB7, #CFA0C4, #E9DAD6,)":""} height="160px" borderRadius="16px" p={16.5}>
+                <Flex justify="space-between">
+                  <Avatar src="https://thispersondoesnotexist.com/image" />
+                  <Switch onChange={()=>setIsToggled(!isToggled)}colorScheme="rgba(255,255,255,0.1)" size="lg" />
+                </Flex>
+                <Flex marginTop="45px"
+    marginRight="110px" direction="column">
+                 <Text display="flex"color="#ffffff">Gemini Tokens</Text>
+                  <Text direction="row"color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
+                </Flex>
+              </Box>
+              <Box bg="#FFFFFF" height="160px" borderRadius="16px" p={16.5}>
+              <Flex justify="space-between">
+                  <Avatar src="https://thispersondoesnotexist.com/image" />
+                  <Switch colorScheme="rgba(255,255,255,0.1)" size="lg" />
+                </Flex>
+                <Flex marginTop="45px"
+    marginRight="110px" direction="column">
+                 <Text display="flex"color="#ffffff">Gemini Tokens</Text>
+                  <Text direction="row"color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
+                </Flex>
+              </Box>
+              <Box bg="#FFFFFF" height="160px" borderRadius="16px" p={16.5}>
+              <Flex justify="space-between">
+                  <Avatar src="https://thispersondoesnotexist.com/image" />
+                  <Switch colorScheme="#EB3CA2" size="lg" />
+                </Flex>
+                <Flex marginTop="45px"
+    marginRight="110px" direction="column">
+                 <Text display="flex"color="#ffffff">Gemini Tokens</Text>
+                  <Text direction="row"color="rgba(255, 255, 255, 0.6)">123 tokens</Text>
+                </Flex>
+              </Box>
             </SimpleGrid>
           </TabPanel>
           <TabPanel p="0">{/* Here your component */}</TabPanel>
