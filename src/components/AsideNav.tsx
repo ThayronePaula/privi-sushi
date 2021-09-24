@@ -30,8 +30,11 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "2x Reward Farms" },
   { name: "Chronos Farms" },
 ];
-
-export default function AsideNav({ children }: { children: ReactNode }) {
+interface AsideNavProps {
+  children: ReactNode;
+  filterTitle?: string;
+}
+export default function AsideNav({ children, filterTitle }: AsideNavProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box w="100%" bg={useColorModeValue("gray.100", "gray.900")}>
@@ -40,14 +43,10 @@ export default function AsideNav({ children }: { children: ReactNode }) {
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
+        subTitle={filterTitle}
       />
 
-      <Box
-        bg="#fff"
-        borderRight="1px"
-        borderRightColor={"#00000033"}
-        ml={{ base: 0, md: 60 }}
-      >
+      <Box bg="#fff" ml={{ base: 0, md: 60 }}>
         {children}
       </Box>
 
@@ -61,7 +60,7 @@ export default function AsideNav({ children }: { children: ReactNode }) {
         size="full"
       >
         <DrawerContent>
-          <SidebarContent onClose={onClose} />
+          <SidebarContent subTitle={filterTitle} onClose={onClose} />
         </DrawerContent>
       </Drawer>
     </Box>
@@ -69,15 +68,15 @@ export default function AsideNav({ children }: { children: ReactNode }) {
 }
 interface SidebarProps extends BoxProps {
   onClose: () => void;
+  subTitle?: string;
 }
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ onClose, subTitle, ...rest }: SidebarProps) => {
   const [scrollSidebar, setScrollSidebar] = React.useState(0);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   const handleScroll = () => {
     if (window.scrollY > 190) {
       setScrollSidebar(-191);
@@ -85,15 +84,17 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       setScrollSidebar(-window.scrollY + 0.0001);
     }
   };
-
   return (
     <Box
       pos="fixed"
       mt={{ base: 0, md: scrollSidebar }}
-      h="full"
       bg="#fff"
+      h="102%"
       w={{ base: "full", md: 60 }}
+      borderRight="1px"
+      borderRightColor={"#00000033"}
       {...rest}
+      pt={2}
     >
       <Flex
         h="20"
@@ -104,8 +105,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       >
         <CloseButton onClick={onClose} />
       </Flex>
-      <Flex direction="column" justify="space-between">
-        <Box>
+      <Flex direction="column"  pl="7%">
+        {subTitle && (
+          <Text color="#1C1D21" fontSize="14px" fontWeight="medium">
+            {subTitle}
+          </Text>
+        )}
+        <Box mb="150px">
           {LinkItems.map((link) => (
             <NavItem key={link.name}>{link.name}</NavItem>
           ))}
@@ -178,11 +184,26 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     </Flex>
   );
 };
+
 const CardWorks = () => {
+  const [heightScreen, setHeightScreen] = React.useState(0);
+
+  useEffect(() => {
+    if (heightScreen === 0) setHeightScreen(window.innerHeight);
+    const handleResize = () => {
+      setHeightScreen(window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <Box
       maxW={"216px"}
       w={"full"}
+      pos="absolute"
+      top={heightScreen > 800 ? "75%" : "30%"}
+      transform={`translateY(${heightScreen > 800 ? "-100%" : "30%"})`}
       bg={"#FAFAFA"}
       roundedLeft={16}
       roundedRight={16}
