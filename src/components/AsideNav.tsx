@@ -40,15 +40,17 @@ export default function AsideNav({ children, filterTitle }: AsideNavProps) {
     <Box w="100%" bg={useColorModeValue("gray.100", "gray.900")}>
       <MobileNav onOpen={onOpen} />
 
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
-        subTitle={filterTitle}
-      />
+      <Flex>
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: "none", md: "block" }}
+          subTitle={filterTitle}
+        />
 
-      <Box bg="#fff" ml={{ base: 0, md: 60 }}>
-        {children}
-      </Box>
+        <Box bg="#fff" ml={{ base: 0, md: 0 }} flex="1">
+          {children}
+        </Box>
+      </Flex>
 
       <Drawer
         autoFocus={false}
@@ -71,25 +73,10 @@ interface SidebarProps extends BoxProps {
   subTitle?: string;
 }
 const SidebarContent = ({ onClose, subTitle, ...rest }: SidebarProps) => {
-  const [scrollSidebar, setScrollSidebar] = React.useState(0);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  const handleScroll = () => {
-    if (window.scrollY > 190) {
-      setScrollSidebar(-191);
-    } else {
-      setScrollSidebar(-window.scrollY + 0.0001);
-    }
-  };
   return (
     <Box
-      pos="fixed"
-      mt={{ base: 0, md: scrollSidebar }}
+      mt={{ base: 0, md: 0 }}
       bg="#fff"
-      h="102%"
       w={{ base: "full", md: 60 }}
       borderRight="1px"
       borderRightColor={"#00000033"}
@@ -105,13 +92,13 @@ const SidebarContent = ({ onClose, subTitle, ...rest }: SidebarProps) => {
       >
         <CloseButton onClick={onClose} />
       </Flex>
-      <Flex direction="column"  pl="7%">
-        {subTitle && (
-          <Text color="#1C1D21" fontSize="14px" fontWeight="medium">
-            {subTitle}
-          </Text>
-        )}
-        <Box mb="150px">
+      <Flex direction="column" pl="7%" h="full" justify="space-between">
+        <Box>
+          {subTitle && (
+            <Text color="#1C1D21" fontSize="14px" fontWeight="medium">
+              {subTitle}
+            </Text>
+          )}
           {LinkItems.map((link) => (
             <NavItem key={link.name}>{link.name}</NavItem>
           ))}
@@ -186,24 +173,10 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 };
 
 const CardWorks = () => {
-  const [heightScreen, setHeightScreen] = React.useState(0);
-
-  useEffect(() => {
-    if (heightScreen === 0) setHeightScreen(window.innerHeight);
-    const handleResize = () => {
-      setHeightScreen(window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   return (
     <Box
       maxW={"216px"}
       w={"full"}
-      pos="absolute"
-      top={heightScreen > 800 ? "75%" : "30%"}
-      transform={`translateY(${heightScreen > 800 ? "-100%" : "30%"})`}
       bg={"#FAFAFA"}
       roundedLeft={16}
       roundedRight={16}
