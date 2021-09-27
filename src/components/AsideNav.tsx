@@ -22,29 +22,32 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import { ReactText } from "react";
 
 import { SubNav } from "../components/SubNav";
-interface LinkItemProps {
-  name: string;
-}
-const LinkItems: Array<LinkItemProps> = [
-  { name: "All Farms" },
-  { name: "2x Reward Farms" },
-  { name: "Chronos Farms" },
-];
+
 interface AsideNavProps {
   children: ReactNode;
   filterTitle?: string;
+  titleSubNav: string;
+  LinkItems: {
+    name: string;
+  }[];
 }
-export default function AsideNav({ children, filterTitle }: AsideNavProps) {
+export default function AsideNav({
+  titleSubNav,
+  filterTitle,
+  children,
+  LinkItems,
+}: AsideNavProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box w="100%" bg={useColorModeValue("gray.100", "gray.900")}>
-      <MobileNav onOpen={onOpen} />
+      <MobileNav titleSubNav={titleSubNav} onOpen={onOpen} />
 
       <Flex>
         <SidebarContent
           onClose={() => onClose}
           display={{ base: "none", md: "block" }}
           subTitle={filterTitle}
+          LinkItems={LinkItems}
         />
 
         <Box bg="#fff" ml={{ base: 0, md: 0 }} flex="1">
@@ -62,7 +65,11 @@ export default function AsideNav({ children, filterTitle }: AsideNavProps) {
         size="full"
       >
         <DrawerContent>
-          <SidebarContent subTitle={filterTitle} onClose={onClose} />
+          <SidebarContent
+            LinkItems={LinkItems}
+            subTitle={filterTitle}
+            onClose={onClose}
+          />
         </DrawerContent>
       </Drawer>
     </Box>
@@ -71,8 +78,16 @@ export default function AsideNav({ children, filterTitle }: AsideNavProps) {
 interface SidebarProps extends BoxProps {
   onClose: () => void;
   subTitle?: string;
+  LinkItems: {
+    name: string;
+  }[];
 }
-const SidebarContent = ({ onClose, subTitle, ...rest }: SidebarProps) => {
+const SidebarContent = ({
+  onClose,
+  subTitle,
+  LinkItems,
+  ...rest
+}: SidebarProps) => {
   return (
     <Box
       mt={{ base: 0, md: 0 }}
@@ -82,6 +97,7 @@ const SidebarContent = ({ onClose, subTitle, ...rest }: SidebarProps) => {
       borderRightColor={"#00000033"}
       {...rest}
       pt={2}
+      h="79vh"
     >
       <Flex
         h="20"
@@ -136,9 +152,10 @@ const NavItem = ({ children, ...rest }: NavItemProps) => {
 };
 
 interface MobileProps extends FlexProps {
+  titleSubNav: string;
   onOpen: () => void;
 }
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+const MobileNav = ({ titleSubNav, onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
       ml={{ base: 0, md: 0 }}
@@ -149,7 +166,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
-      <SubNav title="Farm" />
+      <SubNav title={titleSubNav} />
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
