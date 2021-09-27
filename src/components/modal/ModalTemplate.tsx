@@ -26,7 +26,7 @@ const ModalTemplate = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
-      <ModalContent p="32px 24px 24px 24px">
+      <ModalContent p="32px 24px 24px">
         <Flex justifyContent="space-between" alignItems="center" width="100%">
           <Heading fontSize="28px" fontWeight="600" color="#1C1D21">
             {title}
