@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import NextLink from "next/link";
 import {
   Box,
   Flex,
@@ -14,12 +15,10 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  useColorMode,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
+  Divider,
 } from "@chakra-ui/react";
-
 import {
   HamburgerIcon,
   CloseIcon,
@@ -27,57 +26,11 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import { useMoralis } from "react-moralis";
-import { useEtherscan } from "../shared/hooks";
-import { convertWeiToEth } from "../shared/helpers";
 
+import { useRouter } from "next/router";
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
 
-  return (
-    <Box borderBottom={1}>
-      <Flex
-        bg={useColorModeValue("transparent", "transparent")}
-        color={useColorModeValue("gray.600", "white")}
-        minH={"60px"}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
-        align={"center"}
-      >
-        <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
-        >
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-          />
-        </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Flex display={{ base: "none", md: "flex" }} ml={12}>
-            <DesktopNav />
-          </Flex>
-        </Flex>
-      </Flex>
-
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
-    </Box>
-  );
-}
-
-const DesktopNav = () => {
-  const { colorMode } = useColorMode();
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
   const buttonDisconnectBgColor = useColorModeValue("white", "black");
   const { authenticate, isAuthenticated, logout, user } = useMoralis();
 
@@ -86,29 +39,149 @@ const DesktopNav = () => {
     [isAuthenticated, user]
   );
 
-  const { walletBalance, isLoading } = useEtherscan(primaryEthAddress || null);
-
-  const color = { light: "black", dark: "white" };
-  console.log(primaryEthAddress);
   return (
-    <Stack direction={"row"} spacing={8}>
-      {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
+    <>
+      <Box
+        d="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        w="100%"
+        px="5%"
+      >
+        <Text fontFamily="Roboto" fontSize="22px" fontWeight="600">
+          Sushiswap
+        </Text>
+        <Flex
+          bg={useColorModeValue("transparent", "transparent")}
+          color={useColorModeValue("gray.600", "white")}
+          minH={"60px"}
+          py={{ base: 2 }}
+          px={{ base: 4 }}
+          borderStyle={"solid"}
+          borderColor={useColorModeValue("gray.200", "gray.900")}
+          align={"center"}
+        >
+          <Flex
+            flex={{ base: 1, md: "auto" }}
+            ml={{ base: -2 }}
+            display={{ base: "flex", md: "none" }}
+          >
+            <IconButton
+              onClick={onToggle}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
+              variant={"ghost"}
+              aria-label={"Toggle Navigation"}
+            />
+          </Flex>
+          <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+            <Flex display={{ base: "none", md: "flex" }} ml={12}>
+              <DesktopNav />
+            </Flex>
+          </Flex>
+        </Flex>
+        {isAuthenticated ? (
+          <Tooltip
+            hasArrow
+            label="Click to disconnect"
+            bg="white.600"
+            color="black.600"
+          >
+            <Button
+              onClick={() => logout()}
+              boxShadow="xl"
+              rounded="md"
+              bg={buttonDisconnectBgColor}
+            >
+              <Avatar
+                size="sm"
+                name="Ether"
+                src="https://thispersondoesnotexist.com/image"
+                mr={5}
+              />
+              #{primaryEthAddress.slice(0, 11)}...{primaryEthAddress.slice(-4)}
+            </Button>
+          </Tooltip>
+        ) : (
+          <Button
+            bg={"#1C1D21"}
+            colorScheme="white"
+            onClick={() => authenticate()}
+            borderRadius="12px"
+            fontSize="14px"
+            fontFamily="Roboto"
+            px={25}
+            py={3}
+            h={"auto"}
+          >
+            Connect My Wallet
+          </Button>
+        )}
+
+        <Collapse in={isOpen} animateOpacity>
+          <MobileNav />
+        </Collapse>
+      </Box>
+      <Divider
+        orientation="horizontal"
+        border="1px solid black"
+        w="90%"
+        mt="5px"
+      />
+    </>
+  );
+}
+
+const DesktopNav = () => {
+  const linkColor = useColorModeValue("gray.600", "gray.200");
+  const linkHoverColor = useColorModeValue("gray.800", "white");
+  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const buttonDisconnectBgColor = useColorModeValue("white", "black");
+  const { isAuthenticated, user } = useMoralis();
+
+  const primaryEthAddress = useMemo(
+    () => isAuthenticated && user.get("accounts")[0],
+    [isAuthenticated, user]
+  );
+  const lineIcon = {
+    content: '""',
+    display: "block",
+    position: "absolute",
+    top: "200%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "16px",
+    height: "2px",
+    background: "#1C1D21",
+  };
+  const router = useRouter();
+  return (
+    <Stack direction={"row"} gridGap={29}>
+      {NAV_ITEMS.map((navItem, index) => (
+        <Box key={navItem.label} style={{ position: "relative" }}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? "#"}
-                fontSize={"sm"}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link>
+              <NextLink href={navItem.href ?? "#"} passHref>
+                <Link
+                  p={2}
+                  fontSize={"14px"}
+                  fontWeight={500}
+                  fontFamily="Roboto"
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: "none",
+                    color: linkHoverColor,
+                  }}
+                  _after={navItem.href === router.pathname && { ...lineIcon }}
+                >
+                  {navItem.label}
+                </Link>
+              </NextLink>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -130,37 +203,6 @@ const DesktopNav = () => {
           </Popover>
         </Box>
       ))}
-      {isAuthenticated ? (
-        <Tooltip
-          hasArrow
-          label="Click to disconnect"
-          bg="white.600"
-          color="black.600"
-        >
-          <Button
-            onClick={() => logout()}
-            boxShadow="xl"
-            rounded="md"
-            bg={buttonDisconnectBgColor}
-          >
-            <Avatar
-              size="sm"
-              name="Ether"
-              src="https://thispersondoesnotexist.com/image"
-              mr={5}
-            />
-            #{primaryEthAddress.slice(0, 11)}...{primaryEthAddress.slice(-4)}
-          </Button>
-        </Tooltip>
-      ) : (
-        <Button
-          bg={color[colorMode]}
-          colorScheme="white"
-          onClick={() => authenticate()}
-        >
-          Connect My Wallet
-        </Button>
-      )}
     </Stack>
   );
 };
@@ -279,18 +321,22 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Swap",
+    href: "/",
   },
   {
     label: "Pool",
+    href: "/pool",
   },
   {
     label: "Migrate",
-    href: "#",
+    href: "/migrate",
   },
   {
     label: "Farming",
+    href: "/farm",
   },
   {
     label: "Lending",
+    href: "/lending",
   },
 ];

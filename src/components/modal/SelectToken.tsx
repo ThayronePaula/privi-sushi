@@ -167,13 +167,13 @@ const ModalSelect = () => {
           d="flex"
           justifyContent="space-between"
           alignItems="center"
-          margin="0px 0 0 0"
           cursor="pointer"
           pr={23}
           py={2}
           onMouseOver={() => setOver(true)}
           onMouseOut={() => setOver(false)}
           _hover={{ bg: "#EFF0F3", borderRadius: 16, pl: 25 }}
+          _active={{ bg: "#EB3CA2" }}
         >
           <Flex align="center" gridGap="10px">
             {!over && (
