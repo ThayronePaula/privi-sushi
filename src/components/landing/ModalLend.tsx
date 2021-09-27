@@ -121,10 +121,10 @@ const ModalLend = () => {
 
         <TabPanels>
           <TabPanel p="0">
-            <TabLend />
+            <TabLend titleAction="Deposit" />
           </TabPanel>
           <TabPanel p="0">
-            <TabLend />
+            <TabLend titleAction="Withdraw" />
           </TabPanel>
         </TabPanels>
       </Tabs>
@@ -133,21 +133,40 @@ const ModalLend = () => {
 };
 export default ModalLend;
 
-const TabLend = () => {
+const TabLend = ({ titleAction }: { titleAction?: string }) => {
   return (
     <>
-      <Heading as="h4" textAlign="left">
-        Deposit USDC
+      <Heading
+        as="h4"
+        textAlign="left"
+        fontSize="18px"
+        fontWeight="600"
+        mb="26px"
+      >
+        {titleAction} USDC
       </Heading>
       <Box d="flex" flexDirection="column">
         <HStack justify="space-between">
-          <Flex>
-            <Text>Deposit USDC from</Text>
-            <Badge ml="1" colorScheme="green">
+          <Flex align="center" fontWeight="500">
+            <Text fontSize="md" fontWeight="500" color="#1c1d2166">
+              {titleAction} USDC from
+            </Text>
+            <Badge
+              ml="12px"
+              fontWeight="500"
+              color="#EB3CA2"
+              bg="#eb3ca214"
+              colorScheme="green"
+              borderRadius="100px"
+              fontSize="14px"
+              textTransform="capitalize"
+            >
               Wallet
             </Badge>
           </Flex>
-          <Text>Balance 7,346.20</Text>
+          <Text fontWeight="500" fontSize="md" color="#EB3CA2">
+            Balance 7,346.20
+          </Text>
         </HStack>
         <InputGroup size="lg" mt="26px">
           <Input
@@ -161,13 +180,13 @@ const TabLend = () => {
           </InputRightElement>
         </InputGroup>
         <Button
-          py={"21px"}
           borderRadius="10px"
-          bg={"#000"}
+          bg={"#1C1D21"}
           colorScheme="white"
-          size="sm"
+          size="lg"
+          mt="24px"
         >
-          Connect Wallet To Swap
+          Approve {titleAction}
         </Button>
       </Box>
     </>
