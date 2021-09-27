@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect, useState, useCallback } from "react";
 import {
   IconButton,
   Box,
@@ -17,11 +17,13 @@ import {
   MenuButton,
   Heading,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { ReactText } from "react";
 
 import { SubNav } from "../components/SubNav";
+import { useRouter } from "next/router";
 
 interface AsideNavProps {
   children: ReactNode;
@@ -88,6 +90,34 @@ const SidebarContent = ({
   LinkItems,
   ...rest
 }: SidebarProps) => {
+  const router = useRouter();
+  const [activeBg, setActiveBg] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const storagedTabName = localStorage.getItem("@tabName");
+      if (storagedTabName) {
+        return storagedTabName;
+      }
+    }
+    return "";
+  });
+  if (typeof window !== "undefined") {
+    if (
+      router.pathname === "/lending" &&
+      window.localStorage.getItem("@tabName") === "Barrow"
+    ) {
+      router.push("/" + activeBg.toLowerCase());
+    }
+  }
+  const handleSidebarLink = (event: any) => {
+    window.localStorage.setItem("@tabName", event.target.innerText);
+    const getLinkName = window.localStorage.getItem("@tabName");
+    setActiveBg(getLinkName);
+    const spaceNumber = event.target.innerText.split(" ").length - 1;
+    if (!spaceNumber) {
+      router.push("/" + getLinkName.toLowerCase());
+    }
+  };
+
   return (
     <Box
       mt={{ base: 0, md: 0 }}
@@ -115,8 +145,15 @@ const SidebarContent = ({
               {subTitle}
             </Text>
           )}
-          {LinkItems.map((link) => (
-            <NavItem key={link.name}>{link.name}</NavItem>
+          {LinkItems.map(({ name }) => (
+            <NavItem
+              key={name}
+              color={activeBg === name && "#fff"}
+              bg={activeBg === name && "#1C1D21"}
+              onClick={handleSidebarLink}
+            >
+              {name}
+            </NavItem>
           ))}
         </Box>
         <CardWorks />
@@ -130,24 +167,22 @@ interface NavItemProps extends FlexProps {
 }
 const NavItem = ({ children, ...rest }: NavItemProps) => {
   return (
-    <Link href="#" style={{ textDecoration: "none" }}>
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: "#EFF0F3",
-          color: "#1C1D21",
-          fontWeight: "600",
-        }}
-        {...rest}
-      >
-        {children}
-      </Flex>
-    </Link>
+    <Flex
+      align="center"
+      p="4"
+      mx="4"
+      borderRadius="lg"
+      role="group"
+      cursor="pointer"
+      _hover={{
+        bg: "#EFF0F3",
+        color: "#1C1D21",
+        fontWeight: "600",
+      }}
+      {...rest}
+    >
+      {children}
+    </Flex>
   );
 };
 
