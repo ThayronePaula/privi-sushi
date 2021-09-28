@@ -8,7 +8,7 @@ import {
   FlexProps,
 } from "@chakra-ui/react";
 import { CgSync, CgShapeRhombus, CgShapeCircle } from "react-icons/cg";
-import { SwapCard } from "./SwapCard";
+import { SwapCard } from "../swapcard/SwapCard";
 import BackgroundCard from "../assets/backgroundCard.png";
 export const SwapNavigate = (props: FlexProps) => {
   const lineIcon = {

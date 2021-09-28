@@ -15,10 +15,10 @@ import {
 } from '@chakra-ui/react'
 import { ChevronDownIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useMoralis } from 'react-moralis'
-import { useEtherscan } from '../shared/hooks'
-import { convertWeiToEth } from '../shared/helpers'
-import ModalTemplate from '../components/modal/ModalTemplate'
-import ManageTokenCard from './modal/ManageTokenCard'
+import { useEtherscan } from '../../shared/hooks'
+import { convertWeiToEth } from '../../shared/helpers'
+import ModalTemplate from '../modal/ModalTemplate'
+import ManageTokenCard from '../modal/ManageTokenCard'
 
 export const LiquidityCard = (props: FlexProps) => {
   const { colorMode } = useColorMode()

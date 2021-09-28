@@ -22,7 +22,7 @@ import { FiMenu } from "react-icons/fi";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { ReactText } from "react";
 
-import { SubNav } from "../components/SubNav";
+import { SubNav } from "../navbar/SubNav";
 import { useRouter } from "next/router";
 
 interface AsideNavProps {

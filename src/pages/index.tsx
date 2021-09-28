@@ -1,8 +1,8 @@
-import NavBar from "../components/NavBar";
+import NavBar from "../components/navbar/NavBar";
 
 import { Container } from "../components/Container";
 
-import { SwapNavigate } from "../components/SwapNavigate";
+import { SwapNavigate } from "../components/swapnavigate/SwapNavigate";
 import { MoralisProvider } from "react-moralis";
 import { MORALIS_APP_ID, MORALIS_SERVER_URL } from "../shared/constants";
 import {

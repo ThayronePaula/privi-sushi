@@ -14,10 +14,10 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useMoralis } from "react-moralis";
-import { useEtherscan } from "../shared/hooks";
-import { convertWeiToEth } from "../shared/helpers";
-import ModalTemplate from "../components/modal/ModalTemplate";
-import ManageTokenCard from "./modal/ManageTokenCard";
+import { useEtherscan } from "../../shared/hooks";
+import { convertWeiToEth } from "../../shared/helpers";
+import ModalTemplate from "../modal/ModalTemplate";
+import ManageTokenCard from "../modal/ManageTokenCard";
 
 export const SwapCard = (props: FlexProps) => {
   const { colorMode } = useColorMode();

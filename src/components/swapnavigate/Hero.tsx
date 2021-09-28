@@ -1,5 +1,5 @@
 import { Flex, Heading } from "@chakra-ui/react";
-import { SwapNavigate } from "../components/SwapNavigate";
+import { SwapNavigate } from "./SwapNavigate";
 export const Hero = ({ title }: { title: string }) => (
   <Flex
     justifyContent="center"
