@@ -1,12 +1,12 @@
 import { Box, HStack, VStack, Text, Button, Divider } from '@chakra-ui/react'
-import BackgroundCard from '../assets/backgroundCard.png'
+import BackgroundStake from '../assets/backgroundStake.png'
 export const SushiBarStates = () => {
   return (
     <Box
       h="auto"
       maxW={['100%', '100%', '100%', '697px']}
       w={['100%', '100%', '100%', 'none']}
-      bgImage={`url(${BackgroundCard.src})`}
+      bgImage={`url(${BackgroundStake.src})`}
       bgPosition="center"
       bgRepeat="no-repeat"
       bgSize="cover"
