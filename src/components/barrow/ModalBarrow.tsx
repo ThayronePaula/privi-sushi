@@ -20,7 +20,7 @@ import React from "react";
 import { CgShapeHexagon, CgShapeRhombus } from "react-icons/cg";
 
 import BackgroundLend from "../../assets/backgroundLend.png";
-const ModalLend = () => {
+const ModalBarrow = () => {
   return (
     <Box>
       <Flex color="#1c1d2199" mt="4px">
@@ -105,7 +105,7 @@ const ModalLend = () => {
               bg: "#1D1D1D",
             }}
           >
-            <CgShapeHexagon /> Deposit
+            <CgShapeHexagon /> Barrow
           </Tab>
           <Tab
             _focus={{ boxShadow: "0px 12px 54px rgba(46, 46, 46, 0.1)" }}
@@ -117,25 +117,25 @@ const ModalLend = () => {
             }}
             style={{ position: "relative" }}
           >
-            <CgShapeRhombus /> Withdraw
+            <CgShapeRhombus /> Repay
           </Tab>
         </TabList>
 
         <TabPanels>
           <TabPanel p="0">
-            <TabLend titleAction="Deposit" />
+            <TabBarrow titleAction="Barrow" />
           </TabPanel>
           <TabPanel p="0">
-            <TabLend titleAction="Withdraw" />
+            <TabBarrow titleAction="Replay" />
           </TabPanel>
         </TabPanels>
       </Tabs>
     </Box>
   );
 };
-export default ModalLend;
+export default ModalBarrow;
 
-const TabLend = ({ titleAction }: { titleAction?: string }) => {
+const TabBarrow = ({ titleAction }: { titleAction?: string }) => {
   return (
     <>
       <Heading
@@ -151,7 +151,7 @@ const TabLend = ({ titleAction }: { titleAction?: string }) => {
         <HStack justify="space-between">
           <Flex align="center" fontWeight="500">
             <Text fontSize="md" fontWeight="500" color="#1c1d2166">
-              {titleAction} USDC from
+              Add WETH collateral from
             </Text>
             <Badge
               ml="12px"
@@ -177,9 +177,48 @@ const TabLend = ({ titleAction }: { titleAction?: string }) => {
             _placeholder={{ color: "gray.500" }}
           />
           <InputRightElement width="4.5rem">
-            <Text fontWeight={500}>USDT</Text>
+            <Text fontWeight={500}>USDC</Text>
           </InputRightElement>
         </InputGroup>
+
+        <HStack justify="space-between"  m="26px 0 18px 0">
+          <Flex align="center" fontWeight="500">
+            <Text
+              fontSize="md"
+              fontWeight="500"
+              color="#1c1d2166"
+             
+            >
+              Add WETH to
+            </Text>
+            <Badge
+              ml="12px"
+              fontWeight="500"
+              color="#EB3CA2"
+              bg="#eb3ca214"
+              colorScheme="green"
+              borderRadius="100px"
+              fontSize="14px"
+              textTransform="capitalize"
+            >
+              Wallet
+            </Badge>
+          </Flex>
+          <Text fontWeight="500" fontSize="md" color="#EB3CA2">
+            Balance 7,346.20
+          </Text>
+        </HStack>
+        <InputGroup size="lg">
+          <Input
+            type="text"
+            placeholder="0"
+            _placeholder={{ color: "gray.500" }}
+          />
+          <InputRightElement width="4.5rem">
+            <Text fontWeight={500}>WETH</Text>
+          </InputRightElement>
+        </InputGroup>
+
         <Button
           borderRadius="10px"
           bg={"#1C1D21"}
@@ -188,7 +227,7 @@ const TabLend = ({ titleAction }: { titleAction?: string }) => {
           mt="24px"
           fontSize="14px"
         >
-          Approve {titleAction}
+          Approve Deposit
         </Button>
       </Box>
     </>
