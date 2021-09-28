@@ -42,20 +42,22 @@ export const StakeSushiCard = (props: FlexProps) => {
             _placeholder={{ color: color[colorMode] }}
             _focus={{ border: 'none', outline: 'none' }}
           />
-          <InputRightElement width="4.5rem">
+          <InputRightElement w="20%">
             <Text fontSize="16px" fontWeight={500}>
               Balance: 0
             </Text>
           </InputRightElement>
         </InputGroup>
-        <HStack justify="space-between" align="flex-start" w="100%">
+        <HStack justify="space-between" align="center" w="100%">
           <Text>1 x SUSHI = 1.1435 SUSHI</Text>
           <Button
+            fontSize="14px"
+            fontWeight="600px"
             py={'21px'}
-            borderRadius="10px"
+            borderRadius="8px"
             bg={color[colorMode]}
             colorScheme="white"
-            size="sm"
+            w="205px"
           >
             Enter Ammount
           </Button>
