@@ -13,19 +13,67 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 
+// import { Chef, PairType } from "../../features/onsen/enum";
+// import { useActiveWeb3React, useFuse } from "../../hooks";
+
+// import FarmList from "../../features/onsen/FarmList";
+
+// import useFarmRewards from "./../../hooks/useFarmRewards";
+import { usePositions } from "./../../features/onsen/hooks";
+import { useRouter } from "next/router";
+
 export const TableFarm = () => {
+  //   const { chainId } = useActiveWeb3React();
+
+  //   const router = useRouter();
+  //   const type =
+  //     router.query.filter == null ? "all" : (router.query.filter as string);
+
+  //   const positions = usePositions(chainId);
+
   const [isLargerThan1280] = useMediaQuery("(max-width: 1000px)");
 
+  //   const data = useFarmRewards().filter((farm) => {
+  //     return type in FILTER ? FILTER[type](farm) : true;
+  //   });
+
+  //   const options = {
+  //     keys: ["pair.id", "pair.token0.symbol", "pair.token1.symbol"],
+  //     threshold: 0.4,
+  //   };
+
+  //   const { result, term, search } = useFuse({
+  //     data,
+  //     options,
+  //   });
+
+  //   const FILTER = {
+  //     all: (farm) => farm.allocPoint !== "0",
+  //     portfolio: (farm) => farm?.amount && !farm.amount.isZero(),
+  //     sushi: (farm) =>
+  //       farm.pair.type === PairType.SWAP && farm.allocPoint !== "0",
+  //     kashi: (farm) =>
+  //       farm.pair.type === PairType.KASHI && farm.allocPoint !== "0",
+  //     "2x": (farm) =>
+  //       (farm.chef === Chef.MASTERCHEF_V2 || farm.chef === Chef.MINICHEF) &&
+  //       farm.allocPoint !== "0",
+  //   };
+
   return (
-    <Box h='79vh' overflow='auto' css={{
-      '::-webkit-scrollbar': {
-      width: 6,
-    }}}>
-      <Table variant="unstyled" h='100%'>
+    <Box
+      h="79vh"
+      overflow="auto"
+      css={{
+        "::-webkit-scrollbar": {
+          width: 6,
+        },
+      }}
+    >
+      <Table variant="unstyled" h="100%">
         <Thead>
-          <Tr position='sticky' top='0' bg='#fff' zIndex='25'>
-            <Th >Pool</Th>
-            {!isLargerThan1280 && <Th position='sticky'>TVL</Th>}
+          <Tr position="sticky" top="0" bg="#fff" zIndex="25">
+            <Th>Pool</Th>
+            {!isLargerThan1280 && <Th position="sticky">TVL</Th>}
             {!isLargerThan1280 && <Th position="sticky"> Rewards</Th>}
             <Th position="sticky" textAlign="right">
               APR
