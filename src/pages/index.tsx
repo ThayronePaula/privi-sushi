@@ -20,7 +20,7 @@ const Index = () => (
   <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
     <Container height="100vh">
       <NavBar />
-      <ExpertMode />
+
       <Flex
         w="100%"
         height="100vh"
