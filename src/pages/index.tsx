@@ -38,10 +38,11 @@ const Index = () => (
             size="lg"
             fontSize={["48px", "64px"]}
             fontWeight="600"
+          paddingBottom="40px"
           >
             Sushiswap
           </Heading>
-          <Text fontSize="20px" fontWeight="400" color="rgba(0,0,0,0.6)">
+          <Text fontSize="20px" fontWeight="400" paddingBottom="90px" color="#1C1D21">
             Be a DeFi Chef with Sushi. Swap, earn, stack yields, lend, borrow,
             leverage all on one decentralized, community driven platform.
             Welcome home to DeFi.
