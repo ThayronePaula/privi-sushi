@@ -41,7 +41,6 @@ export default function NavBar() {
   return (
     <>
       <Box d="flex" alignItems="center" justifyContent="space-between" w="100%">
-        F{" "}
         <Text fontFamily="Roboto" fontSize={["md", "22px"]} fontWeight="600">
           Sushiswap
         </Text>
