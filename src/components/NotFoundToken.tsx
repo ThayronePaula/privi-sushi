@@ -3,7 +3,7 @@ import { Flex, Text } from '@chakra-ui/react'
 const NotFoundToken = () => {
   return (
     <Flex
-      w="576px"
+      w={["100%","576px" ]}
       direction="column"
       justify="center"
       align="center"
@@ -82,10 +82,10 @@ const NotFoundToken = () => {
         />
         <circle cx="191.323" cy="15.1241" r="9.07456" fill="#E9EDF2" />
       </svg>
-      <Text mt="24px" mb="16px">
+      <Text fontWeight="600" textAlign="center" color="#1C1D21" fontSize="16px" mt="24px" mb="16px">
         Beep-boop, zero token found
       </Text>
-      <Text>You can try other keyword for your search</Text>
+      <Text textAlign="center" color="rgba(28, 29, 33, 0.4)" fontSize="14px" >You can try other keyword for your search</Text>
     </Flex>
   )
 }
