@@ -5,38 +5,44 @@ import {
   Button,
   Modal,
   ModalOverlay,
-  ModalContent,
-} from "@chakra-ui/react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import React from "react";
+  ModalContent
+} from '@chakra-ui/react'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import React from 'react'
 
 interface ModalTemplateProps {
-  title: string;
-  isOpen: boolean;
-  onClose: () => void;
-  children: JSX.Element;
+  title: string
+  isOpen: boolean
+  onClose: () => void
+  children: JSX.Element
 }
 
 const ModalTemplate = ({
   title,
   isOpen,
   onClose,
-  children,
+  children
 }: ModalTemplateProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
-      <ModalContent p="32px 24px 24px">
+      <ModalContent
+        p="32px 24px 24px"
+        borderRadius="24px"
+        w="530px"
+        h="637"
+        overflow="hidden"
+      >
         <Flex justifyContent="space-between" alignItems="center" width="100%">
           <Heading fontSize="28px" fontWeight="600" color="#1C1D21">
-            {title}
+            {'Manage Token'}
           </Heading>
-          <Spacer/>
+          <Spacer />
           <Button
             colorScheme="white"
             size="xs"
             onClick={onClose}
-            _focus={{ bg: "none" }}
+            _focus={{ bg: 'none' }}
           >
             <AiOutlineCloseCircle size="1.5rem" color="#212121" />
           </Button>
@@ -44,6 +50,6 @@ const ModalTemplate = ({
         {children}
       </ModalContent>
     </Modal>
-  );
-};
-export default ModalTemplate;
+  )
+}
+export default ModalTemplate
