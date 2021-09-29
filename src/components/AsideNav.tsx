@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect, useState, useCallback } from "react";
 import {
   IconButton,
   Box,
@@ -17,34 +17,39 @@ import {
   MenuButton,
   Heading,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { ReactText } from "react";
 
 import { SubNav } from "../components/SubNav";
-interface LinkItemProps {
-  name: string;
-}
-const LinkItems: Array<LinkItemProps> = [
-  { name: "All Farms" },
-  { name: "2x Reward Farms" },
-  { name: "Chronos Farms" },
-];
+import { useRouter } from "next/router";
+
 interface AsideNavProps {
   children: ReactNode;
   filterTitle?: string;
+  titleSubNav: string;
+  LinkItems: {
+    name: string;
+  }[];
 }
-export default function AsideNav({ children, filterTitle }: AsideNavProps) {
+export default function AsideNav({
+  titleSubNav,
+  filterTitle,
+  children,
+  LinkItems,
+}: AsideNavProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box w="100%" bg={useColorModeValue("gray.100", "gray.900")}>
-      <MobileNav onOpen={onOpen} />
+      <MobileNav titleSubNav={titleSubNav} onOpen={onOpen} />
 
       <Flex>
         <SidebarContent
           onClose={() => onClose}
           display={{ base: "none", md: "block" }}
           subTitle={filterTitle}
+          LinkItems={LinkItems}
         />
 
         <Box bg="#fff" ml={{ base: 0, md: 0 }} flex="1">
@@ -62,7 +67,11 @@ export default function AsideNav({ children, filterTitle }: AsideNavProps) {
         size="full"
       >
         <DrawerContent>
-          <SidebarContent subTitle={filterTitle} onClose={onClose} />
+          <SidebarContent
+            LinkItems={LinkItems}
+            subTitle={filterTitle}
+            onClose={onClose}
+          />
         </DrawerContent>
       </Drawer>
     </Box>
@@ -71,8 +80,44 @@ export default function AsideNav({ children, filterTitle }: AsideNavProps) {
 interface SidebarProps extends BoxProps {
   onClose: () => void;
   subTitle?: string;
+  LinkItems: {
+    name: string;
+  }[];
 }
-const SidebarContent = ({ onClose, subTitle, ...rest }: SidebarProps) => {
+const SidebarContent = ({
+  onClose,
+  subTitle,
+  LinkItems,
+  ...rest
+}: SidebarProps) => {
+  const router = useRouter();
+  const [activeBg, setActiveBg] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const storagedTabName = localStorage.getItem("@tabName");
+      if (storagedTabName) {
+        return storagedTabName;
+      }
+    }
+    return "";
+  });
+  if (typeof window !== "undefined") {
+    if (
+      router.pathname === "/lending" &&
+      window.localStorage.getItem("@tabName") === "Barrow"
+    ) {
+      router.push("/" + activeBg.toLowerCase());
+    }
+  }
+  const handleSidebarLink = (event: any) => {
+    window.localStorage.setItem("@tabName", event.target.innerText);
+    const getLinkName = window.localStorage.getItem("@tabName");
+    setActiveBg(getLinkName);
+    const spaceNumber = event.target.innerText.split(" ").length - 1;
+    if (!spaceNumber) {
+      router.push("/" + getLinkName.toLowerCase());
+    }
+  };
+
   return (
     <Box
       mt={{ base: 0, md: 0 }}
@@ -82,6 +127,7 @@ const SidebarContent = ({ onClose, subTitle, ...rest }: SidebarProps) => {
       borderRightColor={"#00000033"}
       {...rest}
       pt={2}
+      h="79vh"
     >
       <Flex
         h="20"
@@ -99,8 +145,15 @@ const SidebarContent = ({ onClose, subTitle, ...rest }: SidebarProps) => {
               {subTitle}
             </Text>
           )}
-          {LinkItems.map((link) => (
-            <NavItem key={link.name}>{link.name}</NavItem>
+          {LinkItems.map(({ name }) => (
+            <NavItem
+              key={name}
+              color={activeBg === name && "#fff"}
+              bg={activeBg === name && "#1C1D21"}
+              onClick={handleSidebarLink}
+            >
+              {name}
+            </NavItem>
           ))}
         </Box>
         <CardWorks />
@@ -114,31 +167,30 @@ interface NavItemProps extends FlexProps {
 }
 const NavItem = ({ children, ...rest }: NavItemProps) => {
   return (
-    <Link href="#" style={{ textDecoration: "none" }}>
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: "#EFF0F3",
-          color: "#1C1D21",
-          fontWeight: "600",
-        }}
-        {...rest}
-      >
-        {children}
-      </Flex>
-    </Link>
+    <Flex
+      align="center"
+      p="4"
+      mx="4"
+      borderRadius="lg"
+      role="group"
+      cursor="pointer"
+      _hover={{
+        bg: "#EFF0F3",
+        color: "#1C1D21",
+        fontWeight: "600",
+      }}
+      {...rest}
+    >
+      {children}
+    </Flex>
   );
 };
 
 interface MobileProps extends FlexProps {
+  titleSubNav: string;
   onOpen: () => void;
 }
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+const MobileNav = ({ titleSubNav, onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
       ml={{ base: 0, md: 0 }}
@@ -149,7 +201,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
-      <SubNav title="Farm" />
+      <SubNav title={titleSubNav} />
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}

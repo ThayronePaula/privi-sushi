@@ -10,7 +10,11 @@ const Farm = () => {
     <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
       <Container maxW="100%">
         <NavBar />
-        <AsideNav filterTitle="Filters">
+        <AsideNav
+          LinkItems={LinkItems}
+          titleSubNav="Farm"
+          filterTitle="Filters"
+        >
           <TableFarm />
         </AsideNav>
       </Container>
@@ -18,3 +22,9 @@ const Farm = () => {
   );
 };
 export default Farm;
+
+const LinkItems = [
+  { name: "All Farms" },
+  { name: "2x Reward Farms" },
+  { name: "Chronos Farms" },
+];
