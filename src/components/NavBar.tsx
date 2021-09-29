@@ -1,5 +1,4 @@
-import { useMemo, useState } from "react";
-import NextLink from "next/link";
+import { useMemo } from "react";
 import {
   Box,
   Flex,
@@ -41,14 +40,9 @@ export default function NavBar() {
 
   return (
     <>
-      <Box
-        d="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        w="100%"
-        px="5%"
-      >
-        <Text fontFamily="Roboto" fontSize="22px" fontWeight="600">
+      <Box d="flex" alignItems="center" justifyContent="space-between" w="100%">
+        F{" "}
+        <Text fontFamily="Roboto" fontSize={["md", "22px"]} fontWeight="600">
           Sushiswap
         </Text>
         <Flex
@@ -64,7 +58,7 @@ export default function NavBar() {
           <Flex
             flex={{ base: 1, md: "auto" }}
             ml={{ base: -2 }}
-            display={{ base: "flex", md: "none" }}
+            display={["flex", "flex", "flex", "none"]}
           >
             <IconButton
               onClick={onToggle}
@@ -80,57 +74,59 @@ export default function NavBar() {
             />
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-            <Flex display={{ base: "none", md: "flex" }} ml={12}>
+            <Flex display={["none", "none", "none", "flex"]} ml={12}>
               <DesktopNav />
             </Flex>
           </Flex>
         </Flex>
-        {isAuthenticated ? (
-          <Tooltip
-            hasArrow
-            label="Click to disconnect"
-            bg="white.600"
-            color="black.600"
-          >
-            <Button
-              onClick={() => logout()}
-              boxShadow="xl"
-              rounded="md"
-              bg={buttonDisconnectBgColor}
+        <Flex display={["none", "none", "none", "flex"]}>
+          {isAuthenticated ? (
+            <Tooltip
+              hasArrow
+              label="Click to disconnect"
+              bg="white.600"
+              color="black.600"
             >
-              <Avatar
-                size="sm"
-                name="Ether"
-                src="https://thispersondoesnotexist.com/image"
-                mr={5}
-              />
-              #{primaryEthAddress.slice(0, 11)}...{primaryEthAddress.slice(-4)}
+              <Button
+                onClick={() => logout()}
+                boxShadow="xl"
+                rounded="md"
+                bg={buttonDisconnectBgColor}
+              >
+                <Avatar
+                  size="sm"
+                  name="Ether"
+                  src="https://thispersondoesnotexist.com/image"
+                  mr={5}
+                />
+                #{primaryEthAddress.slice(0, 11)}...
+                {primaryEthAddress.slice(-4)}
+              </Button>
+            </Tooltip>
+          ) : (
+            <Button
+              bg={"#1C1D21"}
+              colorScheme="white"
+              onClick={() => authenticate()}
+              borderRadius="12px"
+              fontSize="14px"
+              fontFamily="Roboto"
+              px={25}
+              py={3}
+              h={"auto"}
+            >
+              Connect My Wallet
             </Button>
-          </Tooltip>
-        ) : (
-          <Button
-            bg={"#1C1D21"}
-            colorScheme="white"
-            onClick={() => authenticate()}
-            borderRadius="12px"
-            fontSize="14px"
-            fontFamily="Roboto"
-            px={25}
-            py={3}
-            h={"auto"}
-          >
-            Connect My Wallet
-          </Button>
-        )}
-
-        <Collapse in={isOpen} animateOpacity>
-          <MobileNav />
+          )}
+        </Flex>
+        <Collapse in={isOpen} unmountOnExit={false}>
+          <MobileNav onToggle={onToggle} />
         </Collapse>
       </Box>
       <Divider
         orientation="horizontal"
         border="1px solid black"
-        w="90%"
+        w="100%"
         mt="5px"
       />
     </>
@@ -162,26 +158,30 @@ const DesktopNav = () => {
   const router = useRouter();
   return (
     <Stack direction={"row"} gridGap={29}>
-      {NAV_ITEMS.map((navItem, index) => (
+      {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label} style={{ position: "relative" }}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <NextLink href={navItem.href ?? "#"} passHref>
-                <Link
-                  p={2}
-                  fontSize={"14px"}
-                  fontWeight={500}
-                  fontFamily="Roboto"
-                  color={linkColor}
-                  _hover={{
-                    textDecoration: "none",
-                    color: linkHoverColor,
-                  }}
-                  _after={navItem.href === router.pathname && { ...lineIcon }}
-                >
-                  {navItem.label}
-                </Link>
-              </NextLink>
+              <Link
+                p={2}
+                fontSize={"14px"}
+                fontWeight={500}
+                fontFamily="Roboto"
+                color={linkColor}
+                _hover={{
+                  textDecoration: "none",
+                  color: linkHoverColor,
+                }}
+                _after={
+                  navItem.href === router.pathname ||
+                  (router.pathname === "/barrow" && navItem.label === "Lending")
+                    ? { ...lineIcon }
+                    : {}
+                }
+                onClick={() => router.push(navItem.href)}
+              >
+                {navItem.label}
+              </Link>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -243,17 +243,77 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
     </Link>
   );
 };
+interface MobileNavProps {
+  onToggle: () => void;
+}
+const MobileNav = ({ onToggle }: MobileNavProps) => {
+  const buttonDisconnectBgColor = useColorModeValue("white", "black");
+  const { authenticate, isAuthenticated, logout, user } = useMoralis();
 
-const MobileNav = () => {
+  const primaryEthAddress = useMemo(
+    () => isAuthenticated && user.get("accounts")[0],
+    [isAuthenticated, user]
+  );
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}
+      w="100%"
       p={4}
-      display={{ md: "none" }}
+      display={["flex", "flex", "flex", "none"]}
+      pos="fixed"
+      top="0"
+      left="0"
+      zIndex="99999999999"
+      alignItems="center"
     >
+      <IconButton
+        w={50}
+        onClick={onToggle}
+        icon={<CloseIcon w={3} h={3} />}
+        variant={"ghost"}
+        aria-label={"Toggle Navigation"}
+      />
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      {isAuthenticated ? (
+        <Tooltip
+          hasArrow
+          label="Click to disconnect"
+          bg="white.600"
+          color="black.600"
+        >
+          <Button
+            onClick={() => logout()}
+            boxShadow="xl"
+            rounded="md"
+            bg={buttonDisconnectBgColor}
+          >
+            <Avatar
+              size="sm"
+              name="Ether"
+              src="https://thispersondoesnotexist.com/image"
+              mr={5}
+            />
+            #{primaryEthAddress.slice(0, 11)}...
+            {primaryEthAddress.slice(-4)}
+          </Button>
+        </Tooltip>
+      ) : (
+        <Button
+          bg={"#1C1D21"}
+          colorScheme="white"
+          onClick={() => authenticate()}
+          borderRadius="12px"
+          fontSize={["12px", "14px"]}
+          fontFamily="Roboto"
+          px={["8px", 25]}
+          py={[3]}
+          h={"auto"}
+        >
+          Connect My Wallet
+        </Button>
+      )}
     </Stack>
   );
 };
@@ -289,8 +349,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           />
         )}
       </Flex>
-
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
+      <Collapse in={isOpen} style={{ marginTop: "0!important" }}>
         <Stack
           mt={2}
           pl={4}

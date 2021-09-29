@@ -8,7 +8,7 @@ import { TableBarrow } from "../components/barrow/TableBarrow";
 const Barrow = () => {
   return (
     <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
-      <Container maxW="100%">
+      <Container maxW="100%" px="5%">
         <NavBar />
         <AsideNav LinkItems={LinkItems} titleSubNav="Barrow">
           <TableBarrow />

@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState, useCallback } from "react";
+import React, { ReactNode, useState } from "react";
 import {
   IconButton,
   Box,
@@ -20,10 +20,11 @@ import {
 import NextLink from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { AiFillPlayCircle } from "react-icons/ai";
-import { ReactText } from "react";
+import { CgSync, CgShapeRhombus, CgShapeCircle } from "react-icons/cg";
 
 import { SubNav } from "../components/SubNav";
 import { useRouter } from "next/router";
+import { IconType } from "react-icons";
 
 interface AsideNavProps {
   children: ReactNode;
@@ -138,23 +139,55 @@ const SidebarContent = ({
       >
         <CloseButton onClick={onClose} />
       </Flex>
-      <Flex direction="column" pl="7%" h="full" justify="space-between">
+      <Flex direction="column" h="full" justify="space-between">
         <Box>
           {subTitle && (
             <Text color="#1C1D21" fontSize="14px" fontWeight="medium">
               {subTitle}
             </Text>
           )}
-          {LinkItems.map(({ name }) => (
-            <NavItem
-              key={name}
-              color={activeBg === name && "#fff"}
-              bg={activeBg === name && "#1C1D21"}
-              onClick={handleSidebarLink}
-            >
-              {name}
-            </NavItem>
-          ))}
+          {LinkItems.map(({ name }) => {
+            if (
+              router.pathname === "/lending" ||
+              router.pathname === "/barrow"
+            ) {
+              let Icon: IconType;
+              switch (name) {
+                case "Lending":
+                  Icon = CgSync;
+                  break;
+                case "Barrow":
+                  Icon = CgShapeRhombus;
+                  break;
+                default:
+                  Icon = CgShapeCircle;
+                  break;
+              }
+              return (
+                <NavItem
+                  key={name}
+                  color={activeBg === name && "#fff"}
+                  bg={activeBg === name && "#1C1D21"}
+                  onClick={handleSidebarLink}
+                  mb={"6px"}
+                >
+                  <Icon style={{ marginRight: 13 }} /> {name}
+                </NavItem>
+              );
+            } else {
+              return (
+                <NavItem
+                  key={name}
+                  color={activeBg === name && "#fff"}
+                  bg={activeBg === name && "#1C1D21"}
+                  onClick={handleSidebarLink}
+                  mb={"6px"}
+                >
+                  {name}
+                </NavItem>
+              );
+            }
+          })}
         </Box>
         <CardWorks />
       </Flex>
@@ -163,7 +196,7 @@ const SidebarContent = ({
 };
 
 interface NavItemProps extends FlexProps {
-  children: ReactText;
+  children: ReactNode;
 }
 const NavItem = ({ children, ...rest }: NavItemProps) => {
   return (
@@ -193,10 +226,8 @@ interface MobileProps extends FlexProps {
 const MobileNav = ({ titleSubNav, onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
-      ml={{ base: 0, md: 0 }}
-      px={{ base: 4, md: 4 }}
       height="108"
-      alignItems="center"
+      alignItems={["flex-end", "center"]}
       bg={"#FFFFFF"}
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}

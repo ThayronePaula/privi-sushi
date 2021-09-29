@@ -52,7 +52,7 @@ const ModalBarrow = () => {
           p="20px 30px"
           fontSize="md"
           color="#fff"
-          h="122px"
+          h={["auto", "122px"]}
         >
           <Box>
             <Text as="h5" fontWeight="500" mb="12px">
@@ -181,14 +181,9 @@ const TabBarrow = ({ titleAction }: { titleAction?: string }) => {
           </InputRightElement>
         </InputGroup>
 
-        <HStack justify="space-between"  m="26px 0 18px 0">
+        <HStack justify="space-between" m="26px 0 18px 0">
           <Flex align="center" fontWeight="500">
-            <Text
-              fontSize="md"
-              fontWeight="500"
-              color="#1c1d2166"
-             
-            >
+            <Text fontSize="md" fontWeight="500" color="#1c1d2166">
               Add WETH to
             </Text>
             <Badge
