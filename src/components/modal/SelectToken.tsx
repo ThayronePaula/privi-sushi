@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Flex,
   Box,
@@ -7,33 +7,47 @@ import {
   InputGroup,
   InputLeftElement,
   Button,
-  Avatar,
-} from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
-import { Center, Divider, List, ListItem, Stack } from "@chakra-ui/layout";
+  Avatar
+} from '@chakra-ui/react'
+import { SearchIcon } from '@chakra-ui/icons'
+import { Center, Divider, List, ListItem, Stack } from '@chakra-ui/layout'
 
 const ModalSelect = () => {
-  const [value, setValue] = React.useState("");
-  const handleChange = (event) => setValue(event.target.value);
-  const [over, setOver] = React.useState(false);
-  console.table(over);
+  const [value, setValue] = React.useState('')
+  const handleChange = event => setValue(event.target.value)
+  const [over, setOver] = React.useState(false)
+  console.table(over)
   return (
     <Flex
       flexDirection="column"
       justify="center"
       align="center"
-      borderRadius="1.5rem"
+      borderRadius="24px"
     >
-      <Box w="100%" paddingTop="24px">
-        <InputGroup w="98%" boxShadow="0px 12px 54px rgba(46, 46, 46, 0.1)">
+      <Box w="100%" paddingTop="24px" bg="#">
+        <InputGroup
+          w="100%"
+          boxShadow="0px 12px 54px rgba(46, 46, 46, 0.1)"
+          borderRadius="12px"
+        >
           <InputLeftElement
+            ml="5px"
+            color="#1C1D21"
+            opacity="60%"
+            h="48px"
             pointerEvents="none"
             // eslint-disable-next-line react/no-children-prop
             children={<SearchIcon />}
           />
           <Input
+            fontSize="16px"
+            fontWeight="500"
+            pl="50px"
+            border="1px solid rgba(0, 0, 0, 0.2)"
+            borderRadius="12px"
+            h="48px"
             type="search"
-            placeholder="Search token"
+            placeholder="Search Token"
             value={value}
             onChange={handleChange}
           />
@@ -118,7 +132,7 @@ const ModalSelect = () => {
         </Text>
       </Box>
 
-      <List spacing={3} w="100%">
+      <List spacing={3} w="100%" h="full">
         <ListItem
           d="flex"
           justifyContent="space-between"
@@ -126,7 +140,7 @@ const ModalSelect = () => {
           margin="12px 0 8px 0"
           pr={23}
         >
-          <Flex align="center" gridGap="10px">
+          <Flex align="center" gridGap="12px">
             <svg
               width="15"
               height="6"
@@ -142,11 +156,11 @@ const ModalSelect = () => {
             </svg>
             <Text>1</Text>
             <Avatar
-              size="sm"
+              size="md"
               name="Dan Abrahmov"
               src="https://thispersondoesnotexist.com/image"
             />
-            <Box d="flex" flexDirection="column">
+            <Box d="flex" flexDirection="column" alignItems="flex-start">
               <Text fontSize="16px" fontWeight="600" color="#1C1D21">
                 ETH
               </Text>
@@ -155,13 +169,15 @@ const ModalSelect = () => {
               </Text>
             </Box>
           </Flex>
-
-          <Text fontSize="16px" fontWeight="600" color="##1C1D21">
-            1,683
-          </Text>
+          <Text>1,683</Text>
         </ListItem>
         <Center justifyContent="end">
-          <Divider w="84.5%" style={{ border: "1px solid #1C1D21 60%" }} />
+          <Divider
+            w="77.5%"
+            style={{ border: '1px solid #1C1D21 60%' }}
+            mt="8px"
+            mb="8px"
+          />
         </Center>
         <ListItem
           d="flex"
@@ -169,13 +185,12 @@ const ModalSelect = () => {
           alignItems="center"
           cursor="pointer"
           pr={23}
-          py={2}
           onMouseOver={() => setOver(true)}
           onMouseOut={() => setOver(false)}
-          _hover={{ bg: "#EFF0F3", borderRadius: 16, pl: 25 }}
-          _active={{ bg: "#EB3CA2" }}
+          _hover={{ bg: '#EFF0F3', borderRadius: 16, pl: 25 }}
+          _active={{ bg: '#EB3CA2' }}
         >
-          <Flex align="center" gridGap="10px">
+          <Flex align="center" gridGap="12px">
             {!over && (
               <svg
                 width="15"
@@ -193,11 +208,11 @@ const ModalSelect = () => {
             )}
             <Text>2</Text>
             <Avatar
-              size="sm"
+              size="md"
               name="Dan Abrahmov"
               src="https://thispersondoesnotexist.com/image"
             />
-            <Box d="flex" flexDirection="column">
+            <Box d="flex" flexDirection="column" alignItems="flex-start">
               <Text fontSize="16px" fontWeight="600" color="#1C1D21">
                 ETH
               </Text>
@@ -206,13 +221,15 @@ const ModalSelect = () => {
               </Text>
             </Box>
           </Flex>
-
-          <Text fontSize="16px" fontWeight="600" color="##1C1D21">
-            1,683
-          </Text>
+          <Text>1,683</Text>
         </ListItem>
         <Center h="10px" justifyContent="end">
-          <Divider w="84.5%" style={{ border: "1px solid #1C1D21 60%" }} />
+          <Divider
+            mt="8px"
+            mb="8px"
+            w="77.5%"
+            style={{ border: '1px solid #1C1D21 60%' }}
+          />
         </Center>
         <ListItem
           d="flex"
@@ -221,7 +238,7 @@ const ModalSelect = () => {
           margin="12px 0 8px 0"
           pr={23}
         >
-          <Flex align="center" gridGap="10px">
+          <Flex align="center" gridGap="12px">
             <svg
               width="15"
               height="6"
@@ -237,11 +254,11 @@ const ModalSelect = () => {
             </svg>
             <Text>3</Text>
             <Avatar
-              size="sm"
+              size="md"
               name="Dan Abrahmov"
               src="https://thispersondoesnotexist.com/image"
             />
-            <Box d="flex" flexDirection="column">
+            <Box d="flex" flexDirection="column" alignItems="flex-start">
               <Text fontSize="16px" fontWeight="600" color="#1C1D21">
                 ETH
               </Text>
@@ -250,16 +267,10 @@ const ModalSelect = () => {
               </Text>
             </Box>
           </Flex>
-
-          <Text fontSize="16px" fontWeight="600" color="##1C1D21">
-            1,683
-          </Text>
+          <Text>1,683</Text>
         </ListItem>
-        <Center justifyContent="end">
-          <Divider w="84.5%" style={{ border: "1px solid #1C1D21 60%" }} />
-        </Center>
       </List>
     </Flex>
-  );
-};
-export default ModalSelect;
+  )
+}
+export default ModalSelect

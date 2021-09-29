@@ -14,18 +14,18 @@ import {
   Box,
   Grid,
 } from "@chakra-ui/react";
+import ExpertMode from "../components/modal/ExpertMode";
 
 const Index = () => (
   <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
-    <Container height="100vh">
+    <Container height="100vh" px="5%">
       <NavBar />
-
+      
       <Flex
         w="100%"
         height="100vh"
         direction={["column", "column", "column", "row"]}
         align="center"
-        px="5%"
         gridGap={50}
       >
         <VStack

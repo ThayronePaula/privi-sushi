@@ -4,15 +4,9 @@ import {
   Spacer,
   Heading,
   Box,
-  Text,
-  Avatar,
   InputGroup,
   Input,
   InputLeftElement,
-  Button,
-  useColorMode,
-  FlexProps,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 

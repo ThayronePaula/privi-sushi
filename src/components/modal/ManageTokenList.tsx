@@ -16,7 +16,7 @@ const ManageTokenList = () => {
   const handleChange = event => setValue(event.target.value)
   const [over, setOver] = React.useState(false)
   return (
-    <List spacing={3} w="100%">
+    <List spacing={3} w="100%" h="full" mt="30px">
       <ListItem
         d="flex"
         justifyContent="space-between"
@@ -24,7 +24,7 @@ const ManageTokenList = () => {
         margin="12px 0 8px 0"
         pr={23}
       >
-        <Flex align="center" gridGap="10px">
+        <Flex align="center" gridGap="12px">
           <svg
             width="15"
             height="6"
@@ -40,7 +40,7 @@ const ManageTokenList = () => {
           </svg>
           <Text>1</Text>
           <Avatar
-            size="sm"
+            size="md"
             name="Dan Abrahmov"
             src="https://thispersondoesnotexist.com/image"
           />
@@ -53,11 +53,15 @@ const ManageTokenList = () => {
             </Text>
           </Box>
         </Flex>
-
         <Switch id="#" colorScheme={'pink'} />
       </ListItem>
       <Center justifyContent="end">
-        <Divider w="84.5%" style={{ border: '1px solid #1C1D21 60%' }} />
+        <Divider
+          w="77.5%"
+          style={{ border: '1px solid #1C1D21 60%' }}
+          mt="8px"
+          mb="8px"
+        />
       </Center>
       <ListItem
         d="flex"
@@ -70,7 +74,7 @@ const ManageTokenList = () => {
         _hover={{ bg: '#EFF0F3', borderRadius: 16, pl: 25 }}
         _active={{ bg: '#EB3CA2' }}
       >
-        <Flex align="center" gridGap="10px">
+        <Flex align="center" gridGap="12px">
           {!over && (
             <svg
               width="15"
@@ -88,7 +92,7 @@ const ManageTokenList = () => {
           )}
           <Text>2</Text>
           <Avatar
-            size="sm"
+            size="md"
             name="Dan Abrahmov"
             src="https://thispersondoesnotexist.com/image"
           />
@@ -101,11 +105,15 @@ const ManageTokenList = () => {
             </Text>
           </Box>
         </Flex>
-
         <Switch id="#" colorScheme={'pink'} />
       </ListItem>
       <Center h="10px" justifyContent="end">
-        <Divider w="84.5%" style={{ border: '1px solid #1C1D21 60%' }} />
+        <Divider
+          mt="8px"
+          mb="8px"
+          w="77.5%"
+          style={{ border: '1px solid #1C1D21 60%' }}
+        />
       </Center>
       <ListItem
         d="flex"
@@ -114,7 +122,7 @@ const ManageTokenList = () => {
         margin="12px 0 8px 0"
         pr={23}
       >
-        <Flex align="center" gridGap="10px">
+        <Flex align="center" gridGap="12px">
           <svg
             width="15"
             height="6"
@@ -130,7 +138,7 @@ const ManageTokenList = () => {
           </svg>
           <Text>3</Text>
           <Avatar
-            size="sm"
+            size="md"
             name="Dan Abrahmov"
             src="https://thispersondoesnotexist.com/image"
           />
@@ -143,20 +151,23 @@ const ManageTokenList = () => {
             </Text>
           </Box>
         </Flex>
-
         <Switch id="#" colorScheme={'pink'} />
       </ListItem>
       <Center justifyContent="end">
-        <Divider w="84.5%" style={{ border: '1px solid #1C1D21 60%' }} />
+        <Divider
+          w="77.5%"
+          style={{ border: '1px solid #1C1D21 60%' }}
+          mt="8px"
+          mb="8px"
+        />
       </Center>
       <ListItem
         d="flex"
         justifyContent="space-between"
         alignItems="center"
-        margin="12px 0 8px 0"
         pr={23}
       >
-        <Flex align="center" gridGap="10px">
+        <Flex align="center" gridGap="12px">
           <svg
             width="15"
             height="6"
@@ -172,7 +183,7 @@ const ManageTokenList = () => {
           </svg>
           <Text>4</Text>
           <Avatar
-            size="sm"
+            size="md"
             name="Dan Abrahmov"
             src="https://thispersondoesnotexist.com/image"
           />
@@ -185,7 +196,6 @@ const ManageTokenList = () => {
             </Text>
           </Box>
         </Flex>
-
         <Switch id="#" colorScheme={'pink'} />
       </ListItem>
     </List>

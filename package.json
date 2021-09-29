@@ -59,7 +59,7 @@
     "@sushiswap/sdk": "5.0.0-canary.69",
     "@sushiswap/sushi-data": "^1.0.24",
     "@uniswap/token-lists": "^1.0.0-beta.26",
-    "@visx/axis": "^1.17.1",
+    "@visx/axis": "^2.1.1",
     "@visx/brush": "^1.18.1",
     "@visx/gradient": "^1.7.0",
     "@visx/grid": "^1.17.1",

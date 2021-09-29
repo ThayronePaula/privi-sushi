@@ -52,7 +52,7 @@ const ModalLend = () => {
           p="20px 30px"
           fontSize="md"
           color="#fff"
-          h="122px"
+          h={["auto", "122px"]}
         >
           <Box>
             <Text as="h5" fontWeight="500" mb="12px">
