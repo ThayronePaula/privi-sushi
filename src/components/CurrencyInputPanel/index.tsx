@@ -6,7 +6,7 @@ import { classNames, formatCurrencyAmount } from "../../functions";
 import { Button } from "@chakra-ui/button";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import CurrencyLogo from "../CurrencyLogo";
-// import CurrencySearchModal from "../../modals/SearchModal/CurrencySearchModal";
+import CurrencySearchModal from "../../modals/SearchModal/CurrencySearchModal";
 import DoubleCurrencyLogo from "../DoubleLogo";
 import { FiatValue } from "./FiatValue";
 import Input from "../Input";
