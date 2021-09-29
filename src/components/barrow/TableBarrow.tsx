@@ -15,7 +15,8 @@ import {
 } from "@chakra-ui/react";
 
 export const TableBarrow = () => {
-  const [isLargerThan1280] = useMediaQuery("(max-width: 1000px)");
+  const [isLargerThan1000] = useMediaQuery("(max-width: 1000px)");
+  const [isLargerThan480] = useMediaQuery("(max-width: 480px)");
 
   return (
     <Box
@@ -31,11 +32,15 @@ export const TableBarrow = () => {
         <Thead>
           <Tr position="sticky" top="0" bg="#fff" zIndex="25">
             <Th>Market</Th>
-            <Th>Borrow</Th>
-            <Th>Collateral</Th>
-            <Th>Oracle</Th>
-            <Th>Borrowed</Th>
-            <Th>Available</Th>
+            {!isLargerThan480 && <Th>Borrow</Th>}
+            {!isLargerThan1000 && (
+              <>
+                <Th>Collateral</Th>
+                <Th>Oracle</Th>
+                <Th>Available</Th>
+              </>
+            )}
+            {!isLargerThan480 && <Th>Borrowed</Th>}
             <Th textAlign="right">APR</Th>
           </Tr>
         </Thead>
@@ -60,69 +65,80 @@ export const TableBarrow = () => {
               </Flex>
             </Td>
 
-            <Td w="14.28%" verticalAlign="top">
-              <Box>
-                <Text
-                  align={["center", "left"]}
-                  color="#1C1D21"
-                  fontSize="16px"
-                >
-                  USDC
-                </Text>
-                <Text
-                  align={["center", "left"]}
-                  color="rgba(28, 29, 33,0.6)"
-                  fontSize="14px"
-                >
-                  USDC Coin
-                </Text>
-              </Box>
-            </Td>
+            {!isLargerThan480 && (
+              <Td w="14.28%" verticalAlign="top">
+                <Box>
+                  <Text
+                    align={["center", "left"]}
+                    color="#1C1D21"
+                    fontSize="16px"
+                  >
+                    USDC
+                  </Text>
+                  <Text
+                    align={["center", "left"]}
+                    color="rgba(28, 29, 33,0.6)"
+                    fontSize="14px"
+                  >
+                    USDC Coin
+                  </Text>
+                </Box>
+              </Td>
+            )}
 
-            <Td w="14.28%" verticalAlign="top">
-              <Box>
-                <Text
-                  align={["center", "left"]}
-                  color="#1C1D21"
-                  fontSize="16px"
-                >
-                  WETH
+            {!isLargerThan1000 && (
+              <Td w="14.28%" verticalAlign="top">
+                <Box>
+                  <Text
+                    align={["center", "left"]}
+                    color="#1C1D21"
+                    fontSize="16px"
+                  >
+                    WETH
+                  </Text>
+                  <Text
+                    align={["center", "left"]}
+                    color="rgba(28, 29, 33,0.6)"
+                    fontSize="14px"
+                  >
+                    Wrapped Ether
+                  </Text>
+                </Box>
+              </Td>
+            )}
+
+            {!isLargerThan1000 && (
+              <Td w="14.28%" verticalAlign="top">
+                <Text color="#1C1D21" fontWeight="600" fontSize="sm">
+                  Chainlink
                 </Text>
-                <Text
-                  align={["center", "left"]}
-                  color="rgba(28, 29, 33,0.6)"
-                  fontSize="14px"
-                >
-                  Wrapped Ether
+              </Td>
+            )}
+
+            {!isLargerThan1000 && (
+              <Td w="14.28%" verticalAlign="top">
+                <Text color="#1C1D21" fontWeight="600" fontSize="sm">
+                  85.27%
                 </Text>
-              </Box>
-            </Td>
+                <Progress
+                  value={85.27}
+                  size="xs"
+                  css={{ "& div": { backgroundColor: "#EB3CA2" } }}
+                />
+              </Td>
+            )}
 
-            <Td w="14.28%" verticalAlign="top">
-              <Text color="#1C1D21" fontWeight="600" fontSize="sm">
-                Chainlink
-              </Text>
-            </Td>
+            {!isLargerThan480 && (
+              <Td w="14.28%" verticalAlign="top">
+                <Text color="#1C1D21" fontWeight="600" fontSize="sm">
+                  227,43 USDC
+                </Text>
+                <Text color="rgba(28, 29, 33,0.6)" fontSize="sm">
+                  $1,748,408
+                </Text>
+              </Td>
+            )}
 
-            <Td w="14.28%" verticalAlign="top">
-              <Text color="#1C1D21" fontWeight="600" fontSize="sm">
-                85.27%
-              </Text>
-              <Progress
-                value={85.27}
-                size="xs"
-                css={{ "& div": { backgroundColor: "#EB3CA2" } }}
-              />
-            </Td>
-
-            <Td  w="14.28%" verticalAlign="top">
-              <Text color="#1C1D21" fontWeight="600" fontSize="sm">
-                227,43 USDC
-              </Text>
-              <Text color="rgba(28, 29, 33,0.6)" fontSize="sm">
-                $1,748,408
-              </Text>
-            </Td>
             <Td textAlign="right" w="14.28%" verticalAlign="top">
               <Text color="#1C1D21" fontWeight="600" fontSize="sm">
                 7.21%
