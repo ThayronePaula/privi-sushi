@@ -139,7 +139,7 @@ const SidebarContent = ({
       >
         <CloseButton onClick={onClose} />
       </Flex>
-      <Flex direction="column" pl="7%" h="full" justify="space-between">
+      <Flex direction="column" h="full" justify="space-between">
         <Box>
           {subTitle && (
             <Text color="#1C1D21" fontSize="14px" fontWeight="medium">
@@ -226,8 +226,6 @@ interface MobileProps extends FlexProps {
 const MobileNav = ({ titleSubNav, onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
-      ml={{ base: 0, md: 0 }}
-      px={{ base: 4, md: 4 }}
       height="108"
       alignItems={["flex-end", "center"]}
       bg={"#FFFFFF"}
