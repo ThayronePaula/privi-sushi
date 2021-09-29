@@ -1,5 +1,4 @@
-import { useMemo, useState } from "react";
-import NextLink from "next/link";
+import { useMemo } from "react";
 import {
   Box,
   Flex,
@@ -41,12 +40,8 @@ export default function NavBar() {
 
   return (
     <>
-      <Box
-        d="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        w="100%"
-      >
+      <Box d="flex" alignItems="center" justifyContent="space-between" w="100%">
+        F{" "}
         <Text fontFamily="Roboto" fontSize={["md", "22px"]} fontWeight="600">
           Sushiswap
         </Text>
@@ -124,7 +119,6 @@ export default function NavBar() {
             </Button>
           )}
         </Flex>
-
         <Collapse in={isOpen} unmountOnExit={false}>
           <MobileNav onToggle={onToggle} />
         </Collapse>
@@ -164,26 +158,30 @@ const DesktopNav = () => {
   const router = useRouter();
   return (
     <Stack direction={"row"} gridGap={29}>
-      {NAV_ITEMS.map((navItem, index) => (
+      {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label} style={{ position: "relative" }}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <NextLink href={navItem.href ?? "#"} passHref>
-                <Link
-                  p={2}
-                  fontSize={"14px"}
-                  fontWeight={500}
-                  fontFamily="Roboto"
-                  color={linkColor}
-                  _hover={{
-                    textDecoration: "none",
-                    color: linkHoverColor,
-                  }}
-                  _after={navItem.href === router.pathname && { ...lineIcon }}
-                >
-                  {navItem.label}
-                </Link>
-              </NextLink>
+              <Link
+                p={2}
+                fontSize={"14px"}
+                fontWeight={500}
+                fontFamily="Roboto"
+                color={linkColor}
+                _hover={{
+                  textDecoration: "none",
+                  color: linkHoverColor,
+                }}
+                _after={
+                  navItem.href === router.pathname ||
+                  (router.pathname === "/barrow" && navItem.label === "Lending")
+                    ? { ...lineIcon }
+                    : {}
+                }
+                onClick={() => router.push(navItem.href)}
+              >
+                {navItem.label}
+              </Link>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -307,9 +305,9 @@ const MobileNav = ({ onToggle }: MobileNavProps) => {
           colorScheme="white"
           onClick={() => authenticate()}
           borderRadius="12px"
-          fontSize={['12px',"14px"]}
+          fontSize={["12px", "14px"]}
           fontFamily="Roboto"
-          px={['8px', 25]}
+          px={["8px", 25]}
           py={[3]}
           h={"auto"}
         >
