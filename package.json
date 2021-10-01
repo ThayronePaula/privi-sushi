@@ -56,7 +56,7 @@
     "@gnosis.pm/safe-apps-web3-react": "^0.6.0",
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.4",
-    "@keystonehq/keystone-connector": "^0.8.0",
+    "@keystonehq/keystone-connector": "^0.8.11",
     "@lingui/cli": "^3.10.2",
     "@lingui/core": "^3.10.4",
     "@lingui/loader": "^3.10.2",
@@ -176,6 +176,10 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@toruslabs/fetch-node-details": "^2.7.1",
     "multihashes": "^4.0.3"
+  },
+  "engines": {
+    "node": ">=14.4.0"
   }
 }
