@@ -1,6 +1,17 @@
 :root {
-    --primary: #0D0415;
-    --text-primary: #BFBFBF;
+    --primary: #F3F4F7;
+    --text-primary: #1C1D21;
     --font-sans: "DM Sans", -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue', 'Helvetica', sans-serif;
     --scrollbar-width: 14px;
+    
 }
+
+
+.swap_bg {
+    background-image: url('../../public/backgroundCard.png');
+    height: 1000%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+

@@ -1,10 +1,10 @@
 import { ChainId, Currency, Percent } from '@sushiswap/sdk'
 import React, { FC, useState } from 'react'
 
-import Gas from '../../components/Gas'
+// import Gas from '../../components/Gas'
 import MyOrders from '../exchange-v1/limit-order/MyOrders'
 import NavLink from '../../components/NavLink'
-import Settings from '../../components/Settings'
+// import Settings from '../../components/Settings'
 import { currencyId } from '../../functions'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../hooks'
@@ -37,7 +37,7 @@ const ExchangeHeader: FC<ExchangeHeaderProps> = ({ input, output, allowedSlippag
 
   return (
     <div className="flex items-center justify-between mb-4 space-x-3">
-      <div className="grid grid-cols-3 rounded p-3px bg-dark-800 h-[46px]">
+      <div className="grid grid-cols-3 rounded p-3px bg-white h-[46px]">
         <NavLink
           activeClassName="font-bold border rounded text-high-emphesis border-dark-800 bg-gradient-to-r from-opaque-blue to-opaque-pink hover:from-blue hover:to-pink"
           href={{
@@ -49,13 +49,13 @@ const ExchangeHeader: FC<ExchangeHeaderProps> = ({ input, output, allowedSlippag
             {i18n._(t`Swap`)}
           </a>
         </NavLink>
-        <NavLink
-          activeClassName="font-bold border rounded text-high-emphesis border-dark-800 bg-gradient-to-r from-opaque-blue to-opaque-pink hover:from-blue hover:to-pink"
-          href={{
-            pathname: '/limit-order',
-            query: getQuery(input, output),
-          }}
-        >
+          <NavLink
+            activeClassName="font-bold border rounded text-high-emphesis border-dark-800 bg-gradient-to-r from-opaque-blue to-opaque-pink hover:from-blue hover:to-pink"
+            href={{
+              pathname: '/limit-order',
+              query: getQuery(input, output),
+            }}
+          >
           <a className="flex items-center justify-center px-4 text-base font-medium text-center rounded-md text-secondary hover:text-high-emphesis">
             {i18n._(t`Limit`)}
           </a>
@@ -71,7 +71,7 @@ const ExchangeHeader: FC<ExchangeHeaderProps> = ({ input, output, allowedSlippag
           </a>
         </NavLink>
       </div>
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <div className="grid grid-flow-col gap-1">
           {isLimitOrder && (
             <div className="items-center h-full w-full cursor-pointer hover:bg-dark-800 rounded px-3 py-1.5">
@@ -96,7 +96,7 @@ const ExchangeHeader: FC<ExchangeHeaderProps> = ({ input, output, allowedSlippag
             <Settings placeholderSlippage={allowedSlippage} />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

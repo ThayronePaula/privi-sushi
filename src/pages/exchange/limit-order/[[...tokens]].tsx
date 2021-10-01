@@ -18,7 +18,6 @@ import Container from '../../../components/Container'
 import CurrencyInput from '../../../features/exchange-v1/limit-order/CurrencyInput'
 import CurrencyInputPanel from '../../../features/exchange-v1/limit-order/CurrencyInputPanel'
 import CurrencySelect from '../../../features/exchange-v1/limit-order/CurrencySelect'
-import DoubleGlowShadow from '../../../components/DoubleGlowShadow'
 import ExchangeHeader from '../../../features/trade/Header'
 import { ExclamationIcon } from '@heroicons/react/solid'
 import ExpertModePanel from '../../../components/ExpertModePanel'
@@ -232,8 +231,8 @@ function LimitOrder() {
           toggleExpertMode()
         }}
       >
-        <DoubleGlowShadow>
-          <div id="limit-order-page" className="flex flex-col gap-4 p-4 rounded bg-dark-900">
+        
+          <div id="limit-order-page" className="flex flex-col gap-4 p-4 rounded bg-white">
             <ExchangeHeader input={currencies[Field.INPUT]} output={currencies[Field.OUTPUT]} />
             <div className="flex flex-col gap-4">
               <CurrencyInputPanel
@@ -272,7 +271,7 @@ function LimitOrder() {
                     }}
                   >
                     <div
-                      className="p-2 rounded-full bg-dark-800 hover:bg-dark-700"
+                      className="p-2 rounded-full bg-white hover:bg-dark-700"
                       onMouseEnter={() => setAnimateSwapArrows(true)}
                       onMouseLeave={() => setAnimateSwapArrows(false)}
                     >
@@ -395,7 +394,6 @@ function LimitOrder() {
               {/*<LimitOrderButton color="gradient" className="font-bold" currency={currencies[Field.INPUT]} />*/}
             </div>
           </div>
-        </DoubleGlowShadow>
       </ExpertModePanel>
     </Container>
   )

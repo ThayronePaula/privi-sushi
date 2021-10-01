@@ -17,6 +17,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const { withSentryConfig } = require('@sentry/nextjs')
 
 const nextConfig = {
+  trailingSlash: true,
   webpack: (config) => {
     config.module.rules = [
       ...config.module.rules,
@@ -40,11 +41,11 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
-      // {
-      //   source: '/',
-      //   destination: '/swap',
-      //   permanent: true,
-      // },
+      {
+        source: '/',
+        destination: '/swap',
+        permanent: true,
+      },
 
       {
         source: '/zap',
@@ -189,4 +190,4 @@ const SentryWebpackPluginOptions = {
 module.exports = withSentryConfig(withPWA(withBundleAnalyzer(nextConfig)), SentryWebpackPluginOptions)
 
 // Don't delete this console log, useful to see the config in Vercel deployments
-console.log('next.config.js', JSON.stringify(module.exports, null, 2))
+// console.log('next.config.js', JSON.stringify(module.exports, null, 2))
