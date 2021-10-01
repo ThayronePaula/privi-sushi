@@ -10,7 +10,7 @@ import { ArrowRightIcon } from '@heroicons/react/outline'
 import BalancePanel from '../../features/inari/BalancePanel'
 import { ChainId } from '@sushiswap/sdk'
 import Container from '../../components/Container'
-import DoubleGlowShadow from '../../components/DoubleGlowShadow'
+
 import { Field } from '../../state/inari/types'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -74,7 +74,7 @@ const Inari = () => {
               <StrategyStepDisplay />
               <SideSwitch />
             </div>
-            <DoubleGlowShadow className="max-w-[100%]">
+            
               <div className="grid gap-8 p-5 border-2 rounded bg-dark-900 border-dark-700">
                 <div className="flex flex-col items-start md:flex-row">
                   <div className="w-full mr-2 md:w-3/5">
@@ -111,7 +111,7 @@ const Inari = () => {
                   <InariDescription />
                 </div>
               </div>
-            </DoubleGlowShadow>
+            
           </div>
         </div>
       </Container>

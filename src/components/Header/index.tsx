@@ -44,7 +44,7 @@ function AppBar(): JSX.Element {
                       <NavLink href="/swap">
                         <a
                           id={`swap-nav-link`}
-                          className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                          className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                         >
                           {i18n._(t`Swap`)}
                         </a>
@@ -52,7 +52,7 @@ function AppBar(): JSX.Element {
                       <NavLink href="/pool">
                         <a
                           id={`pool-nav-link`}
-                          className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                          className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                         >
                           {i18n._(t`Pool`)}
                         </a>
@@ -61,7 +61,7 @@ function AppBar(): JSX.Element {
                         <NavLink href={'/migrate'}>
                           <a
                             id={`migrate-nav-link`}
-                            className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                            className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                           >
                             {i18n._(t`Migrate`)}
                           </a>
@@ -71,7 +71,7 @@ function AppBar(): JSX.Element {
                         <NavLink href={'/farm'}>
                           <a
                             id={`farm-nav-link`}
-                            className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                            className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                           >
                             {i18n._(t`Farm`)}
                           </a>
@@ -82,7 +82,7 @@ function AppBar(): JSX.Element {
                           <NavLink href={'/lend'}>
                             <a
                               id={`lend-nav-link`}
-                              className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                              className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                             >
                               {i18n._(t`Lend`)}
                             </a>
@@ -90,7 +90,7 @@ function AppBar(): JSX.Element {
                           <NavLink href={'/borrow'}>
                             <a
                               id={`borrow-nav-link`}
-                              className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                              className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                             >
                               {i18n._(t`Borrow`)}
                             </a>
@@ -101,7 +101,7 @@ function AppBar(): JSX.Element {
                         <NavLink href={'/stake'}>
                           <a
                             id={`stake-nav-link`}
-                            className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                            className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                           >
                             {i18n._(t`Stake`)}
                           </a>
@@ -270,7 +270,7 @@ function AppBar(): JSX.Element {
                 <Link href={'/swap'}>
                   <a
                     id={`swap-nav-link`}
-                    className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                    className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                   >
                     {i18n._(t`Swap`)}
                   </a>
@@ -278,7 +278,7 @@ function AppBar(): JSX.Element {
                 <Link href={'/pool'}>
                   <a
                     id={`pool-nav-link`}
-                    className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                    className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                   >
                     {i18n._(t`Pool`)}
                   </a>
@@ -287,7 +287,7 @@ function AppBar(): JSX.Element {
                 <Link href={'/migrate'}>
                   <a
                     id={`migrate-nav-link`}
-                    className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                    className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                   >
                     {i18n._(t`Migrate`)}
                   </a>
@@ -297,7 +297,7 @@ function AppBar(): JSX.Element {
                   <Link href={'/farm'}>
                     <a
                       id={`farm-nav-link`}
-                      className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                      className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                     >
                       {' '}
                       {i18n._(t`Farm`)}
@@ -310,7 +310,7 @@ function AppBar(): JSX.Element {
                     <Link href={'/lend'}>
                       <a
                         id={`lend-nav-link`}
-                        className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                        className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                       >
                         {i18n._(t`Lend`)}
                       </a>
@@ -319,7 +319,7 @@ function AppBar(): JSX.Element {
                     <Link href={'/borrow'}>
                       <a
                         id={`borrow-nav-link`}
-                        className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                        className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                       >
                         {i18n._(t`Borrow`)}
                       </a>
@@ -331,7 +331,7 @@ function AppBar(): JSX.Element {
                   <Link href={'/stake'}>
                     <a
                       id={`stake-nav-link`}
-                      className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                      className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                     >
                       {i18n._(t`Stake`)}
                     </a>
@@ -342,7 +342,7 @@ function AppBar(): JSX.Element {
                   <ExternalLink
                     id={`analytics-nav-link`}
                     href={ANALYTICS_URL[chainId] || 'https://analytics.sushi.com'}
-                    className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                    className="p-2 text-baseline hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
                   >
                     {i18n._(t`Analytics`)}
                   </ExternalLink>

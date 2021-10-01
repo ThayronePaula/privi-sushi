@@ -18,7 +18,6 @@ import Container from '../../../components/Container'
 import { Contract } from '@ethersproject/contracts'
 import CurrencyLogo from '../../../components/CurrencyLogo'
 import Dots from '../../../components/Dots'
-import DoubleGlowShadow from '../../../components/DoubleGlowShadow'
 import { Field } from '../../../state/burn/actions'
 import Head from 'next/head'
 import Header from '../../../features/trade/Header'
@@ -730,7 +729,7 @@ export default function Remove() {
         </NavLink>
       </div>
 
-      <DoubleGlowShadow>
+      
         <div className="p-4 space-y-4 rounded bg-dark-900" style={{ zIndex: 1 }}>
           {/* <AddRemoveTabs
           creating={false}
@@ -862,7 +861,7 @@ export default function Remove() {
 
           {pair ? <MinimalPositionCard showUnwrapped={oneCurrencyIsWETH} pair={pair} /> : null}
         </div>
-      </DoubleGlowShadow>
+      
     </Container>
   )
 }
