@@ -43,6 +43,7 @@ module.exports = {
         red: '#ff3838',
         yellow: '#ffd166',
 
+        'privi-yellow': '#FEC464',
         'opaque-blue': '#0993ec80',
         'opaque-pink': '#f338c380',
         'pink-red': '#FE5A75',
@@ -58,6 +59,7 @@ module.exports = {
         'dark-700': '#2E3348',
         'dark-600': '#1C2D49',
         'dark-500': '#223D5E',
+        'white-900': '#FFFF',
         'low-emphesis': '#575757',
         primary: '#BFBFBF',
         secondary: '#7F7F7F',

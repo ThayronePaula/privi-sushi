@@ -6,6 +6,10 @@
     
 }
 
-
-/*  add this cofigs 
---font-trap  */
+.swap_bg {
+    background-image: url('../../public/backgroundCard.png');
+    height: 1000%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

@@ -19,7 +19,8 @@
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
+    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
+    "export": "next export"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -71,7 +72,7 @@
     "@sushiswap/limit-order-pair-list": "0.2.2",
     "@sushiswap/sdk": "5.0.0-canary.89",
     "@sushiswap/sushi-data": "^1.0.24",
-    "@tailwindcss/jit": "^0.1.18",
+    "@tailwindcss/jit": "^0.1.10",
     "@transak/transak-sdk": "^1.0.28",
     "@types/node": "^15.12.2",
     "@types/react": "^17.0.11",
@@ -152,7 +153,11 @@
     "tailwindcss": "^2.2.9",
     "tailwindcss-border-gradient-radius": "^2.0.0",
     "typescript": "^4.3.5",
-    "wcag-contrast": "^3.0.0"
+    "wcag-contrast": "^3.0.0",
+    "@chakra-ui/react": "^1.6.8",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "framer-motion": "^4.1.17"
   },
   "next-unused": {
     "debug": true,
@@ -169,11 +174,5 @@
     "not ie 11",
     "not dead",
     "not op_mini all"
-  ],
-  "dependencies": {
-    "@chakra-ui/react": "^1.6.8",
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
-    "framer-motion": "^4.1.17"
-  }
+  ]
 }

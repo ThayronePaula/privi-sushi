@@ -41,7 +41,7 @@ function Manage({
         {[i18n._(t`Lists`), i18n._(t`Tokens`)].map((title, i) => (
           <div
             className={classNames(
-              tabIndex === i && 'bg-dark-900 text-high-emphesis',
+              tabIndex === i && 'bg-white-900 text-high-emphesis',
               'flex items-center justify-center flex-1 px-1 py-2 text-lg rounded cursor-pointer select-none text-secondary hover:text-primary focus:outline-none'
             )}
             onClick={() => setTabIndex(i)}
