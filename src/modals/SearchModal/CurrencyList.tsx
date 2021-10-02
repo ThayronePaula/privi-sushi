@@ -120,7 +120,7 @@ function CurrencyRow({
     <RowBetween
       id={`token-item-${key}`}
       style={style}
-      className="px-5 py-1 rounded cursor-pointer hover:bg-dark-800"
+      className="px-5 py-1 rounded cursor-pointer hover:bg-privi-pink hover:text-white"
       onClick={() => (isSelected ? null : onSelect())}
       disabled={isSelected}
       selected={otherSelected}

@@ -27,6 +27,7 @@ module.exports = {
           'dark-900': '#161522',
           'dark-800': '#202231',
           'dark-pink-red': '#4e3034',
+          'swap-background': '#FA52A0',
         },
         border: {
           1: '1px',
@@ -43,10 +44,11 @@ module.exports = {
         red: '#ff3838',
         yellow: '#ffd166',
 
-        'privi-yellow': '#FEC464',
         'opaque-blue': '#0993ec80',
         'opaque-pink': '#f338c380',
         'pink-red': '#FE5A75',
+        'privi-pink': '#E7158F',
+        'privi-dark': '#1C1D21',
         'light-brown': '#FEC464',
         'light-yellow': '#FFD166',
         'cyan-blue': '#0993EC',
@@ -119,6 +121,12 @@ module.exports = {
         ellipsis: 'ellipsis 1.25s infinite',
         'spin-slow': 'spin 2s linear infinite',
         fade: 'opacity 150ms linear',
+      },
+      borderRadius: {
+        none: '0',
+        px: '24px',
+        DEFAULT: '0.625rem',
+        token: '200px',
       },
       keyframes: {
         ellipsis: {

@@ -451,28 +451,28 @@ export default function Swap() {
         onConfirm={handleConfirmTokenWarning}
       />
 
-      <div className=" p-4 space-y-4 rounded bg-white z-1">
+      <div className="flex flex-col items-center p-4 space-y-4 z-1">
         <SwapHeader
           input={currencies[Field.INPUT]}
           output={currencies[Field.OUTPUT]}
           allowedSlippage={allowedSlippage}
         />
+        <div className="flex flex-row bg-white priv-swap-background">
+          <ConfirmSwapModal
+            isOpen={showConfirm}
+            trade={trade}
+            originalTrade={tradeToConfirm}
+            onAcceptChanges={handleAcceptChanges}
+            attemptingTxn={attemptingTxn}
+            txHash={txHash}
+            recipient={recipient}
+            allowedSlippage={allowedSlippage}
+            onConfirm={handleSwap}
+            swapErrorMessage={swapErrorMessage}
+            onDismiss={handleConfirmDismiss}
+            minerBribe={doArcher ? archerETHTip : undefined}
+          />
 
-        <ConfirmSwapModal
-          isOpen={showConfirm}
-          trade={trade}
-          originalTrade={tradeToConfirm}
-          onAcceptChanges={handleAcceptChanges}
-          attemptingTxn={attemptingTxn}
-          txHash={txHash}
-          recipient={recipient}
-          allowedSlippage={allowedSlippage}
-          onConfirm={handleSwap}
-          swapErrorMessage={swapErrorMessage}
-          onDismiss={handleConfirmDismiss}
-          minerBribe={doArcher ? archerETHTip : undefined}
-        />
-        <div>
           <CurrencyInputPanel
             // priceImpact={priceImpact}
             label={
@@ -532,7 +532,7 @@ export default function Swap() {
             </div>
           </AutoColumn>
 
-          <div>
+          <div className="flex flex-row justify-between mb-5 space-x-3 bg-white">
             <CurrencyInputPanel
               value={formattedAmounts[Field.OUTPUT]}
               onUserInput={handleTypeOutput}
