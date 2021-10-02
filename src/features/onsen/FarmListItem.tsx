@@ -8,6 +8,7 @@ import { PairType } from './enum'
 import React from 'react'
 import { useCurrency } from '../../hooks/Tokens'
 import QuestionHelper from '../../components/QuestionHelper'
+import { Text, Box } from '@chakra-ui/react'
 
 const FarmListItem = ({ farm, ...rest }) => {
   const token0 = useCurrency(farm.pair.token0.id)
@@ -20,59 +21,68 @@ const FarmListItem = ({ farm, ...rest }) => {
           <Disclosure.Button
             className={classNames(
               open && 'rounded-b-none',
-              'w-full px-4 py-6 text-left rounded cursor-pointer select-none bg-dark-900 text-primary text-sm md:text-lg'
+              'w-full px-4 py-6 text-left rounded cursor-pointer select-none text-primary text-sm md:text-lg'
             )}
           >
-            <div className="grid grid-cols-4">
-              <div className="flex col-span-2 space-x-4 md:col-span-1">
-                <DoubleLogo currency0={token0} currency1={token1} size={40} />
+            <Box className="grid grid-cols-4" color="#1C1D21">
+              <div className="flex col-span-2 space-x-4 rounded-full md:col-span-1">
+                <DoubleLogo logoClassName="rounded-full" currency0={token0} currency1={token1} size={37.8} />
                 <div className="flex flex-col justify-center">
-                  <div>
-                    <span className="font-bold">{farm?.pair?.token0?.symbol}</span>/
-                    <span className={farm?.pair?.type === PairType.KASHI ? 'font-thin' : 'font-bold'}>
+                  <Box textAlign={['center', 'left']} fontSize="16px">
+                    <Text as="span">{farm?.pair?.token0?.symbol}T</Text>/
+                    <Text as="span" className={farm?.pair?.type === PairType.KASHI ? 'font-thin' : 'text-base'}>
                       {farm?.pair?.token1?.symbol}
-                    </span>
-                  </div>
+                    </Text>
+                  </Box>
                   {farm?.pair?.type === PairType.SWAP && (
-                    <div className="text-xs md:text-base text-secondary">SushiSwap Farm</div>
+                    <Text
+                      align={['center', 'left']}
+                      color="#1c1d2199"
+                      fontSize="14px"
+                      className="text-xs text-secondary"
+                    >
+                      Chronoswap Farm
+                    </Text>
                   )}
                   {farm?.pair?.type === PairType.KASHI && (
                     <div className="text-xs md:text-base text-secondary">Kashi Farm</div>
                   )}
                 </div>
               </div>
-              <div className="flex flex-col justify-center font-bold">{formatNumber(farm.tvl, true)}</div>
+              <Text fontWeight="500" fontSize="16px" className="flex flex-col justify-center">
+                {formatNumber(farm.tvl, true)}
+              </Text>
               <div className="flex-row items-center hidden space-x-4 md:flex">
                 <div className="flex items-center space-x-2">
                   {farm?.rewards?.map((reward, i) => (
                     <div key={i} className="flex items-center">
                       <Image
                         src={reward.icon}
-                        width="30px"
-                        height="30px"
-                        className="rounded-md"
+                        width="37.8px"
+                        height="37.8px"
+                        className="rounded-full"
                         layout="fixed"
                         alt={reward.token}
                       />
                     </div>
                   ))}
                 </div>
-                <div className="flex flex-col space-y-1">
+                <Box fontSize="14px" color="#1c1d2199" className="flex flex-col space-y-1">
                   {farm?.rewards?.map((reward, i) => (
                     <div key={i} className="text-xs md:text-sm whitespace-nowrap">
                       {formatNumber(reward.rewardPerDay)} {reward.token} / DAY
                     </div>
                   ))}
-                </div>
+                </Box>
               </div>
               <div className="flex flex-col items-end justify-center">
-                <div className="flex flex-row items-center font-bold text-right text-high-emphesis">
+                <Box fontSize="14px" className="flex flex-row items-center font-semibold text-right">
                   {farm?.tvl !== 0
                     ? farm?.roiPerYear > 10000
                       ? '>10,000%'
                       : formatPercent(farm?.roiPerYear * 100)
                     : 'Infinite'}
-                  {!!farm?.feeApyPerYear && (
+                  {/* {!!farm?.feeApyPerYear && (
                     <QuestionHelper
                       text={
                         <div className="flex flex-col">
@@ -91,11 +101,13 @@ const FarmListItem = ({ farm, ...rest }) => {
                         </div>
                       }
                     />
-                  )}
-                </div>
-                <div className="text-xs text-right md:text-base text-secondary">annualized</div>
+                  )} */}
+                </Box>
+                <Box fontSize="14px" color="#1c1d2199" className="text-right">
+                  annualized
+                </Box>
               </div>
-            </div>
+            </Box>
           </Disclosure.Button>
 
           {open && <FarmListItemDetails farm={farm} />}
