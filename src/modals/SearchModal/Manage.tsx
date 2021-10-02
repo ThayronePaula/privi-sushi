@@ -49,7 +49,7 @@ function Manage({
           </div>
         ))}
       </div>
-      <div className="h-screen">
+      <div className="h-scree">
         {tabIndex === 0 && (
           <AutoSizer disableWidth>
             {({ height }) => (

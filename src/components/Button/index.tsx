@@ -41,11 +41,16 @@ const LINK = {
   blue: 'text-blue text-opacity-80 hover:text-opacity-100 focus:text-opacity-100 whitespace-nowrap focus:ring-0',
 }
 
+const SWAP = {
+  default: 'flex items-center rounded-token bg-dark-700 hover:bg-privi-pink text-white w-40',
+}
+
 const VARIANT = {
   outlined: OUTLINED,
   filled: FILLED,
   empty: EMPTY,
   link: LINK,
+  swap: SWAP,
 }
 
 export type ButtonColor = 'blue' | 'pink' | 'gradient' | 'gray' | 'default' | 'red' | 'green'

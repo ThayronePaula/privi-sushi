@@ -28,17 +28,18 @@ export default function CommonBases({
           Trending
         </Typography>
       </div>
+
       <div className="flex flex-row flex-wrap w-full">
         {bases.map((currency: Currency) => {
           const isSelected = selectedCurrency?.equals(currency)
           return (
             <Button
-              variant="empty"
+              variant="swap"
               type="button"
               onClick={() => !isSelected && onSelect(currency)}
               disabled={isSelected}
               key={currencyId(currency)}
-              className="flex items-center p-2 m-1 space-x-2 rounded bg-dark-800 hover:bg-dark-700 disabled:bg-dark-1000 disabled:cursor-not-allowed"
+              className="flex items-center p-2 m-1 space-x-2 rounded hover:bg-privi-pink disabled:bg-privi-pink disabled:cursor-not-allowed"
             >
               <CurrencyLogo currency={currency} />
               <Typography variant="sm" className="font-semibold">

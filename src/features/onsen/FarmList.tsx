@@ -7,6 +7,7 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import useSortableData from '../../hooks/useSortableData'
+import { Text, Box } from '@chakra-ui/react'
 
 const FarmList = ({ farms, term }) => {
   const { items, requestSort, sortConfig } = useSortableData(farms)
@@ -15,41 +16,33 @@ const FarmList = ({ farms, term }) => {
 
   return items ? (
     <>
-      <div className="grid grid-cols-4 text-base font-bold text-primary">
+      <Box color="#1C1D21" fontWeight="500" fontSize="14px" className="grid grid-cols-4">
         <div
           className="flex items-center col-span-2 px-4 cursor-pointer md:col-span-1"
           onClick={() => requestSort('symbol')}
         >
-          <div className="hover:text-high-emphesis">{i18n._(t`Pool`)}</div>
+          <div>{i18n._(t`Pool`)}</div>
           {sortConfig &&
             sortConfig.key === 'symbol' &&
             ((sortConfig.direction === 'ascending' && <ChevronUpIcon width={12} height={12} />) ||
               (sortConfig.direction === 'descending' && <ChevronDownIcon width={12} height={12} />))}
         </div>
-        <div
-          className="flex items-center px-4 cursor-pointer hover:text-high-emphesis"
-          onClick={() => requestSort('tvl')}
-        >
+        <div className="flex items-center px-4 cursor-pointer" onClick={() => requestSort('tvl')}>
           {i18n._(t`TVL`)}
           {sortConfig &&
             sortConfig.key === 'tvl' &&
             ((sortConfig.direction === 'ascending' && <ChevronUpIcon width={12} height={12} />) ||
               (sortConfig.direction === 'descending' && <ChevronDownIcon width={12} height={12} />))}
         </div>
-        <div className="items-center justify-start hidden px-4 md:flex hover:text-high-emphesis">
-          {i18n._(t`Rewards`)}
-        </div>
-        <div
-          className="flex items-center justify-end px-4 cursor-pointer hover:text-high-emphesis"
-          onClick={() => requestSort('roiPerYear')}
-        >
+        <div className="items-center justify-start hidden px-4 md:flex">{i18n._(t`Rewards`)}</div>
+        <div className="flex items-center justify-end px-4 cursor-pointer" onClick={() => requestSort('roiPerYear')}>
           {i18n._(t`APR`)}
           {sortConfig &&
             sortConfig.key === 'roiPerYear' &&
             ((sortConfig.direction === 'ascending' && <ChevronUpIcon width={12} height={12} />) ||
               (sortConfig.direction === 'descending' && <ChevronDownIcon width={12} height={12} />))}
         </div>
-      </div>
+      </Box>
       <InfiniteScroll
         dataLength={numDisplayed}
         next={() => setNumDisplayed(numDisplayed + 5)}
