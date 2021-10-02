@@ -73,7 +73,7 @@
     "@sushiswap/sushi-data": "^1.0.24",
     "@tailwindcss/jit": "^0.1.18",
     "@transak/transak-sdk": "^1.0.28",
-    "@types/node": "^15.12.2",
+    "@types/node": "^16.10.2",
     "@types/react": "^17.0.11",
     "@uniswap/token-lists": "1.0.0-beta.24",
     "@visx/axis": "^1.17.1",
@@ -169,5 +169,12 @@
     "not ie 11",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.8",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "framer-motion": "^4.1.17"
+  }
 }

@@ -23,11 +23,12 @@ export default function CommonBases({
 
   return (
     <div className="flex flex-col space-y-2">
-      <div className="flex flex-row">
-        Common bases
-        <QuestionHelper text="These tokens are commonly paired with other tokens." />
+      <div>
+        <Typography variant="sm" className="text-lg">
+          Trending
+        </Typography>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-row flex-wrap w-full">
         {bases.map((currency: Currency) => {
           const isSelected = selectedCurrency?.equals(currency)
           return (

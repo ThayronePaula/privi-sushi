@@ -59,8 +59,10 @@ module.exports = {
         'dark-600': '#1C2D49',
         'dark-500': '#223D5E',
         'low-emphesis': '#575757',
+        'privi-border': 'rgba(0, 0, 0, 0.2)',
         primary: '#BFBFBF',
         secondary: '#7F7F7F',
+        textsearch: '#1C1D21',
         'high-emphesis': '#E3E3E3',
       },
       lineHeight: {
@@ -78,11 +80,6 @@ module.exports = {
             fontWeight: 700,
           },
         ],
-      },
-      borderRadius: {
-        none: '0',
-        px: '1px',
-        DEFAULT: '0.625rem',
       },
       boxShadow: {
         swap: '0px 50px 250px -47px rgba(39, 176, 230, 0.29)',
