@@ -5,7 +5,7 @@ import { AutoRow } from '../../components/Row'
 import Button from '../../components/Button'
 import { COMMON_BASES } from '../../config/routing'
 import CurrencyLogo from '../../components/CurrencyLogo'
-import QuestionHelper from '../../components/QuestionHelper'
+// import QuestionHelper from '../../components/QuestionHelper'
 import React from 'react'
 import Typography from '../../components/Typography'
 import { currencyId } from '../../functions'
@@ -22,12 +22,13 @@ export default function CommonBases({
   const bases = typeof chainId !== 'undefined' ? COMMON_BASES[chainId] ?? [] : []
 
   return (
-    <div className="flex flex-col space-y-2 common-base">
-      <div className="flex flex-row text-red">
-        Common bases
-        <QuestionHelper text="These tokens are commonly paired with other tokens." />
+    <div className="flex flex-col space-y-2">
+      <div>
+        <Typography variant="sm" className="text-lg">
+          Trending
+        </Typography>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-row flex-wrap w-full">
         {bases.map((currency: Currency) => {
           const isSelected = selectedCurrency?.equals(currency)
           return (

@@ -22,6 +22,9 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { useRouter } from 'next/router'
 import useToggle from '../../hooks/useToggle'
 import { useTokenComparator } from './sorting'
+import { Flex, Box, Text, Input, InputGroup, InputLeftElement, Avatar } from '@chakra-ui/react'
+import { SearchIcon } from '@chakra-ui/icons'
+import { Center, Divider, List, ListItem, Stack } from '@chakra-ui/layout'
 
 interface CurrencySearchProps {
   isOpen: boolean
@@ -176,7 +179,7 @@ export function CurrencySearch({
 
   return (
     <div className="flex flex-col max-h-[inherit]">
-      <ModalHeader className="h-full" onClose={onDismiss} title="Select a token" />
+      <ModalHeader className="h-full text-black text-2xl" onClose={onDismiss} title="Select token" />
       {!currencyList && (
         <div className="mt-0 mb-3 sm:mt-3 sm:mb-8">
           <input
@@ -188,7 +191,7 @@ export function CurrencySearch({
             ref={inputRef as RefObject<HTMLInputElement>}
             onChange={handleInput}
             onKeyDown={handleEnter}
-            className="w-full bg-transparent border border-dark-700 focus:border-transparent focus:border-gradient-r-blue-pink-dark-900 rounded placeholder-secondary focus:placeholder-primary font-bold text-base px-6 py-3.5"
+            className="w-full border border-privi-border focus:privi-border modalsearch placeholder-textsearch focus:placeholder-textsearch opacity-60 font-bold text-base px-6 py-3.5"
           />
         </div>
       )}
@@ -224,13 +227,6 @@ export function CurrencySearch({
         <Column style={{ padding: '20px', height: '100%' }}>
           <div className="mb-8 text-center">{i18n._(t`No results found`)}</div>
         </Column>
-      )}
-      {allowManageTokenList && (
-        <div className="mt-3">
-          <Button id="list-token-manage-button" onClick={showManageView} color="gray">
-            {i18n._(t`Manage Token Lists`)}
-          </Button>
-        </div>
       )}
     </div>
   )
