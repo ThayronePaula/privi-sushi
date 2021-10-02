@@ -77,7 +77,7 @@
     "@sushiswap/sushi-data": "^1.0.24",
     "@tailwindcss/jit": "^0.1.10",
     "@transak/transak-sdk": "^1.0.28",
-    "@types/node": "^15.12.2",
+    "@types/node": "^16.10.2",
     "@types/react": "^17.0.11",
     "@uniswap/token-lists": "1.0.0-beta.24",
     "@visx/axis": "^1.17.1",
@@ -179,9 +179,11 @@
     "@toruslabs/fetch-node-details": "^2.7.1",
     "cids": "^1.1.9",
     "multicodec": "^3.2.1",
-    "multihashes": "^4.0.3"
-  },
-  "engines": {
-    "node": ">=14.4.0"
+    "multihashes": "^4.0.3",
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.8",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "framer-motion": "^4.1.17"
   }
 }

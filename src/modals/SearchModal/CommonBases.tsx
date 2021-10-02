@@ -22,12 +22,13 @@ export default function CommonBases({
   const bases = typeof chainId !== 'undefined' ? COMMON_BASES[chainId] ?? [] : []
 
   return (
-    <div className="flex flex-col space-y-2 common-base">
-      <div className="flex flex-row text-red">
-        Common bases
-        <QuestionHelper text="These tokens are commonly paired with other tokens." />
+    <div className="flex flex-col space-y-2">
+      <div>
+        <Typography variant="sm" className="text-lg">
+          Trending
+        </Typography>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-row flex-wrap w-full">
         {bases.map((currency: Currency) => {
           const isSelected = selectedCurrency?.equals(currency)
           return (
