@@ -24,6 +24,8 @@ import { useTokenBalance } from '../../state/wallet/hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { classNames } from '../../functions'
 
+import { Flex, VStack } from '@chakra-ui/react'
+
 const INPUT_CHAR_LIMIT = 18
 
 const sendTx = async (txFunc: () => Promise<any>): Promise<boolean> => {
@@ -191,7 +193,7 @@ export default function Stake() {
                                 <img src={XSushiSignSmall} alt="xsushi sign" />
                             </div> */}
             </div>
-            <div className="max-w-lg pr-3 mb-2 text-sm leading-5 text-gray-500 md:text-base md:mb-4 md:pr-0">
+            <div className="max-w-lg pr-3 mb-2 text-sm leading-5 text-dark md:text-base md:mb-4 md:pr-0">
               {i18n._(t`For every swap on the exchange on every chain, 0.05% of the swap fees are distributed as SUSHI
                                 proportional to your share of the SushiBar. When your SUSHI is staked into the SushiBar, you receive
                                 xSUSHI in return for voting rights and a fully composable token that can interact with other protocols.
@@ -210,9 +212,6 @@ export default function Stake() {
                                 </StyledLink>
                             </div>
                         </div> */}
-          </div>
-          <div className="hidden px-8 ml-6 md:block w-72">
-            <Image src="/xsushi-sign.png" alt="xSUSHI sign" width="100%" height="100%" layout="responsive" />
           </div>
         </div>
         <div className="flex flex-col justify-center md:flex-row">

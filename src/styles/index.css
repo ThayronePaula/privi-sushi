@@ -82,3 +82,7 @@ input:focus {
   border-radius: 9999px;
   background-color: #BFBFBF;
 } */
+
+.privi-intl-flag { 
+  display: none;
+}

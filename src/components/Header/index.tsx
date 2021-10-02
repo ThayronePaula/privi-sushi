@@ -37,7 +37,7 @@ function AppBar(): JSX.Element {
             <div className="px-4 py-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <Image src="/logo.png" alt="Sushi" width="32px" height="32px" />
+                  <h1>SushiSwap</h1>
                   <div className="hidden sm:block sm:ml-4">
                     <div className="flex space-x-2">
                       {/* <Buy /> */}
@@ -113,98 +113,6 @@ function AppBar(): JSX.Element {
 
                 <div className="fixed bottom-0 left-0 z-10 flex flex-row items-center justify-center w-full p-4 lg:w-auto bg-dark-1000 lg:relative lg:p-0 lg:bg-transparent">
                   <div className="flex items-center justify-between w-full space-x-2 sm:justify-end">
-                    {chainId && [ChainId.MAINNET].includes(chainId) && library && library.provider.isMetaMask && (
-                      <>
-                        <QuestionHelper text={i18n._(t`Add xSUSHI to your MetaMask wallet`)}>
-                          <div
-                            className="hidden p-0.5 rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800"
-                            onClick={() => {
-                              if (library && library.provider.isMetaMask && library.provider.request) {
-                                const params: any = {
-                                  type: 'ERC20',
-                                  options: {
-                                    address: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
-                                    symbol: 'XSUSHI',
-                                    decimals: 18,
-                                    image:
-                                      'https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272/logo.png',
-                                  },
-                                }
-                                library.provider
-                                  .request({
-                                    method: 'wallet_watchAsset',
-                                    params,
-                                  })
-                                  .then((success) => {
-                                    if (success) {
-                                      console.log('Successfully added XSUSHI to MetaMask')
-                                    } else {
-                                      throw new Error('Something went wrong.')
-                                    }
-                                  })
-                                  .catch(console.error)
-                              }
-                            }}
-                          >
-                            <Image
-                              src="/images/tokens/xsushi-square.jpg"
-                              alt="xSUSHI"
-                              width="38px"
-                              height="38px"
-                              objectFit="contain"
-                              className="rounded-md"
-                            />
-                          </div>
-                        </QuestionHelper>
-                      </>
-                    )}
-
-                    {chainId && chainId in SUSHI_ADDRESS && library && library.provider.isMetaMask && (
-                      <>
-                        <QuestionHelper text={i18n._(t`Add SUSHI to your MetaMask wallet`)}>
-                          <div
-                            className="hidden rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800 p-0.5"
-                            onClick={() => {
-                              const params: any = {
-                                type: 'ERC20',
-                                options: {
-                                  address: SUSHI_ADDRESS[chainId],
-                                  symbol: 'SUSHI',
-                                  decimals: 18,
-                                  image:
-                                    'https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
-                                },
-                              }
-                              if (library && library.provider.isMetaMask && library.provider.request) {
-                                library.provider
-                                  .request({
-                                    method: 'wallet_watchAsset',
-                                    params,
-                                  })
-                                  .then((success) => {
-                                    if (success) {
-                                      console.log('Successfully added SUSHI to MetaMask')
-                                    } else {
-                                      throw new Error('Something went wrong.')
-                                    }
-                                  })
-                                  .catch(console.error)
-                              }
-                            }}
-                          >
-                            <Image
-                              src="/images/tokens/sushi-square.jpg"
-                              alt="SUSHI"
-                              width="38px"
-                              height="38px"
-                              objectFit="contain"
-                              className="rounded-md"
-                            />
-                          </div>
-                        </QuestionHelper>
-                      </>
-                    )}
-
                     {library && library.provider.isMetaMask && (
                       <div className="hidden sm:inline-block">
                         <Web3Network />

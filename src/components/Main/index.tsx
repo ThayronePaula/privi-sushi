@@ -6,13 +6,22 @@ import { useRouter } from 'next/router'
 function Main({ children }) {
   const router = useRouter()
   const asPath = router.pathname
+  console.log(asPath)
 
   return (
     <main
       className="flex flex-col items-center justify-start flex-grow w-full h-full"
       style={{ height: 'max-content' }}
     >
-      {asPath === '/kashi/lend' || asPath === '/farm' || asPath === '/borrow' || asPath === '/stake' ? (
+      {asPath === '/kashi/lend' ||
+      asPath === '/farm' ||
+      asPath === '/borrow' ||
+      asPath === '/lend' ||
+      asPath === '/borrow' ||
+      asPath === '/kashi/borrow' ||
+      asPath === '/stake' ||
+      asPath === '/bar' ||
+      asPath === '/farm' ? (
         children
       ) : (
         <div className="flex flex-row">
