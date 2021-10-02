@@ -1,3 +1,4 @@
+import { Input } from '@chakra-ui/react'
 import React from 'react'
 import { Search as SearchIcon } from 'react-feather'
 import { classNames } from '../../functions'
@@ -5,11 +6,8 @@ import { classNames } from '../../functions'
 export default function Search({
   term,
   search,
-  className = 'bg-dark-900',
-  inputProps = {
-    className:
-      'text-baseline bg-transparent w-full py-3 pl-4 pr-14 rounded w-full bg-transparent focus:outline-none bg-dark-700 rounded focus:ring focus:ring-blue',
-  },
+  className,
+  inputProps,
   ...rest
 }: {
   term: string
@@ -18,14 +16,18 @@ export default function Search({
   className?: string
 }) {
   return (
-    <div className={classNames('relative w-full rounded', className)} {...rest}>
-      <input
-        className={classNames(
-          inputProps.className || 'text-baseline py-3 pl-4 pr-14 rounded w-full bg-transparent focus:outline-none'
-        )}
+    <div className={classNames('relative w-full rounded-full', className)} {...rest}>
+      <Input
+        roundedLeft={12}
+        roundedRight={12}
+        h={44.01}
+        bg="#fff"
         onChange={(e) => search(e.target.value)}
         value={term}
         placeholder="Search by name, symbol, address"
+        border="1px solid rgba(28, 29, 33, 0.2)"
+        boxShadow="0px 12px 54px rgba(46, 46, 46, 0.1)"
+        _focus={{}}
         {...inputProps}
       />
       <div className="absolute inset-y-0 right-0 flex items-center pr-6 pointer-events-none">
