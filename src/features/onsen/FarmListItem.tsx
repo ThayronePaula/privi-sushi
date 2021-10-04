@@ -41,7 +41,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                       fontSize="14px"
                       className="text-xs text-secondary"
                     >
-                      Chronoswap Farm
+                      Sushiswap Farm
                     </Text>
                   )}
                   {farm?.pair?.type === PairType.KASHI && (

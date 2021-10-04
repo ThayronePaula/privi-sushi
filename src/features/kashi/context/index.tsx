@@ -175,7 +175,7 @@ export function rpcToObj(rpc_obj: any, obj?: any) {
       }
       return obj
     }
-    return rpc_obj.map((item) => rpcToObj(item))
+    return rpc_obj.map((item, index) => rpcToObj(item, index))
   }
   return rpc_obj
 }
@@ -225,7 +225,7 @@ export function KashiProvider({ children }) {
     }
 
     if (boringHelperContract && bentoBoxContract) {
-      // // console.log('READY TO RUMBLE')
+      console.log('READY TO RUMBLE')
       const info = rpcToObj(await boringHelperContract.getUIInfo(account, [], currency, [KASHI_ADDRESS[chainId]]))
 
       // Get the deployed pairs from the logs and decode
@@ -243,7 +243,7 @@ export function KashiProvider({ children }) {
           const oracle = getOracle(pair, chainId, tokens)
 
           if (!oracle.valid) {
-            // console.log(pair, oracle.valid, oracle.error)
+            console.log(pair, oracle.valid, oracle.error)
             invalidOracles.push({ pair, error: oracle.error })
           }
           return oracle.valid

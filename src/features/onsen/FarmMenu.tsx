@@ -41,7 +41,7 @@ const Menu = ({ positionsLength }) => {
           <h4 className="text-sm font-medium">Filters</h4>
         </div>
 
-        <NavLink exact href="/farm" activeClassName="text-white bg-gray-900 font-semibold">
+        <NavLink exact href="/farm" activeClassName="text-white rounded bg-gray-900 font-semibold">
           <Link
             color="#1c1d2166"
             _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
@@ -52,7 +52,7 @@ const Menu = ({ positionsLength }) => {
         </NavLink>
 
         {(chainId === ChainId.MAINNET || chainId === ChainId.MATIC) && (
-          <NavLink exact href={`/farm?filter=2x`} activeClassName="text-white bg-gray-900 font-semibold">
+          <NavLink exact href={`/farm?filter=2x`} activeClassName="text-white rounded bg-gray-900 font-semibold">
             <Link
               color="#1c1d2166"
               _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
@@ -64,7 +64,11 @@ const Menu = ({ positionsLength }) => {
         )}
         {chainId === ChainId.MAINNET && (
           <>
-            <NavLink exact href={`/farm?filter=sushi`} activeClassName="text-white bg-gray-900 font-semibold">
+            <NavLink
+              exact
+              href={`/farm?filter=sushi`}
+              activeClassName="text-white rounded text-white bg-gray-900 font-semibold"
+            >
               <Link
                 color="#1c1d2166"
                 _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}

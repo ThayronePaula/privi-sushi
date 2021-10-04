@@ -157,7 +157,13 @@
     "tailwindcss": "^2.2.16",
     "tailwindcss-border-gradient-radius": "^2.0.0",
     "typescript": "^4.4.3",
-    "wcag-contrast": "^3.0.0"
+    "wcag-contrast": "^3.0.0",
+    "@chakra-ui/icons": "^1.0.15",
+    "@toruslabs/fetch-node-details": "^2.7.1",
+    "cids": "^1.1.9",
+    "multicodec": "^3.2.1",
+    "multihashes": "^4.0.3",
+    "react-icons": "^4.3.1"
   },
   "next-unused": {
     "debug": true,
@@ -175,12 +181,5 @@
     "not dead",
     "not op_mini all"
   ],
-  "dependencies": {
-    "@chakra-ui/icons": "^1.0.15",
-    "@toruslabs/fetch-node-details": "^2.7.1",
-    "cids": "^1.1.9",
-    "multicodec": "^3.2.1",
-    "multihashes": "^4.0.3",
-    "react-icons": "^4.3.1"
-  }
+  "dependencies": {}
 }
