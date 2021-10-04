@@ -71,6 +71,11 @@ const ExchangeHeader: FC<ExchangeHeaderProps> = ({ input, output, allowedSlippag
           </a>
         </NavLink>
       </div>
+      {chainId === ChainId.MAINNET && (
+        <div className="hidden md:block text-baseline">
+          <Gas />
+        </div>
+      )}
     </div>
   )
 }

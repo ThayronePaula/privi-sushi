@@ -25,7 +25,6 @@ function Main({ children }) {
       path === '/farm' ||
       path === '/borrow' ||
       path === '/lend' ||
-      path === '/borrow' ||
       path === '/kashi/borrow' ||
       path === '/stake' ||
       path === '/bar' ||
