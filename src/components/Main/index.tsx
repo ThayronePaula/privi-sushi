@@ -21,6 +21,7 @@ function Main({ children }) {
       asPath === '/kashi/borrow' ||
       asPath === '/stake' ||
       asPath === '/bar' ||
+      asPath === '/stake/' ||
       asPath === '/farm' ? (
         children
       ) : (

@@ -3534,10 +3534,10 @@
   dependencies:
     "@sushiswap/default-token-list" "^11.3.0"
 
-"@sushiswap/sdk@5.0.0-canary.89":
-  version "5.0.0-canary.89"
-  resolved "https://registry.yarnpkg.com/@sushiswap/sdk/-/sdk-5.0.0-canary.89.tgz#5ea2009cbe5d19a2178c51395e4867e3ce30e541"
-  integrity sha512-2CkecKnjvfCwJcCh6r5xIQIEr/eqP/0zxk0z/w8QF7X++ejoFAKJD4zn54AUnf0dhiuTSDDUnNyjVqj7YIjMhA==
+"@sushiswap/sdk@^5.0.0-canary.87":
+  version "5.0.0-canary.87"
+  resolved "https://registry.yarnpkg.com/@sushiswap/sdk/-/sdk-5.0.0-canary.87.tgz#3e5738f584e8de5093899abde1db5a836f690ccd"
+  integrity sha512-JS4Pi/08j/AkdLXdgi4iEY8DS5FKX7JqpTU+GMbj44Gf38gfayC2iKsUMUQgmoo9cO84n0vX6i2sfbIsl0mXAQ==
   dependencies:
     big.js "^6.1.0"
     decimal.js-light "^2.5.0"
