@@ -180,8 +180,5 @@
     "cids": "^1.1.9",
     "multicodec": "^3.2.1",
     "multihashes": "^4.0.3"
-  },
-  "engines": {
-    "node": ">=14.4.0"
   }
 }
