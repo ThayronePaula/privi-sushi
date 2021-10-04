@@ -3,6 +3,7 @@ import NavLink from '../../components/NavLink'
 import React from 'react'
 import { useActiveWeb3React } from '../../hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
+import { Link } from '@chakra-ui/react'
 
 const Menu = ({ positionsLength }) => {
   const { account, chainId } = useActiveWeb3React()
@@ -16,53 +17,36 @@ const Menu = ({ positionsLength }) => {
           href={`/farm?filter=portfolio`}
           activeClassName="font-bold bg-transparent border rounded text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
         >
-          <a className="flex items-center justify-between px-4 py-6 text-base font-bold text-white border border-transparent rounded cursor-pointer bg-dark-800 hover:bg-dark-800">
-            Your Farms
-          </a>
+          <Link className="flex items-center justify-between px-4 py-6 text-base font-bold text-white border border-transparent rounded cursor-pointer">
+            Farm
+          </Link>
         </NavLink>
       ) : (
-        <a
-          className="flex items-center justify-between px-4 py-6 text-base font-bold text-white border border-transparent rounded cursor-pointer striped-background text-secondary bg-dark-900 hover:bg-dark-800"
+        <Link
+          className="flex items-center justify-between text-3xl font-semibold text-black border border-transparent rounded cursor-pointer "
           onClick={toggleWalletModal}
         >
-          Your Farms
-        </a>
+          Farm
+        </Link>
       )}
 
-      <div className="w-full h-0 font-bold bg-transparent border border-b-0 border-transparent rounded text-high-emphesis md:border-gradient-r-blue-pink-dark-800 opacity-20" />
+      <div className="w-full">
+        <h4 className="text-sm font-medium">Filters</h4>
+      </div>
 
       <NavLink
         exact
         href="/farm"
-        activeClassName="font-bold bg-transparent border rounded text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
+        activeClassName="font-bold bg-transparent border rounded text-pink text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
       >
-        <a className="flex items-center justify-between px-4 py-6 text-base font-bold text-white border border-transparent rounded cursor-pointer bg-dark-900 hover:bg-dark-800">
+        <Link
+          color="#1c1d2166"
+          _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
+          className="flex items-center justify-between px-4 py-6 text-sm border border-transparent cursor-pointer hover:rounded-2xl hover:font-semibold"
+        >
           All Farms
-        </a>
+        </Link>
       </NavLink>
-
-      {chainId === ChainId.MAINNET && (
-        <>
-          <NavLink
-            exact
-            href={`/farm?filter=kashi`}
-            activeClassName="font-bold bg-transparent border rounded text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
-          >
-            <a className="flex items-center justify-between px-4 py-6 text-base font-bold text-white border border-transparent rounded cursor-pointer bg-dark-900 hover:bg-dark-800">
-              Kashi Farms
-            </a>
-          </NavLink>
-          <NavLink
-            exact
-            href={`/farm?filter=sushi`}
-            activeClassName="font-bold bg-transparent border rounded text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
-          >
-            <a className="flex items-center justify-between px-4 py-6 text-base font-bold text-white border border-transparent rounded cursor-pointer bg-dark-900 hover:bg-dark-800">
-              SushiSwap Farms
-            </a>
-          </NavLink>
-        </>
-      )}
 
       {(chainId === ChainId.MAINNET || chainId === ChainId.MATIC) && (
         <NavLink
@@ -70,10 +54,29 @@ const Menu = ({ positionsLength }) => {
           href={`/farm?filter=2x`}
           activeClassName="bg-transparent border rounded text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
         >
-          <a className="flex items-center justify-between px-4 py-6 text-base font-bold text-white border border-transparent rounded cursor-pointer bg-dark-900 hover:bg-dark-800">
+          <Link
+            color="#1c1d2166"
+            className="flex items-center justify-between px-4 py-6 text-sm font-bold border border-transparent rounded cursor-pointer hover:bg-dark-800"
+          >
             2x Reward Farms
-          </a>
+          </Link>
         </NavLink>
+      )}
+      {chainId === ChainId.MAINNET && (
+        <>
+          <NavLink
+            exact
+            href={`/farm?filter=sushi`}
+            activeClassName="font-bold bg-transparent border rounded text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
+          >
+            <Link
+              color="#1c1d2166"
+              className="flex items-center justify-between px-4 py-6 text-sm font-bold border border-transparent rounded cursor-pointer hover:bg-dark-800"
+            >
+              SushiSwap Farms
+            </Link>
+          </NavLink>
+        </>
       )}
     </div>
   )
