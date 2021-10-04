@@ -57,7 +57,7 @@ export type ButtonColor = 'blue' | 'pink' | 'gradient' | 'gray' | 'default' | 'r
 
 export type ButtonSize = 'xs' | 'sm' | 'lg' | 'default' | 'none'
 
-export type ButtonVariant = 'outlined' | 'filled' | 'empty' | 'link'
+export type ButtonVariant = 'outlined' | 'filled' | 'empty' | 'link' | 'swap'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: ButtonColor
