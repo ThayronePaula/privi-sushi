@@ -3,26 +3,33 @@ import MainCTA from '../MainCTA'
 
 import { useRouter } from 'next/router'
 
+import { useEffect, useState } from 'react'
+
 function Main({ children }) {
   const router = useRouter()
-  const asPath = router.pathname
-  console.log(asPath)
+  const [path, setPath] = useState('')
+
+  useEffect(() => {
+    if (router) {
+      const asPath = router.pathname
+      setPath(asPath)
+    }
+  }, [router])
 
   return (
     <main
       className="flex flex-col items-center justify-start flex-grow w-full h-full"
       style={{ height: 'max-content' }}
     >
-      {asPath === '/kashi/lend' ||
-      asPath === '/farm' ||
-      asPath === '/borrow' ||
-      asPath === '/lend' ||
-      asPath === '/borrow' ||
-      asPath === '/kashi/borrow' ||
-      asPath === '/stake' ||
-      asPath === '/bar' ||
-      asPath === '/stake/' ||
-      asPath === '/farm' ? (
+      {path === '/kashi/lend' ||
+      path === '/farm' ||
+      path === '/borrow' ||
+      path === '/lend' ||
+      path === '/borrow' ||
+      path === '/kashi/borrow' ||
+      path === '/stake' ||
+      path === '/bar' ||
+      path === '/stake/' ? (
         children
       ) : (
         <div className="flex flex-row">

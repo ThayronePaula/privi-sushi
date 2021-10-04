@@ -204,14 +204,14 @@ export const CRV = new Token(ChainId.MAINNET, '0xD533a949740bb3306d119CC777fa900
 
 export const CRXSUSHI = new Token(
   ChainId.MAINNET,
-  '0x228619cca194fbe3ebeb2f835ec1ea5080dafbb2',
+  '0x228619CCa194Fbe3Ebeb2f835eC1eA5080DaFbb2',
   8,
   'crXSUSHI',
   'Cream SushiBar'
 )
 export const AXSUSHI = new Token(
   ChainId.MAINNET,
-  '0xf256cc7847e919fac9b808cc216cac87ccf2f47a',
+  '0xF256CC7847E919FAc9B808cC216cAc87CCF2f47a',
   18,
   'aXSUSHI',
   'Aave interest bearing XSUSHI'

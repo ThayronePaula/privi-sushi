@@ -31,7 +31,7 @@ export const tokenDefinitions: StrategyTokenDefinitions = {
   },
   outputToken: {
     chainId: ChainId.MAINNET,
-    address: '0xf256cc7847e919fac9b808cc216cac87ccf2f47a',
+    address: '0xF256CC7847E919FAc9B808cC216cAc87CCF2f47a',
     decimals: 18,
     symbol: 'aXSUSHI',
   },
