@@ -28,6 +28,7 @@ function Main({ children }) {
       path === '/kashi/borrow' ||
       path === '/stake' ||
       path === '/bar' ||
+      path === '/balances' ||
       path === '/stake/' ? (
         children
       ) : (

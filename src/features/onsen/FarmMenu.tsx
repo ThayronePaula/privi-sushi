@@ -16,11 +16,11 @@ const Menu = ({ positionsLength }) => {
           <NavLink
             exact
             href={`/farm?filter=portfolio`}
-            activeClassName="font-bold bg-transparent border rounded text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
+            activeClassName="font-bold  rounded text-high-emphesis text-white"
           >
             <Link
               fontSize="28px"
-              className="flex items-center justify-between font-semibold leading-none text-black border border-transparent rounded cursor-pointer"
+              className="flex items-center justify-between font-semibold leading-none text-black rounded cursor-pointer"
               mb="2rem"
             >
               Farm
@@ -43,7 +43,8 @@ const Menu = ({ positionsLength }) => {
 
         <NavLink exact href="/farm" activeClassName="text-white rounded bg-gray-900 font-semibold">
           <Link
-            color="#1c1d2166"
+            color="#1C1D21"
+            _active={{ color: '#EFF0F3' }}
             _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
             className="flex items-center justify-between px-4 py-6 text-sm border border-transparent cursor-pointer hover:rounded-2xl hover:font-semibold"
           >
@@ -54,7 +55,8 @@ const Menu = ({ positionsLength }) => {
         {(chainId === ChainId.MAINNET || chainId === ChainId.MATIC) && (
           <NavLink exact href={`/farm?filter=2x`} activeClassName="text-white rounded bg-gray-900 font-semibold">
             <Link
-              color="#1c1d2166"
+              color="#1C1D21"
+              _active={{ color: '#EFF0F3' }}
               _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
               className="flex items-center justify-between px-4 py-6 text-sm border border-transparent cursor-pointer hover:rounded-2xl hover:font-semibold"
             >
@@ -70,7 +72,8 @@ const Menu = ({ positionsLength }) => {
               activeClassName="text-white rounded text-white bg-gray-900 font-semibold"
             >
               <Link
-                color="#1c1d2166"
+                color="#1C1D21"
+                _active={{ color: '#EFF0F3' }}
                 _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
                 className="flex items-center justify-between px-4 py-6 text-sm border border-transparent cursor-pointer hover:rounded-2xl hover:font-semibold"
               >

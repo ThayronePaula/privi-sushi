@@ -6,7 +6,7 @@ import GradientDot from '../../../components/GradientDot'
 import Head from 'next/head'
 import Image from '../../../components/Image'
 import Layout from '../../../layouts/Kashi'
-import Link from 'next/link'
+// import Link from 'next/link'
 import ListHeaderWithSort from '../../../features/kashi/ListHeaderWithSort'
 import MarketHeader from '../../../features/kashi/MarketHeader'
 import React from 'react'
@@ -15,6 +15,8 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import useSearchAndSort from '../../../hooks/useSearchAndSort'
 
+import NavLink from '../../../components/NavLink'
+import { Box, Flex, Text, Heading, Link } from '@chakra-ui/react'
 function Borrow() {
   const { i18n } = useLingui()
   const fullPairs = useKashiPairs()
@@ -24,7 +26,6 @@ function Borrow() {
     { keys: ['search'], threshold: 0.1 },
     { key: 'health.value', direction: 'descending' }
   )
-
   const pairs = useSearchAndSort(
     fullPairs,
     { keys: ['search'], threshold: 0.1 },
@@ -281,14 +282,32 @@ const BorrowLayout = ({ children }) => {
   return (
     <Layout
       left={
-        <Card
-          className="h-full bg-dark-900"
-          backgroundImage="/borrow-graphic.png"
-          title={i18n._(t`Borrow assets and leverage up`)}
-          description={i18n._(
-            t`Borrowing allows you to obtain liquidity without selling. Your borrow limit depends on the amount of deposited collateral. You will be able to borrow up to 75% of your collateral and repay at any time with accrued interest.`
-          )}
-        />
+        <Flex direction="column" justify="space-between">
+          <div className="space-y-4">
+            <div className="w-full">
+              <h4 className="text-sm font-medium">Filters</h4>
+            </div>
+
+            <NavLink exact href="/farm" activeClassName="text-white rounded bg-gray-900 font-semibold">
+              <Link
+                color="#1C1D21"
+                _active={{ color: '#EFF0F3' }}
+                _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
+                className="flex items-center justify-between px-4 py-6 text-sm border border-transparent cursor-pointer hover:rounded-2xl hover:font-semibold"
+              >
+                All Farms
+              </Link>
+            </NavLink>
+          </div>
+        </Flex>
+        // <Card
+        //   className="h-full bg-dark-900"
+        //   backgroundImage="/borrow-graphic.png"
+        //   title={i18n._(t`Borrow assets and leverage up`)}
+        //   description={i18n._(
+        //     t`Borrowing allows you to obtain liquidity without selling. Your borrow limit depends on the amount of deposited collateral. You will be able to borrow up to 75% of your collateral and repay at any time with accrued interest.`
+        // )}
+        // />
       }
     >
       {children}
