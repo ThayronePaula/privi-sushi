@@ -94,7 +94,7 @@ export function useTokenBalancesWithLoadingIndicator(
 
 export const serializeBalancesMap = (mapping: Record<string, CurrencyAmount<Token>>): string => {
   return Object.entries(mapping)
-    .map(([address, currencyAmount]) => currencyAmount.serialize())
+    .map(([address, currencyAmount]) => currencyAmount)
     .join()
 }
 
