@@ -39,7 +39,7 @@ export default function CurrencySelectPanel({
   }, [setModalOpen])
 
   return (
-    <div id={id} className="p-5 rounded bg-dark-800">
+    <div id={id} className="p-5 ">
       <div className="flex flex-col justify-between space-y-3 sm:space-y-0 sm:flex-row">
         <div className="w-full" onClick={onClick}>
           <div
@@ -52,10 +52,10 @@ export default function CurrencySelectPanel({
           >
             <div className="flex">
               {currency ? (
-                <CurrencyLogo currency={currency} size={'54px'} />
+                <CurrencyLogo currency={currency} size={'24px'} />
               ) : (
-                <div className="rounded bg-dark-700" style={{ maxWidth: 54, maxHeight: 54 }}>
-                  <div style={{ width: 54, height: 54 }}>
+                <div className="rounded " style={{ maxWidth: 24, maxHeight: 24 }}>
+                  <div style={{ width: 24, height: 24 }}>
                     <Lottie animationData={selectCoinAnimation} autoplay loop />
                   </div>
                 </div>

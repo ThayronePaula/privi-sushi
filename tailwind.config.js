@@ -13,6 +13,9 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {
+      backgroundImage: {
+        swap: "url('/backgroundCard.png')",
+      },
       linearBorderGradients: {
         directions: {
           tr: 'to top right',

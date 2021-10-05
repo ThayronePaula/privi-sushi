@@ -69,7 +69,7 @@ export default function CurrencyInputPanel({
   }, [setModalOpen])
 
   return (
-    <div id={id} className={classNames(hideInput ? 'p-4' : 'p-5', 'rounded bg-dark-800')}>
+    <div id={id} className={classNames(hideInput ? 'p-4' : 'p-5', 'rounded')}>
       <div className="flex flex-col justify-between space-y-3 sm:space-y-0 sm:flex-row">
         <div className={classNames('w-full sm:w-2/5')}>
           <button
@@ -84,15 +84,15 @@ export default function CurrencyInputPanel({
               }
             }}
           >
-            <div className="flex">
+            <div className="flex flex-col ">
               {pair ? (
-                <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={54} margin={true} />
+                <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={24} margin={true} />
               ) : currency ? (
-                <div className="flex items-center">
-                  <CurrencyLogo currency={currency} size={'54px'} />
+                <div className="flex flex-row items-center">
+                  <CurrencyLogo currency={currency} size={'24px'} />
                 </div>
               ) : (
-                <div className="rounded bg-dark-700" style={{ maxWidth: 54, maxHeight: 54 }}>
+                <div className="rounded " style={{ maxWidth: 54, maxHeight: 54 }}>
                   <div style={{ width: 54, height: 54 }}>
                     <Lottie animationData={selectCoinAnimation} autoplay loop />
                   </div>
@@ -135,12 +135,12 @@ export default function CurrencyInputPanel({
         {!hideInput && (
           <div
             className={classNames(
-              'flex items-center w-full space-x-3 rounded bg-dark-900 focus:bg-dark-700 p-3 sm:w-3/5'
+              'flex flex-col items-center w-full space-x-3 rounded p-3 sm:w-3/5'
               // showMaxButton && selectedCurrencyBalance && 'px-3'
             )}
           >
             <>
-              {showMaxButton && selectedCurrencyBalance && (
+              {/* {showMaxButton && selectedCurrencyBalance && (
                 <Button
                   onClick={onMax}
                   size="xs"
@@ -148,9 +148,10 @@ export default function CurrencyInputPanel({
                 >
                   {i18n._(t`Max`)}
                 </Button>
-              )}
+              )} */}
               <Input.Numeric
                 id="token-amount-input"
+                className={classNames('sou-seu-input text-dark bg-white rounded p-2 flex flex-row')}
                 value={value}
                 onUserInput={(val) => {
                   onUserInput(val)
@@ -158,12 +159,12 @@ export default function CurrencyInputPanel({
               />
               {!hideBalance && currency && selectedCurrencyBalance ? (
                 <div className="flex flex-col">
-                  <div onClick={onMax} className="text-xs font-medium text-right cursor-pointer text-low-emphesis">
+                  <div onClick={onMax} className="text-xs text-right cursor-pointer font-small text-low-emphesis">
                     {renderBalance ? (
                       renderBalance(selectedCurrencyBalance)
                     ) : (
                       <>
-                        {i18n._(t`Balance:`)} {formatCurrencyAmount(selectedCurrencyBalance, 4)} {currency.symbol}
+                        {i18n._(t`Balance:`)} {formatCurrencyAmount(selectedCurrencyBalance, 4)} {currency.name}
                       </>
                     )}
                   </div>
