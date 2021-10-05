@@ -16,7 +16,7 @@ const InformationDisclosure = ({ farm }) => {
       {({ open }) => (
         <>
           {!open && (
-            <Disclosure.Button className="self-start p-2 mt-5 rounded-r-lg sm:mt-3 sm:p-4 sm:pl-6 bg-dark-700">
+            <Disclosure.Button className="self-start p-2 mt-5 bg-gray-200 rounded-r-lg sm:mt-3 sm:p-4 sm:pl-6">
               <QuestionMarkCircleIcon width={20} height={20} />
             </Disclosure.Button>
           )}
@@ -29,7 +29,7 @@ const InformationDisclosure = ({ farm }) => {
           >
             <Disclosure.Panel
               static
-              className="flex flex-col w-1/2 min-w-full p-6 space-y-8 rounded rounded-t-none rounded-r-none sm:min-w-min bg-dark-700"
+              className="flex flex-col w-1/2 min-w-full p-6 space-y-8 bg-gray-200 rounded rounded-t-none rounded-r-none sm:min-w-min"
             >
               <div className="flex items-center justify-between">
                 <Typography className="text-xl cursor-pointer">{i18n._(t`How to Participate`)}</Typography>
