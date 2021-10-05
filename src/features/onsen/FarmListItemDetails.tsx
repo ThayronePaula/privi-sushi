@@ -13,6 +13,7 @@ import InformationDisclosure from './InformationDisclosure'
 import InvestmentDetails from './InvestmentDetails'
 import ManageBar from './ManageBar'
 
+
 const FarmListItemDetails = ({ farm }) => {
   const { i18n } = useLingui()
 
@@ -39,7 +40,7 @@ const FarmListItemDetails = ({ farm }) => {
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <Disclosure.Panel className="flex w-full border-t-0 rounded rounded-t-none bg-dark-800" static>
+      <Disclosure.Panel className="flex w-full bg-white border-t-0 rounded rounded-t-none" static>
         <InformationDisclosure farm={farm} />
         <div className="flex flex-col w-full p-6 pl-2 space-y-8 sm:pl-6">
           <div className="flex items-center justify-between">
@@ -47,7 +48,7 @@ const FarmListItemDetails = ({ farm }) => {
               {toggleView ? i18n._(t`Investment Details`) : i18n._(t`Manage Position`)}
             </div>
             <button
-              className="py-0.5 px-4 font-bold bg-transparent border border-transparent rounded cursor-pointer border-gradient-r-blue-pink-dark-800 whitespace-nowrap"
+              className="py-0.5 px-4 font-bold bg-black text-white border border-transparent rounded cursor-pointer whitespace-nowrap"
               onClick={() => setToggleView(!toggleView)}
             >
               {toggleView ? i18n._(t`Manage Position`) : i18n._(t`Investment Details`)}
@@ -58,13 +59,13 @@ const FarmListItemDetails = ({ farm }) => {
             <InvestmentDetails farm={farm} />
           ) : (
             <Tab.Group>
-              <Tab.List className="flex rounded bg-dark-900">
+              <Tab.List className="flex bg-white rounded">
                 <Tab
                   className={({ selected }) =>
                     `${
                       selected
-                        ? 'text-high-emphesis bg-gradient-to-r from-opaque-blue to-opaque-pink hover:from-blue hover:to-pink'
-                        : 'text-secondary'
+                        ? 'text-white bg-gradient-to-r from-opaque-blue to-opaque-pink hover:from-blue hover:to-pink'
+                        : 'text-black'
                     } flex items-center justify-center flex-1 px-2 py-2 text-lg rounded cursor-pointer select-none`
                   }
                 >
@@ -74,8 +75,8 @@ const FarmListItemDetails = ({ farm }) => {
                   className={({ selected }) =>
                     `${
                       selected
-                        ? 'text-high-emphesis bg-gradient-to-r from-opaque-blue to-opaque-pink hover:from-blue hover:to-pink'
-                        : 'text-secondary'
+                        ? 'text-white bg-gradient-to-r from-opaque-blue to-opaque-pink hover:from-blue hover:to-pink'
+                        : 'text-black'
                     } flex items-center justify-center flex-1 px-2 py-2 text-lg rounded cursor-pointer select-none`
                   }
                 >

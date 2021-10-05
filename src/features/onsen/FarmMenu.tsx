@@ -41,24 +41,22 @@ const Menu = ({ positionsLength }) => {
           <h4 className="text-sm font-medium">Filters</h4>
         </div>
 
-        <NavLink exact href="/farm" activeClassName="text-white rounded bg-gray-900 font-semibold">
+        <NavLink exact href="/farm" activeClassName="bg-black text-gray-50 rounded-2xl">
           <Link
-            color="#1C1D21"
             _active={{ color: '#EFF0F3' }}
             _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
-            className="flex items-center justify-between px-4 py-6 text-sm border border-transparent cursor-pointer hover:rounded-2xl hover:font-semibold"
+            className="flex items-center justify-between px-4 py-6 text-sm text-black cursor-pointer hover:rounded-2xl hover:font-semibold"
           >
             All Farms
           </Link>
         </NavLink>
 
         {(chainId === ChainId.MAINNET || chainId === ChainId.MATIC) && (
-          <NavLink exact href={`/farm?filter=2x`} activeClassName="text-white rounded bg-gray-900 font-semibold">
+          <NavLink exact href={`/farm?filter=2x`} activeClassName="bg-black text-gray-50 rounded-2xl">
             <Link
-              color="#1C1D21"
               _active={{ color: '#EFF0F3' }}
               _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
-              className="flex items-center justify-between px-4 py-6 text-sm border border-transparent cursor-pointer hover:rounded-2xl hover:font-semibold"
+              className="flex items-center justify-between px-4 py-6 text-sm text-black cursor-pointer hover:rounded-2xl hover:font-semibold"
             >
               2x Reward Farms
             </Link>
@@ -66,16 +64,11 @@ const Menu = ({ positionsLength }) => {
         )}
         {chainId === ChainId.MAINNET && (
           <>
-            <NavLink
-              exact
-              href={`/farm?filter=sushi`}
-              activeClassName="text-white rounded text-white bg-gray-900 font-semibold"
-            >
+            <NavLink exact href={`/farm?filter=sushi`} activeClassName="bg-black text-gray-50 rounded-2xl">
               <Link
-                color="#1C1D21"
                 _active={{ color: '#EFF0F3' }}
                 _hover={{ bg: '#EFF0F3', color: '#1C1D21' }}
-                className="flex items-center justify-between px-4 py-6 text-sm border border-transparent cursor-pointer hover:rounded-2xl hover:font-semibold"
+                className="flex items-center justify-between px-4 py-6 text-sm text-black cursor-pointer hover:rounded-2xl hover:font-semibold"
               >
                 SushiSwap Farms
               </Link>

@@ -16,7 +16,7 @@ import Button from '../../components/Button'
 import Input from '../../components/Input'
 import { FiatValue } from '../../components/CurrencyInputPanel/FiatValue'
 import { useUSDCValue } from '../../hooks/useUSDCPrice'
-
+import { Box } from '@chakra-ui/react'
 interface CurrencyInputPanelProps {
   value?: string
   onUserInput?: (value: string) => void
@@ -51,7 +51,11 @@ export default function CurrencyInputPanel({
   const { i18n } = useLingui()
 
   return (
-    <div id={id} className={classNames(hideInput ? 'p-2' : 'p-3', 'rounded bg-dark-900')}>
+    <Box
+      id={id}
+      border="1px solid #00000033"
+      className={classNames(hideInput ? 'p-2' : 'p-3', 'rounded bg-white')}
+    >
       <div className="flex space-x-3">
         {!hideIcon && (
           <div className="flex">
@@ -99,6 +103,6 @@ export default function CurrencyInputPanel({
           </div>
         )}
       </div>
-    </div>
+    </Box>
   )
 }
