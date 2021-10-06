@@ -7,6 +7,7 @@ const SIZE = {
   default: 'px-4 py-3 text-base',
   lg: 'px-6 py-4 text-base',
   none: 'p-0 text-base',
+  custom: 'py-2 pl-2 pr-5 text-white',
 }
 
 const FILLED = {
@@ -42,7 +43,7 @@ const LINK = {
 }
 
 const SWAP = {
-  default: 'flex items-center rounded-token bg-dark-700 hover:bg-privi-pink text-white w-40',
+  default: 'flex items-center rounded-token bg-dark-700 hover:bg-privi-pink text-white',
 }
 
 const VARIANT = {
@@ -55,7 +56,7 @@ const VARIANT = {
 
 export type ButtonColor = 'blue' | 'pink' | 'gradient' | 'gray' | 'default' | 'red' | 'green'
 
-export type ButtonSize = 'xs' | 'sm' | 'lg' | 'default' | 'none'
+export type ButtonSize = 'xs' | 'sm' | 'lg' | 'default' | 'none' | 'custom'
 
 export type ButtonVariant = 'outlined' | 'filled' | 'empty' | 'link' | 'swap'
 

@@ -179,7 +179,7 @@ export function CurrencySearch({
 
   return (
     <div className="flex flex-col max-h-[inherit]">
-      <ModalHeader className="h-full text-black text-2xl" onClose={onDismiss} title="Select token" />
+      <ModalHeader className="h-full text-2xl text-black" onClose={onDismiss} title="Select token" />
       {!currencyList && (
         <div className="mt-0 mb-3 sm:mt-3 sm:mb-8">
           <input
@@ -208,19 +208,22 @@ export function CurrencySearch({
       ) : filteredSortedTokens?.length > 0 || filteredInactiveTokens?.length > 0 ? (
         <div className="h-screen">
           <AutoSizer disableWidth>
-            {({ height }) => (
-              <CurrencyList
-                height={height}
-                currencies={includeNativeCurrency ? filteredSortedTokensWithETH : filteredSortedTokens}
-                otherListTokens={filteredInactiveTokens}
-                onCurrencySelect={handleCurrencySelect}
-                otherCurrency={otherSelectedCurrency}
-                selectedCurrency={selectedCurrency}
-                fixedListRef={fixedList}
-                showImportView={showImportView}
-                setImportToken={setImportToken}
-              />
-            )}
+              {({ height }) => {
+                console.log(height)
+              return (
+                <CurrencyList
+                  height={height}
+                  currencies={includeNativeCurrency ? filteredSortedTokensWithETH : filteredSortedTokens}
+                  otherListTokens={filteredInactiveTokens}
+                  onCurrencySelect={handleCurrencySelect}
+                  otherCurrency={otherSelectedCurrency}
+                  selectedCurrency={selectedCurrency}
+                  fixedListRef={fixedList}
+                  showImportView={showImportView}
+                  setImportToken={setImportToken}
+                />
+              )
+            }}
           </AutoSizer>
         </div>
       ) : (

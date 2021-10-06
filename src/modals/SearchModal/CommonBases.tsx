@@ -20,15 +20,8 @@ export default function CommonBases({
   onSelect: (currency: Currency) => void
 }) {
   const bases = typeof chainId !== 'undefined' ? COMMON_BASES[chainId] ?? [] : []
-
   return (
     <div className="flex flex-col space-y-2">
-      <div>
-        <Typography variant="sm" className="text-lg">
-          Trending
-        </Typography>
-      </div>
-
       <div className="flex flex-row flex-wrap w-full">
         {bases.map((currency: Currency) => {
           const isSelected = selectedCurrency?.equals(currency)
@@ -36,10 +29,11 @@ export default function CommonBases({
             <Button
               variant="swap"
               type="button"
+              size="custom"
               onClick={() => !isSelected && onSelect(currency)}
               disabled={isSelected}
               key={currencyId(currency)}
-              className="flex items-center p-2 m-1 space-x-2 rounded hover:bg-privi-pink disabled:bg-privi-pink disabled:cursor-not-allowed"
+              className="flex items-center p-2 m-1 space-x-2 rounded bg-privi-dark hover:bg-privi-pink disabled:bg-privi-pink disabled:cursor-not-allowed"
             >
               <CurrencyLogo currency={currency} />
               <Typography variant="sm" className="font-semibold">
@@ -48,6 +42,11 @@ export default function CommonBases({
             </Button>
           )
         })}
+      </div>
+      <div>
+        <Typography variant="sm" className="m-2 text-lg font-semibold text-privi-dark">
+          Trending
+        </Typography>
       </div>
     </div>
   )

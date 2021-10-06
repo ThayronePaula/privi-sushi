@@ -22,7 +22,7 @@ export default function Modal({
   initialFocusRef,
   children,
   padding = 5,
-  maxWidth = 420,
+  maxWidth = 530,
 }: ModalProps) {
   return (
     <>
@@ -47,7 +47,7 @@ export default function Modal({
                 }}
               >
                 <div className="w-full p-px rounded">
-                  <div className="flex flex-col w-full h-full p-6 overflow-y-hidden rounded bg-white">
+                  <div className="flex flex-col w-full h-full p-6 overflow-y-hidden bg-white rounded">
                     <div style={{ minHeight: `${minHeight}vh`, maxHeight: `${maxHeight}vh` }}>{children}</div>
                   </div>
                 </div>
