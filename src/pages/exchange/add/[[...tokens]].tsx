@@ -43,6 +43,8 @@ import { useRouterContract } from '../../../hooks'
 import { useTransactionAdder } from '../../../state/transactions/hooks'
 import useTransactionDeadline from '../../../hooks/useTransactionDeadline'
 import { useWalletModalToggle } from '../../../state/application/hooks'
+import { Box } from '@chakra-ui/react'
+
 
 const DEFAULT_ADD_V2_SLIPPAGE_TOLERANCE = new Percent(50, 10_000)
 
@@ -322,9 +324,12 @@ export default function Add() {
         />
       </Head>
 
-      <Container id="add-liquidity-page" className="py-4 space-y-6 md:py-8 lg:py-12" maxWidth="2xl">
-        <div className="flex items-center justify-between px-4 mb-5">
-          <NavLink href="/pool">
+      <div
+        id="add-liquidity-page"
+        className="flex flex-col items-center max-h-full p-4 space-y-4 bg-no-repeat rounded z-1 bg-swap"
+      >
+        {/*<div className="flex items-center justify-between px-4 mb-5">
+           <NavLink href="/pool">
             <a className="flex items-center space-x-2 text-base font-medium text-center cursor-pointer text-secondary hover:text-high-emphesis">
               <span>{i18n._(t`View Liquidity Positions`)}</span>
               <svg
@@ -337,8 +342,8 @@ export default function Add() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
               </svg>
             </a>
-          </NavLink>
-          {/* <button
+          </NavLink> 
+           <button
             style={{
               backgroundColor: 'rgba(167, 85, 221, 0.25)',
               border: '1px solid #A755DD',
@@ -348,7 +353,7 @@ export default function Add() {
             }}
           >
             FARM THE {currencies[Field.CURRENCY_A]?.symbol}-{currencies[Field.CURRENCY_B]?.symbol} POOL
-          </button> */}
+          </button> 
         </div>
 
         <Alert
@@ -369,16 +374,18 @@ export default function Add() {
             )
           }
           type="information"
-        />
+        />*/}
 
-        <div className="p-4 space-y-4 rounded bg-dark-900" style={{ zIndex: 1 }}>
-          {/* <AddRemoveTabs creating={isCreate} adding={true} defaultSlippage={DEFAULT_ADD_V2_SLIPPAGE_TOLERANCE} /> */}
-
+        <div className="py-10 pb-10">
           <ExchangeHeader
             input={currencies[Field.CURRENCY_A]}
             output={currencies[Field.CURRENCY_B]}
             allowedSlippage={allowedSlippage}
           />
+        </div>
+        <Box w="100%" p={4}>
+        <div className="flex flex-row bg-white rounded bg-opacity-60" style={{ zIndex: 1 }}>
+          {/* <AddRemoveTabs creating={isCreate} adding={true} defaultSlippage={DEFAULT_ADD_V2_SLIPPAGE_TOLERANCE} /> */}
 
           <TransactionConfirmationModal
             isOpen={showConfirm}
@@ -438,7 +445,7 @@ export default function Add() {
               />
             </div>
 
-            {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
+            {/* {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
               <div className="p-1 rounded bg-dark-800">
                 <LiquidityPrice
                   currencies={currencies}
@@ -448,7 +455,7 @@ export default function Add() {
                   className="bg-dark-900"
                 />
               </div>
-            )}
+            )} */}
 
             {addIsUnsupported ? (
               <Button color="gradient" size="lg" disabled>
@@ -531,7 +538,8 @@ export default function Add() {
             />
           )}
         </div>
-      </Container>
+        </Box>
+      </div>
     </>
   )
 }
