@@ -49,7 +49,7 @@ export default function Farm(): JSX.Element {
         <title>Privi Zoo | Farm Sushi</title>
         <meta key="description" name="description" content="Farm SUSHI" />
       </Head>
-      <div className={classNames('sticky top-0 hidden lg:block md:col-span-1')} style={{ maxHeight: '40rem' }}>
+      <div className={classNames('sticky top-0 hidden lg:block md:col-span-1')}>
         <Menu positionsLength={positions.length} />
       </div>
       <div className={classNames('space-y-6 col-span-4 lg:col-span-3 w-322')}>
