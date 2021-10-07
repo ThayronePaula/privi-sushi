@@ -10,7 +10,7 @@ const Menu = ({ positionsLength }) => {
   const toggleWalletModal = useWalletModalToggle()
 
   return (
-    <Flex direction="column" justify="space-between">
+    <Flex className="flex-col justify-between h-full">
       <div className="space-y-4">
         {account ? (
           <NavLink
