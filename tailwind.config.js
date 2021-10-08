@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         swap: "url('/backgroundCard.png')",
+        stake: "url('/backgroundStake.png')",
       },
       linearBorderGradients: {
         directions: {
