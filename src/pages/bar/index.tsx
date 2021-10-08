@@ -3,7 +3,7 @@ import { BAR_ADDRESS, ZERO } from '@sushiswap/sdk'
 import React, { useEffect, useState } from 'react'
 import { SUSHI, XSUSHI } from '../../config/tokens'
 
-import Button from '../../components/Button'
+import ButtonCustom from '../../components/Button'
 import { ChainId } from '@sushiswap/sdk'
 import Container from '../../components/Container'
 import Dots from '../../components/Dots'
@@ -24,9 +24,8 @@ import { useTokenBalance } from '../../state/wallet/hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { classNames } from '../../functions'
 import StackInfoCard from '../../components/StackInfoCard'
-import { Box, Divider, Center, Flex, Text, Heading, VStack, HStack } from '@chakra-ui/react'
+import { Box, Divider, Center, Flex, Text, Heading, VStack, HStack,Button } from '@chakra-ui/react'
 import { CgShapeRhombus, CgMenuMotion } from 'react-icons/cg'
-
 const lineIcon = {
   content: '""',
   display: 'block',
@@ -224,7 +223,7 @@ export default function Stake() {
                         </div> */}
           </div>
         </div>
-        <div className="flex items-center justify-center w-3/5 mb-6">
+        <div className="flex flex-col items-center justify-center w-3/5 mb-6">
           <Box w="697px" className="flex flex-col mx-auto mb-4 h- md:m-0">
             {/* apr here */}
             <div>
@@ -246,15 +245,17 @@ export default function Stake() {
                       <CgMenuMotion /> <p className="ml-2.5">{i18n._(t`Stake Sushi`)}</p>
                     </Box>
                   </Box>
-                  <Center h="24px" w="10px">
+                  {/* <Center h="24px" w="10px">
                     <Divider bg="#000" colorScheme="blue" orientation="vertical" />
-                  </Center>
+                  </Center> */}
                   <Box
                     className="h-full w-6/12 p-0.5"
                     onClick={() => {
                       setActiveTab(1)
                       handleInput('')
                     }}
+                    pos="relative"
+                    _before={{ ...lineIcon, left: 0 }}
                   >
                     <Box
                       color={activeTab === 1 ? '#eb3ca2' : '#1c1d21'}
@@ -333,7 +334,7 @@ export default function Stake() {
                         )} SUSHI`}</Text>
                         {(approvalState === ApprovalState.NOT_APPROVED || approvalState === ApprovalState.PENDING) &&
                         activeTab === 0 ? (
-                          <Button
+                          <ButtonCustom
                             className={`${buttonStyle} text-white bg-privi-dark hover:bg-opacity-90`}
                             disabled={approvalState === ApprovalState.PENDING}
                             onClick={approve}
@@ -343,7 +344,7 @@ export default function Stake() {
                             ) : (
                               i18n._(t`Approve`)
                             )}
-                          </Button>
+                          </ButtonCustom>
                         ) : (
                           <button
                             className={
@@ -425,6 +426,53 @@ export default function Stake() {
                 </div>*/}
               </div>
             </div>
+          </Box>
+          <Box
+            h="auto"
+            maxW={['100%', '100%', '100%', '697px']}
+            w={['100%', '100%', '100%', 'none']}
+            className="bg-stake"
+            bgPosition="center"
+            bgRepeat="no-repeat"
+            bgSize="cover"
+            roundedLeft={'16px'}
+            roundedRight={'16px'}
+            px={'24px'}
+            py={'14px'}
+            mt='20px'
+          >
+            <HStack justify="space-between">
+              <VStack align="flex-start">
+                <Text fontSize="16px" fontWeight="500" color="#fff">
+                  Balance
+                </Text>
+                <Text fontSize="16px" fontWeight="400" color="#fff">
+                  1,325 x SUSHI
+                </Text>
+              </VStack>
+              <Divider orientation="vertical" h="65px" />
+              <VStack align="center">
+                <Text fontSize="16px" fontWeight="500" color="#fff">
+                  Unstaked
+                </Text>
+                <Text fontSize="16px" fontWeight="400" color="#fff">
+                  12 x SUSHI
+                </Text>
+              </VStack>
+              <Divider orientation="vertical" h="65px" />
+              <Button
+                color="#E60B8B"
+                fontSize="14px"
+                fontWeight="600"
+                py={'10.5px'}
+                borderRadius="8px"
+                bg="#fff"    
+                colorScheme="#"
+                w="205px"
+              >
+                Your SushiBar Stats
+              </Button>
+            </HStack>
           </Box>
         </div>
       </div>
