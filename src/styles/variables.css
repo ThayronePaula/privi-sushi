@@ -13,3 +13,11 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.stake_bg {
+    background-image: url('../../public/backgroundStake.png');
+    height: 1000%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
