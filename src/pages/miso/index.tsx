@@ -5,6 +5,7 @@ import MisoInfo from './MisoInfo'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import Article from '../../features/miso/Article'
+import { Flex, Heading, Text, VStack, Divider, Box, Badge, Avatar } from '@chakra-ui/react'
 
 function MISO() {
   const { i18n } = useLingui()
@@ -14,39 +15,19 @@ function MISO() {
         <title>MISO | Sushi</title>
         <meta key="description" name="description" content="MISO by Sushi, an initial Sushi offering on steroids ..." />
       </Head>
-      <div
-        className="flex flex-col w-full"
-        style={{
-          backgroundImage: `url('/images/miso/trident/trident_bg.png')`,
-          backgroundColor: 'rgba(27,27,27)',
-          backgroundBlendMode: 'overlay',
-          backgroundSize: 'cover',
-        }}
-      >
+      <div className="flex flex-col w-full">
         <div className="flex justify-center my-6">
           <div className="flex flex-col items-center w-full max-w-5xl mx-8">
             <div className="grid w-full grid-cols-12 gap-4 mb-6 min-h-1/2">
               <div className="col-span-12 mx-auto lg:col-span-6">
-                <div className="mx-auto" style={{ position: 'relative' }}>
-                  <div className="flex flex-col" style={{ position: 'absolute', left: '0px', top: '0px' }}>
-                    <div className="mb-3">
-                      <Image src="/images/miso/trident/trident_fx1.png" width={156} height={43} />
-                    </div>
-                    <div className="mb-3">
-                      <Image src="/images/miso/trident/trident_fx1.png" width={156} height={43} />
-                    </div>
-                    <div className="mb-3">
-                      <Image src="/images/miso/trident/trident_fx1.png" width={156} height={43} />
-                    </div>
-                  </div>
-                </div>
-                <div style={{ marginLeft: 30, marginTop: 70 }}>
-                  <div className="flex flex-row">
-                    <div>
+                
+                <div>
+                  <Box h='492px' className="flex flex-row">
+                    {/* <div>
                       <div style={{ width: 2, height: '70%', backgroundColor: '#888' }}></div>
-                    </div>
+                    </div> */}
                     <div className="flex flex-col flex-1">
-                      <div className="flex flex-row">
+                      {/* <div className="flex flex-row">
                         <div className="flex-1" style={{ height: 2, backgroundColor: '#888' }}></div>
                         <div className="flex flex-row" style={{ marginTop: '-12px' }}>
                           <div className="ml-1 text-sm text-white">Artist</div>
@@ -66,17 +47,24 @@ function MISO() {
                             </a>
                           </div>
                         </div>
-                      </div>
-                      <video
-                        className="flex-1 mt-1 ml-2"
-                        autoPlay
-                        loop
-                        style={{ width: 408, height: 408, zIndex: 100 }}
-                      >
-                        <source src="/images/miso/trident/trident_video.mp4" />
-                      </video>
+                      </div> */}
+
+                      <Box
+                        h="492px"
+                        w="492px"
+                        className="flex-1 bg-miso"
+                        // style={{ width: 408, height: 492, zIndex: 100 }}
+                        bgPosition="center"
+                        bgRepeat="no-repeat"
+                        bgSize="cover"
+                        roundedLeft={32}
+                        roundedRight={32}
+                        px={['2%', '30px']}
+                        py={['4%', '40px']}
+                        alignSelf="start"
+                      />
                     </div>
-                  </div>
+                  </Box>
                 </div>
               </div>
 
