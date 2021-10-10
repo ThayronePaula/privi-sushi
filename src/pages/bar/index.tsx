@@ -92,7 +92,7 @@ export default function Stake() {
   const balance = activeTab === 0 ? sushiBalance : xSushiBalance
 
   const formattedBalance = balance?.toSignificant(4)
-  console.log(formattedBalance)
+  //console.log(formattedBalance)
 
   const parsedAmount = usingBalance ? balance : tryParseAmount(input, balance?.currency)
 
@@ -228,7 +228,7 @@ export default function Stake() {
             {/* apr here */}
             <div>
               <TransactionFailedModal isOpen={modalOpen} onDismiss={() => setModalOpen(false)} />
-              <div className="w-full px-3 pb-6 pt-9 bg-swap rounded-3xl md:pb-9 md:pt-9 md:px-8">
+              <div className="px-3 pb-6  pt-9 bg-swap rounded-3xl md:pb-9 md:pt-9 md:px-8">
                 <div className="flex m-auto bg-white rounded w-72 h-14">
                   <Box
                     className="h-full w-6/12 p-0.5"

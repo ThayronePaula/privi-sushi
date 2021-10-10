@@ -3,5 +3,24 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
-  }
+  },
+  "cSpell.words": [
+    "Bento",
+    "bentobox",
+    "BENTOBOX",
+    "CHAINLINK",
+    "chakra",
+    "cloudinary",
+    "emphesis",
+    "ethersproject",
+    "heroicons",
+    "Kashi",
+    "KASHI",
+    "lingui",
+    "Lingui",
+    "mfrom",
+    "pairlist",
+    "semibold",
+    "WNATIVE"
+  ]
 }

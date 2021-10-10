@@ -22,6 +22,7 @@ function Main({ children }) {
       style={{ height: 'max-content' }}
     >
       {path === '/kashi/lend' ||
+      path === '/kashi/create' ||
       path === '/farm' ||
       path === '/borrow' ||
       path === '/lend' ||
@@ -29,14 +30,13 @@ function Main({ children }) {
       path === '/stake' ||
       path === '/bar' ||
       path === '/balances' ||
+      path === '/user/balances' ||
       path === '/stake/' ? (
         children
       ) : (
-        <div className="flex flex-row">
-          <Flex w="100%" height="100vh" direction={['column', 'column', 'column', 'row']} align="center" gridGap={50}>
-            <MainCTA />
-            <VStack w={['100%', '100%', '100%', '60%']}>{children}</VStack>
-          </Flex>
+        <div className="flex flex-row pt-20 space-x-10">
+          <MainCTA />
+          <div className="flex flex-col">{children}</div>
         </div>
       )}
     </main>
