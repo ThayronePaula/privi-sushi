@@ -53,7 +53,7 @@ const VARIANT = {
   swap: SWAP,
 }
 
-export type ButtonColor = 'blue' | 'pink' | 'gradient' | 'gray' | 'default' | 'red' | 'green'
+export type ButtonColor = 'blue' | 'pink' | 'gradient' | 'gray' | 'default' | 'red' | 'green' | 'black'
 
 export type ButtonSize = 'xs' | 'sm' | 'lg' | 'default' | 'none'
 
