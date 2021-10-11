@@ -231,7 +231,7 @@ function LimitOrder() {
           toggleExpertMode()
         }}
       >
-        <div id="limit-order-page" className="flex flex-col gap-4 p-4 rounded bg-dark-900">
+        <div id="limit-order-page" className="gap-4 p-4 rounded bg-dark-900">
           <ExchangeHeader input={currencies[Field.INPUT]} output={currencies[Field.OUTPUT]} />
           <div className="flex flex-col gap-4">
             <CurrencyInputPanel
@@ -259,7 +259,7 @@ function LimitOrder() {
                 />
               }
             />
-            <div className="flex flex-row gap-5">
+            <div className="flex flex-col gap-4">
               <div />
               <div className="relative flex items-center">
                 <div className="z-0 absolute w-[2px] bg-dark-800 h-[calc(100%+32px)] top-[-16px] left-[calc(50%-1px)]" />
@@ -270,7 +270,7 @@ function LimitOrder() {
                   }}
                 >
                   <div
-                    className="p-2 rounded-full bg-white hover:bg-dark-700"
+                    className="p-2 bg-white rounded-full hover:bg-dark-700"
                     onMouseEnter={() => setAnimateSwapArrows(true)}
                     onMouseLeave={() => setAnimateSwapArrows(false)}
                   >
