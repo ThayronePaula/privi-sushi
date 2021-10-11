@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Layout from '../../layouts/Miso'
 import MisoInfo from './MisoInfo'
 import { t } from '@lingui/macro'
@@ -8,7 +7,7 @@ import Article from '../../features/miso/Article'
 import { Flex, Heading, Text, VStack, Divider, Box, Badge, Avatar } from '@chakra-ui/react'
 
 function MISO() {
-  const { i18n } = useLingui()
+  // const { i18n } = useLingui()
   return (
     <>
       <Head>
@@ -69,7 +68,10 @@ function MISO() {
                 <MisoInfo />
               </Box>
             </div>
-            <div className="grid grid-cols-12 gap-4 mb-6 min-h-1/2">
+            <div className="w-full">
+              <Faq />
+            </div>
+            {/* <div className="grid grid-cols-12 gap-4 mb-6 min-h-1/2">
               <div className="flex flex-row items-center col-span-12 my-8 xl:mx-8">
                 <div>{'FAQ'}</div>
                 <div
@@ -105,7 +107,7 @@ function MISO() {
                           by increasing the attractiveness of SushiSwap as a place for token creators and communities to launch 
                           new project tokens.`}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
