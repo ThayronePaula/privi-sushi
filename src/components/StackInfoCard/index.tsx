@@ -33,9 +33,7 @@ const sendTx = async (txFunc: () => Promise<any>): Promise<boolean> => {
   return success
 }
 
-
 const fetcher = (query) => request('https://api.thegraph.com/subgraphs/name/matthewlilley/bar', query)
-
 
 const StackInfoCard = () => {
   const { i18n } = useLingui()
@@ -156,7 +154,7 @@ const StackInfoCard = () => {
         </Button>
         <Box>
           <Text fontSize="md" color="#EB3CA2" textAlign={['left', 'right']}>
-          {`${apr ? apr.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
+            {`${apr ? apr.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
           </Text>
           <Text color="#1c1d2199" fontSize="14px">
             Yesterday APR

@@ -207,7 +207,7 @@ export function KashiProvider({ children }) {
   // console.log({ info })
 
   const updatePairs = useCallback(async () => {
-    console.log('update pairs')
+    // console.log('update pairs')
     if (
       !account ||
       !chainId ||
@@ -225,14 +225,14 @@ export function KashiProvider({ children }) {
     }
 
     if (boringHelperContract && bentoBoxContract) {
-      console.log('READY TO RUMBLE')
+      // console.log('READY TO RUMBLE')
       const info = rpcToObj(await boringHelperContract.getUIInfo(account, [], currency, [KASHI_ADDRESS[chainId]]))
 
       // Get the deployed pairs from the logs and decode
       const logPairs = (await getPairs(bentoBoxContract, chainId)).filter(
         (pair) => !BLACKLISTED_ORACLES.includes(pair.oracle)
       )
-      console.log({ logPairs })
+      // console.log({ logPairs })
 
       // Filter all pairs by supported oracles and verify the oracle setup
 
@@ -250,7 +250,7 @@ export function KashiProvider({ children }) {
         })
         .map((pair) => pair.address)
 
-      console.log('invalidOracles', invalidOracles)
+      // console.log('invalidOracles', invalidOracles)
 
       // Get full info on all the verified pairs
       const pairs = rpcToObj(await boringHelperContract.pollKashiPairs(account, allPairAddresses))

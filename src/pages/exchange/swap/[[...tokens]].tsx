@@ -437,7 +437,7 @@ export default function Swap() {
   // }, [chainId, previousChainId, router]);
 
   return (
-    <Container id="swap-page" className="items-center max-h-3xl">
+    <Container id="swap-page" className="bg-no-repeat bg-swap rounded-3xl ">
       <Head>
         <title>{i18n._(t`SushiSwap`)} | Sushi</title>
         <meta
@@ -452,8 +452,8 @@ export default function Swap() {
         onConfirm={handleConfirmTokenWarning}
       />
 
-      <div className="flex flex-col items-center max-h-full p-4 space-y-4 bg-no-repeat z-1 bg-swap ">
-        <div className="py-10 pb-10">
+      <div className="flex flex-col items-center max-h-full p-4 space-y-4 z-1">
+        <div className="">
           <SwapHeader
             input={currencies[Field.INPUT]}
             output={currencies[Field.OUTPUT]}
@@ -494,10 +494,8 @@ export default function Swap() {
               showCommonBases={true}
               id="swap-currency-input"
             />
-            <AutoColumn justify="space-between" className="py-3 ">
-              <div
-                className={classNames(isExpertMode ? 'justify-between' : 'flex-start', 'px-4 flex-wrap w-full flex')}
-              >
+            <AutoColumn className="grid py-3">
+              <div className={classNames(isExpertMode ? 'justify-between' : 'flex-start', 'w-full flex p-0')}>
                 <button
                   className="z-10 -mt-6 -mb-6 rounded-full"
                   onClick={() => {
@@ -515,7 +513,7 @@ export default function Swap() {
                         animationData={swapArrowsAnimationData}
                         autoplay={animateSwapArrows}
                         loop={false}
-                        style={{ width: 32, height: 32 }}
+                        style={{ width: 24, height: 24 }}
                       />
                     </div>
                   </div>

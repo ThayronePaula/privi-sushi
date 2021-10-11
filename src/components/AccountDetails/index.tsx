@@ -65,7 +65,7 @@ const AccountDetails: FC<AccountDetailsProps> = ({
           SUPPORTED_WALLETS[k].connector === connector && (connector !== injected || isMetaMask === (k === 'METAMASK'))
       )
       .map((k) => SUPPORTED_WALLETS[k].name)[0]
-    return <div className="font-medium text-baseline text-secondary">Connected with {name}</div>
+    return <div className="font-medium text-baseline text-dark">Connected with {name}</div>
   }
 
   function getStatusIcon() {
@@ -115,7 +115,7 @@ const AccountDetails: FC<AccountDetailsProps> = ({
                 connector.constructor.name !== 'KeystoneConnector' && (
                   <Button
                     variant="outlined"
-                    color="gray"
+                    color="black"
                     size="xs"
                     onClick={() => {
                       ;(connector as any).close()
@@ -126,7 +126,7 @@ const AccountDetails: FC<AccountDetailsProps> = ({
                 )}
               <Button
                 variant="outlined"
-                color="gray"
+                color="black"
                 size="xs"
                 onClick={() => {
                   openOptions()
@@ -138,7 +138,7 @@ const AccountDetails: FC<AccountDetailsProps> = ({
           </div>
           <div id="web3-account-identifier-row" className="flex flex-col justify-center space-y-3">
             {ENSName ? (
-              <div className="bg-dark-800">
+              <div className="">
                 {getStatusIcon()}
                 <Typography>{ENSName}</Typography>
               </div>

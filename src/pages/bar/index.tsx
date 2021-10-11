@@ -24,7 +24,7 @@ import { useTokenBalance } from '../../state/wallet/hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { classNames } from '../../functions'
 import StackInfoCard from '../../components/StackInfoCard'
-import { Box, Divider, Center, Flex, Text, Heading, VStack, HStack,Button } from '@chakra-ui/react'
+import { Box, Divider, Center, Flex, Text, Heading, VStack, HStack, Button } from '@chakra-ui/react'
 import { CgShapeRhombus, CgMenuMotion } from 'react-icons/cg'
 const lineIcon = {
   content: '""',
@@ -92,7 +92,7 @@ export default function Stake() {
   const balance = activeTab === 0 ? sushiBalance : xSushiBalance
 
   const formattedBalance = balance?.toSignificant(4)
-  console.log(formattedBalance)
+  //console.log(formattedBalance)
 
   const parsedAmount = usingBalance ? balance : tryParseAmount(input, balance?.currency)
 
@@ -228,7 +228,7 @@ export default function Stake() {
             {/* apr here */}
             <div>
               <TransactionFailedModal isOpen={modalOpen} onDismiss={() => setModalOpen(false)} />
-              <div className="w-full px-3 pb-6 pt-9 bg-swap rounded-3xl md:pb-9 md:pt-9 md:px-8">
+              <div className="px-3 pb-6  pt-9 bg-swap rounded-3xl md:pb-9 md:pt-9 md:px-8">
                 <div className="flex m-auto bg-white rounded w-72 h-14">
                   <Box
                     className="h-full w-6/12 p-0.5"
@@ -439,7 +439,7 @@ export default function Stake() {
             roundedRight={'16px'}
             px={'24px'}
             py={'14px'}
-            mt='20px'
+            mt="20px"
           >
             <HStack justify="space-between">
               <VStack align="flex-start">
@@ -466,7 +466,7 @@ export default function Stake() {
                 fontWeight="600"
                 py={'10.5px'}
                 borderRadius="8px"
-                bg="#fff"    
+                bg="#fff"
                 colorScheme="#"
                 w="205px"
               >
