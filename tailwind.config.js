@@ -15,8 +15,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         swap: "url('/backgroundCard.png')",
-        stake:"url('/backgroundStake.png')",
-        miso:"url('/nft-miso.png')"
+        stake: "url('/backgroundStake.png')",
+        miso: "url('/nft-miso.png')",
       },
       linearBorderGradients: {
         directions: {
@@ -132,6 +132,10 @@ module.exports = {
         px: '24px',
         DEFAULT: '0.625rem',
         token: '200px',
+      },
+      spacing: {
+        123: '30.75rem',
+        160: '40rem',
       },
       keyframes: {
         ellipsis: {

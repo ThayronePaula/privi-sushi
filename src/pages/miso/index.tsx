@@ -17,12 +17,11 @@ function MISO() {
       </Head>
       <div className="flex flex-col w-full">
         <div className="flex justify-center my-6">
-          <div className="flex flex-col items-center w-full max-w-5xl mx-8">
+          <div className="flex flex-col items-center w-full">
             <div className="grid w-full grid-cols-12 gap-4 mb-6 min-h-1/2">
               <div className="col-span-12 mx-auto lg:col-span-6">
-                
                 <div>
-                  <Box h='492px' className="flex flex-row">
+                  <Box className="flex flex-row h-72 sm:h-123">
                     {/* <div>
                       <div style={{ width: 2, height: '70%', backgroundColor: '#888' }}></div>
                     </div> */}
@@ -51,9 +50,7 @@ function MISO() {
 
                       <Box
                         h="492px"
-                        w="492px"
-                        className="flex-1 bg-miso"
-                        // style={{ width: 408, height: 492, zIndex: 100 }}
+                        className="flex-1 bg-miso w-72 h-72 sm:w-123 sm:h-123"
                         bgPosition="center"
                         bgRepeat="no-repeat"
                         bgSize="cover"
@@ -68,9 +65,9 @@ function MISO() {
                 </div>
               </div>
 
-              <div className="max-w-md col-span-12 mx-auto lg:col-span-6">
+              <Box className="col-span-12 mx-auto lg:col-span-6">
                 <MisoInfo />
-              </div>
+              </Box>
             </div>
             <div className="grid grid-cols-12 gap-4 mb-6 min-h-1/2">
               <div className="flex flex-row items-center col-span-12 my-8 xl:mx-8">

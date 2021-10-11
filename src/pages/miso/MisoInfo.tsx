@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import { Flex, Heading, Text, Divider, Box, Badge } from '@chakra-ui/react'
 import Image from 'next/image'
 import { addMinutes, format } from 'date-fns'
 
@@ -66,55 +66,94 @@ function MisoInfo({
     }
   }, [auctionEndDate])
 
+  const formatHours = (date) => {
+    return format(addMinutes(date, date.getTimezoneOffset()), 'h:mm')
+  }
+
   const formatDate = (date) => {
-    return format(addMinutes(date, date.getTimezoneOffset()), 'MMMM do yyyy, h:mm a')
+    return format(addMinutes(date, date.getTimezoneOffset()), 'MMMM, dd yyyy')
   }
 
   return (
-    <div className="flex flex-col">
+    <Box className="flex flex-col xl:w-160">
       {/* Name and Symbol */}
       <div className="flex flex-row items-end mt-6">
-        <Image src="/images/miso/trident/trident-auction-icon.png" width={85} height={85} />
+        <Image src="/images/miso/trident/trident-auction-icon.png" width={103.25} height={103.25} />
         <div className="flex flex-col items-center flex-1 mx-6">
           <div>
-            <div className="text-base font-bold sm:text-xl">{'Trident NFT'}</div>
-            <div className="text-2xl font-bold tracking-normal text-white sm:text-3xl md:text-5xl sm:tracking-widest">
+            <Text textAlign={['center', 'left', 'left']} className="text-privi-dark text-opacity-80">
+              {'Trident NFT'}
+            </Text>
+            <Text lineHeight="80px" className="font-semibold text-privi-dark text-4xl sm:text-6xl">
               {name}
-            </div>
+            </Text>
           </div>
         </div>
-        <div
-          className="px-5 py-1"
-          style={{ borderRadius: 10, backgroundColor: '#809090a0', fontSize: 20, color: 'white', fontWeight: 'bold' }}
+        <Badge
+          fontWeight="500"
+          color="#EB3CA2"
+          bg="#eb3ca214"
+          colorScheme="green"
+          fontSize="14px"
+          textTransform="capitalize"
+          py="9px"
+          px="24px"
+          mt="1px"
         >
           {symbol}
-        </div>
+        </Badge>
       </div>
+
       {/* Type, rasied, for sale */}
-      <div className="grid grid-cols-12 mt-6 divide-x divide-white divide-opacity-50">
-        <div className="flex flex-col col-span-4">
-          <div className="text-sm sm:text-lg">{'Auction Type'}</div>
-          <div className="text-base font-bold text-white md:text-xl">{auctionType}</div>
-          <div>
-            <Image src="/images/miso/trident/trident_auction_type.png" width={25} height={25} />
-          </div>
-        </div>
-        <div className="flex flex-col col-span-4">
-          <div className="mx-auto">
-            <div className="text-sm sm:text-lg">{'MIN Raised'}</div>
-            <div className="text-base font-bold text-white md:text-xl">{`${minRaised} $SUSHI`}</div>
-            <div className="text-sm sm:text-base">{`$${minRaisedUsd} USD`}</div>
-          </div>
-        </div>
-        <div className="flex flex-col col-span-4">
-          <div className="ml-auto">
-            <div className="text-sm sm:text-lg">{'Token For Sale'}</div>
-            <div className="text-base font-bold text-white md:text-xl">{tokenForSale}</div>
-            <div className="text-sm sm:text-base">{symbol}</div>
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-row mt-6">
+      <Box className="mt-12 divide-x divide-white divide-opacity-50">
+        <Flex w="100%" justify="space-between" fontSize="md" color="#000" lineHeight="20px">
+          <Box>
+            <Text as="h5" fontWeight="500" mb="12px">
+              Auction Type
+            </Text>
+            <Text color="#EB3CA2">{auctionType}</Text>
+            <Text mt="4px" color="red">
+              <Image
+                className="text-privi-dark"
+                src="/images/miso/trident/trident_auction_type2.svg"
+                width={25}
+                height={25}
+              />
+            </Text>
+          </Box>
+          <Divider orientation="vertical" h="41px" borderColor="#1c1d2133" />
+          <Box>
+            <Text as="h5" fontWeight="500" mb="12px">
+              MIN Raised
+            </Text>
+            <Text color="#EB3CA2">{`${minRaised} $SUSHI`}</Text>
+            <Text mt="4px" color="#1c1d2199">
+              {`$${minRaisedUsd} USD`}
+            </Text>
+          </Box>
+          <Divider orientation="vertical" h="41px" borderColor="#1c1d2133" />
+          <Box>
+            <Text as="h5" fontWeight="500" mb="12px">
+              Token For Sale
+            </Text>
+            <Text color="#EB3CA2">{tokenForSale}</Text>
+            <Text mt="4px" color="#1c1d2199">
+              {symbol}
+            </Text>
+          </Box>
+          <Divider orientation="vertical" h="41px" borderColor="#1c1d2133" />
+          <Box>
+            <Text as="h5" fontWeight="500" mb="12px">
+              Ends On
+            </Text>
+            <Text color="#EB3CA2">{formatDate(new Date(auctionEndDate))}</Text>
+            <Text mt="4px" color="#1c1d2199">
+              {formatHours(new Date(auctionEndDate))} GMT
+            </Text>
+          </Box>
+        </Flex>
+      </Box>
+      {/* <div className="flex flex-row mt-6">
         <div className="flex flex-col">
           <div className="text-sm sm:text-lg">{'Auction ends on'}</div>
           <div className="text-base font-bold text-white md:text-xl">{formatDate(new Date(auctionEndDate))} GMT</div>
@@ -134,16 +173,26 @@ function MisoInfo({
             <Image src="/images/miso/trident/trident_view_auction.svg" width={91} height={88} />
           </a>
         </div>
-      </div>
-      <div className="flex flex-col mt-6">
+      </div> */}
+      <Box maxW={['100%', '90%', '476px']} className="mt-12">
+        <Heading as="h5" size="lg" className="font-semibold text-xs lg:text-base">
+          About
+        </Heading>
+        <Text color="#00000099" className="text-sm mt-2.5">
+          The Trident NFT is introduced as a celebratory piece for the announcement and upcoming release of Sushi’s
+          Trident AMM. This NFT can be redeemed for a 19cm x 19cm 900 tab piece of blotter paper with this Chewy Stoll
+          artwork on the left printed on it.
+        </Text>
+      </Box>
+      {/* <div className="flex flex-col mt-6">
         <div>About</div>
         <div>
           The Trident NFT is introduced as a celebratory piece for the announcement and upcoming release of Sushi’s
           Trident AMM. This NFT can be redeemed for a 19cm x 19cm 900 tab piece of blotter paper with this Chewy Stoll
           artwork on the left printed on it.
         </div>
-      </div>
-    </div>
+      </div> */}
+    </Box>
   )
 }
 
