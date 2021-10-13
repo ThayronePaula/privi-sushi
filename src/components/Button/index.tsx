@@ -21,7 +21,7 @@ const FILLED = {
 }
 
 const OUTLINED = {
-  default: 'bg-transparent opacity-80 hover:opacity-100',
+  default: 'bg-privi-dark hover:opacity-80 text-white disabled:bg-opacity-20',
   red: 'bg-red bg-opacity-20 outline-red rounded text-red hover:bg-opacity-40 disabled:bg-opacity-20',
   blue: 'bg-blue bg-opacity-20 outline-blue rounded text-blue hover:bg-opacity-40 disabled:bg-opacity-20',
   pink: 'bg-pink bg-opacity-20 outline-pink rounded text-pink hover:bg-opacity-40 disabled:bg-opacity-20',
@@ -71,7 +71,7 @@ function Button({
   className = undefined,
   color = 'default',
   size = 'default',
-  variant = 'filled',
+  variant = 'outlined',
   ...rest
 }: ButtonProps): JSX.Element {
   return (

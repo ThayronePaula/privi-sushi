@@ -7,7 +7,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useWalletModalToggle } from '../../state/application/hooks'
 
-export default function Web3Connect({ color = 'gray', size = 'sm', className = '', ...rest }: ButtonProps) {
+export default function Web3Connect({ color = 'default', size = 'sm', className = '', ...rest }: ButtonProps) {
   const { i18n } = useLingui()
   const toggleWalletModal = useWalletModalToggle()
   const { error } = useWeb3React()
@@ -22,15 +22,7 @@ export default function Web3Connect({ color = 'gray', size = 'sm', className = '
       {error instanceof UnsupportedChainIdError ? i18n._(t`You are on the wrong network`) : i18n._(t`Error`)}
     </div>
   ) : (
-    <Button
-      id="connect-wallet"
-      onClick={toggleWalletModal}
-      variant="outlined"
-      color={color}
-      className={className}
-      size={size}
-      {...rest}
-    >
+    <Button id="connect-wallet" onClick={toggleWalletModal} color={color} className={className} size={size} {...rest}>
       {i18n._(t`Connect to a wallet`)}
     </Button>
   )

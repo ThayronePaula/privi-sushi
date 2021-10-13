@@ -29,7 +29,7 @@ export const NumericImage = React.memo(
       }
     }
     return (
-      <label className="relative flex flex-col -mr-14">
+      <label className="relative flex flex-col w-full">
         <input
           {...rest}
           value={value}
@@ -55,7 +55,7 @@ export const NumericImage = React.memo(
             className
           )}
         />
-        <div className="absolute bottom-0 left-0 -mb-0.5 transform translate-x-1/2 -translate-y-1/2 text-black peer-placeholder-shown:text-gray-300 h-6 w-6">
+        <div className="absolute bottom-0 left-3/4 font-medium text-base transform translate-x-1/2 -translate-y-1/2 text-black peer-placeholder-shown:text-gray-300 h-6 w-6">
           <h1>{currency ? currency.symbol : ' '}</h1>
         </div>
       </label>

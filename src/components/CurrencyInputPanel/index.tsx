@@ -67,16 +67,15 @@ export default function CurrencyInputPanel({
   const handleDismissSearch = useCallback(() => {
     setModalOpen(false)
   }, [setModalOpen])
-
   return (
-    <div id={id} className={classNames(hideInput ? 'p-4' : 'p-5', 'rounded')}>
+    <div id={id} className={classNames('rounded w-full')}>
       <div className="flex flex-col">
-        <div className={classNames('w-2/4')}>
+        <div className={classNames('w-full mb-6')}>
           <button
             type="button"
             className={classNames(
               !!currency ? 'text-primary' : 'text-high-emphesis',
-              'open-currency-select-button h-full outline-none select-none cursor-pointer border-none text-xl font-medium items-center'
+              'open-currency-select-button w-full h-full outline-none select-none cursor-pointer border-none text-xl font-medium items-center'
             )}
             onClick={() => {
               if (onCurrencySelect) {
@@ -88,9 +87,9 @@ export default function CurrencyInputPanel({
               {pair ? (
                 <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={24} margin={true} />
               ) : currency ? (
-                <div className="flex flex-row items-center py-4 space-x-4 text-dark">
+                <div className="flex flex-row items-center pt-2 space-x-4 text-privi-dark font-medium">
                   <CurrencyLogo currency={currency} size={'24px'} />
-                  <div className="flex flex-row">{currency.symbol}</div>
+                  <div className="flex flex-row text-xl">{currency.name}</div>
                   <ChevronDownIcon width={24} height={24} />
                 </div>
               ) : (
@@ -111,7 +110,9 @@ export default function CurrencyInputPanel({
                 </span>
               ) : (
                 <div className="flex flex-col items-start flex-1 ">
-                  {label && <div className="text-lg font-medium text-secondary whitespace-nowrap">{label}</div>}
+                  {label && (
+                    <div className="text-lg font-medium text-privi-dark text-opacity-60 whitespace-nowrap">{label}</div>
+                  )}
                 </div>
               )}
             </div>
@@ -120,7 +121,7 @@ export default function CurrencyInputPanel({
         {!hideInput && (
           <div
             className={classNames(
-              'flex flex-col items-center w-full space-x-3 rounded p-3 sm:w-3/5'
+              'flex flex-col items-center w-full rounded'
               // showMaxButton && selectedCurrencyBalance && 'px-3'
             )}
           >
@@ -137,7 +138,7 @@ export default function CurrencyInputPanel({
               <Input.NumericImage
                 currency={currency}
                 id="token-amount-input"
-                className={classNames('text-dark bg-white rounded p-2 flex flex-row  text-right')}
+                className={classNames('text-dark bg-white rounded p-3 flex flex-row')}
                 value={value}
                 onUserInput={(val) => {
                   onUserInput(val)

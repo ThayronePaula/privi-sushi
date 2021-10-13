@@ -121,6 +121,11 @@ module.exports = {
       screens: {
         '3xl': '1600px',
       },
+      spacing: {
+        123: '30.75rem',
+        160: '40rem',
+        174: '43.5rem',
+      },
       animation: {
         ellipsis: 'ellipsis 1.25s infinite',
         'spin-slow': 'spin 2s linear infinite',

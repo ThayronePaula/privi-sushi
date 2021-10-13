@@ -12,6 +12,7 @@ function Main({ children }) {
   useEffect(() => {
     if (router) {
       const asPath = router.pathname
+      console.log(asPath)
       setPath(asPath)
     }
   }, [router])
@@ -31,12 +32,14 @@ function Main({ children }) {
       path === '/bar' ||
       path === '/balances' ||
       path === '/user/balances' ||
+      path === '/exchange/pool' ||
+      path === '/pool' ||
       path === '/stake/' ? (
         children
       ) : (
-        <div className="flex flex-row pt-20 space-x-10">
+        <div className="flex flex-row justify-between pt-20 max-w-7xl px-7">
           <MainCTA />
-          <div className="flex flex-col">{children}</div>
+          <div className="flex flex-col place-items-center lg:w-3/5">{children}</div>
         </div>
       )}
     </main>

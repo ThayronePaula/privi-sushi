@@ -2,7 +2,7 @@ import { Heading, Text, VStack, Divider, Box, Grid } from '@chakra-ui/react'
 
 function MainCTA({}) {
   return (
-    <VStack w={['100%', '100%', '100%', '40%']} spacing={8} alignItems="flex-start" paddingLeft="50">
+    <VStack className="lg:w-2/5" spacing={8} alignItems="flex-start">
       <Heading as="h1" size="lg" fontSize={['48px', '64px']} fontWeight="600">
         Sushiswap
       </Heading>
