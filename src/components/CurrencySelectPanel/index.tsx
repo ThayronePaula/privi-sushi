@@ -39,7 +39,7 @@ export default function CurrencySelectPanel({
   }, [setModalOpen])
 
   return (
-    <div id={id} className="p-5 ">
+    <div id={id} className="p-5">
       <div className="flex flex-col justify-between space-y-3 sm:space-y-0 sm:flex-row">
         <div className="w-full" onClick={onClick}>
           <div

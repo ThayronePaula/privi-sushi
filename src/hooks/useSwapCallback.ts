@@ -558,5 +558,18 @@ export function useSwapCallback(
       },
       error: null,
     }
-  }, [trade, library, account, chainId, recipient, recipientAddressOrName, swapCalls, useArcher, addTransaction])
+  }, [
+    trade,
+    library,
+    account,
+    chainId,
+    recipient,
+    recipientAddressOrName,
+    swapCalls,
+    useArcher,
+    eip1559,
+    addTransaction,
+    archerRelayDeadline,
+    archerETHTip,
+  ])
 }
